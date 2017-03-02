@@ -37,9 +37,9 @@ s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
 
 # 8
-s.source_files = "MUOReader/**/*.{h, m}"
+s.source_files = "PublisherApp/**/*.{h, m}"
 
 # 9
-s.resources = "MUOReader/**/*.{png,jpeg,jpg,storyboard,xib}"
+s.resources = "PublisherApp/**/*.{png,jpeg,jpg,storyboard,xib}"
 
 end

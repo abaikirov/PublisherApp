@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RightPostCell" id="2g2-hb-spO" customClass="ReaderSmallCell">
+            <rect key="frame" x="0.0" y="0.0" width="184" height="266"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="184" height="266"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TLs-9g-xYi">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="TLs-9g-xYi" secondAttribute="height" multiplier="4:3" id="EGa-uc-UV0"/>
+                        </constraints>
+                    </imageView>
+                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhB-JW-Qay">
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="4Bt-5P-7ru"/>
+                            <constraint firstAttribute="width" constant="41.5" id="ptn-aZ-wI0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="AhB-JW-Qay" secondAttribute="trailing" constant="16" id="HNl-uN-pzv"/>
+                <constraint firstAttribute="bottom" secondItem="AhB-JW-Qay" secondAttribute="bottom" constant="17" id="afg-oR-4Hs"/>
+                <constraint firstAttribute="trailing" secondItem="TLs-9g-xYi" secondAttribute="trailing" constant="16" id="hao-3e-4Kj"/>
+                <constraint firstItem="TLs-9g-xYi" firstAttribute="top" secondItem="2g2-hb-spO" secondAttribute="top" constant="10" id="psd-lR-Dy9"/>
+                <constraint firstItem="TLs-9g-xYi" firstAttribute="leading" secondItem="2g2-hb-spO" secondAttribute="leading" constant="10" id="uJU-29-dBB"/>
+            </constraints>
+            <size key="customSize" width="184" height="266"/>
+            <connections>
+                <outlet property="dateLabel" destination="AhB-JW-Qay" id="jEe-o8-l3p"/>
+                <outlet property="postImageView" destination="TLs-9g-xYi" id="MAg-yD-eEL"/>
+            </connections>
+            <point key="canvasLocation" x="147" y="271"/>
+        </collectionViewCell>
+    </objects>
+</document>

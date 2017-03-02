@@ -10,7 +10,7 @@
 #import "MUOPostsRequestManager.h"
 
 #import "Post.h"
-#import "NSDate+DateTools.h"
+@import DateTools;
 
 const int kPageSize = 20;
 const int kSearchPageSize = 10;

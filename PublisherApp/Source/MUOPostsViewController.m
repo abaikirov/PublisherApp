@@ -7,9 +7,8 @@
 //
 
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <AFNetworking.h>
-#import <NSDate+DateTools.h>
-#import <UIColor+HexString.h>
+@import DateTools;
+@import UIColor_HexString;
 
 #import "MUOPostsViewController.h"
 #import "PostsViewModel.h"

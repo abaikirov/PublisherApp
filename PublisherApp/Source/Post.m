@@ -7,7 +7,7 @@
 //
 
 #import "Post.h"
-#import <NSDate+DateTools.h>
+@import DateTools;
 #import <DCKeyValueObjectMapping/DCParserConfiguration.h>
 #import <DCKeyValueObjectMapping/DCArrayMapping.h>
 

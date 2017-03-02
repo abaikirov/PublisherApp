@@ -1,5 +1,7 @@
 def app_pods
 
+use_frameworks!
+
 pod 'AFNetworking'
 pod 'DCKeyValueObjectMapping', '~> 1.5'
 pod 'DateTools', '~> 1.7.0'

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		158941357C33807F379C5E53 /* Pods_PublisherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581121547B8A67E80DDD7EF2 /* Pods_PublisherApp.framework */; };
 		5A7980111E687DD600E684ED /* closeButtonX.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A797FF31E687DD600E684ED /* closeButtonX.png */; };
 		5A7980121E687DD600E684ED /* closeButtonX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A797FF41E687DD600E684ED /* closeButtonX@2x.png */; };
 		5A7980131E687DD600E684ED /* closeButtonX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A797FF51E687DD600E684ED /* closeButtonX@3x.png */; };
@@ -76,10 +77,10 @@
 		5A79807A1E687DE000E684ED /* UserSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A7980541E687DE000E684ED /* UserSettings.h */; };
 		5A79807B1E687DE000E684ED /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7980551E687DE000E684ED /* UserSettings.m */; };
 		5A79807D1E68803700E684ED /* PublisherApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A79807C1E68803700E684ED /* PublisherApp.h */; };
-		6D2EB26F0F3A5D3F3C641A23 /* libPods-PublisherApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DE1BDCE20323967F07B4A2 /* libPods-PublisherApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		581121547B8A67E80DDD7EF2 /* Pods_PublisherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PublisherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A797F391E6841F900E684ED /* PublisherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PublisherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A797F3D1E6841F900E684ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A797FF31E687DD600E684ED /* closeButtonX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButtonX.png; sourceTree = "<group>"; };
@@ -152,7 +153,6 @@
 		5A7980551E687DE000E684ED /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		5A79807C1E68803700E684ED /* PublisherApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublisherApp.h; path = Source/PublisherApp.h; sourceTree = "<group>"; };
 		7C093653783401FD653BA67E /* Pods-PublisherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.debug.xcconfig"; sourceTree = "<group>"; };
-		81DE1BDCE20323967F07B4A2 /* libPods-PublisherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PublisherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF57FE27C5190B79DFF1250 /* Pods-PublisherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2EB26F0F3A5D3F3C641A23 /* libPods-PublisherApp.a in Frameworks */,
+				158941357C33807F379C5E53 /* Pods_PublisherApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +180,7 @@
 		46AC76DA946C538F457A809F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81DE1BDCE20323967F07B4A2 /* libPods-PublisherApp.a */,
+				581121547B8A67E80DDD7EF2 /* Pods_PublisherApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

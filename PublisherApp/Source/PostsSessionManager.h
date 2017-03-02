@@ -6,7 +6,7 @@
 //  Copyright © 2017 MakeUseOf. All rights reserved.
 //
 
-#import "AFNetworking.h"
+@import AFNetworking;
 #import "SessionManagerSetupProvider.h"
 
 @interface PostsSessionManager : AFHTTPSessionManager

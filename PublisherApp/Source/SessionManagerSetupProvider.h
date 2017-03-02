@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
+@import AFNetworking;
 
 
 @protocol SessionManagerSetupProvider <NSObject>

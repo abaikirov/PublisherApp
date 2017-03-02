@@ -161,6 +161,9 @@
 
 
 #pragma mark - View lifecycle
+- (void)bookmarkButtonPressed:(UIButton *)sender {
+   
+}
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations {
    return UIInterfaceOrientationMaskPortrait;
@@ -181,7 +184,6 @@
    }
    
    self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal - 0.00001;
-   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
    
    if (!self.finishedLoading) {
       [self fillContent];

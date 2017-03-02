@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
 s.name         = "PublisherApp"
-s.version      = "0.1.1"
+s.version      = "0.1.2"
 s.ios.deployment_target = '8.2'
 s.summary      = "Feed for wordpess"
 
@@ -37,9 +37,9 @@ s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
 
 # 8
-s.source_files = "PublisherApp/**/*.{h, m}"
+s.source_files = "PublisherApp/Source/*"
 
 # 9
-s.resources = "PublisherApp/**/*.{png,jpeg,jpg,storyboard,xib}"
+s.resources = "PublisherApp/Assets/*.{png,jpeg,jpg,storyboard,xib}"
 
 end

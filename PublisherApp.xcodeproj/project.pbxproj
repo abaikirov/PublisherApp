@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A797F3E1E6841F900E684ED /* PublisherApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A797F3C1E6841F900E684ED /* PublisherApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A7980111E687DD600E684ED /* closeButtonX.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A797FF31E687DD600E684ED /* closeButtonX.png */; };
 		5A7980121E687DD600E684ED /* closeButtonX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A797FF41E687DD600E684ED /* closeButtonX@2x.png */; };
 		5A7980131E687DD600E684ED /* closeButtonX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A797FF51E687DD600E684ED /* closeButtonX@3x.png */; };
@@ -76,12 +75,12 @@
 		5A7980791E687DE000E684ED /* UIImage+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7980531E687DE000E684ED /* UIImage+MUO.m */; };
 		5A79807A1E687DE000E684ED /* UserSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A7980541E687DE000E684ED /* UserSettings.h */; };
 		5A79807B1E687DE000E684ED /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7980551E687DE000E684ED /* UserSettings.m */; };
+		5A79807D1E68803700E684ED /* PublisherApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A79807C1E68803700E684ED /* PublisherApp.h */; };
 		6D2EB26F0F3A5D3F3C641A23 /* libPods-PublisherApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81DE1BDCE20323967F07B4A2 /* libPods-PublisherApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5A797F391E6841F900E684ED /* PublisherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PublisherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A797F3C1E6841F900E684ED /* PublisherApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublisherApp.h; sourceTree = "<group>"; };
 		5A797F3D1E6841F900E684ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A797FF31E687DD600E684ED /* closeButtonX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButtonX.png; sourceTree = "<group>"; };
 		5A797FF41E687DD600E684ED /* closeButtonX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButtonX@2x.png"; sourceTree = "<group>"; };
@@ -151,6 +150,7 @@
 		5A7980531E687DE000E684ED /* UIImage+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MUO.m"; sourceTree = "<group>"; };
 		5A7980541E687DE000E684ED /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		5A7980551E687DE000E684ED /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
+		5A79807C1E68803700E684ED /* PublisherApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublisherApp.h; path = Source/PublisherApp.h; sourceTree = "<group>"; };
 		7C093653783401FD653BA67E /* Pods-PublisherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		81DE1BDCE20323967F07B4A2 /* libPods-PublisherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PublisherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF57FE27C5190B79DFF1250 /* Pods-PublisherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			children = (
 				5A79802F1E687DE000E684ED /* Source */,
 				5A797FF21E687DD600E684ED /* Assets */,
-				5A797F3C1E6841F900E684ED /* PublisherApp.h */,
+				5A79807C1E68803700E684ED /* PublisherApp.h */,
 				5A797F3D1E6841F900E684ED /* Info.plist */,
 			);
 			path = PublisherApp;
@@ -310,12 +310,12 @@
 				5A7980751E687DE000E684ED /* SDWebImagePrefetcher+MUO.h in Headers */,
 				5A79806F1E687DE000E684ED /* PublisherAppSetupProvider.h in Headers */,
 				5A7980711E687DE000E684ED /* ReaderLargeCell.h in Headers */,
-				5A797F3E1E6841F900E684ED /* PublisherApp.h in Headers */,
 				5A7980731E687DE000E684ED /* ReaderSmallCell.h in Headers */,
 				5A79805E1E687DE000E684ED /* MUOPostContentViewController.h in Headers */,
 				5A79806E1E687DE000E684ED /* PublisherApp-Bridging-Header.h in Headers */,
 				5A7980771E687DE000E684ED /* SessionManagerSetupProvider.h in Headers */,
 				5A7980781E687DE000E684ED /* UIImage+MUO.h in Headers */,
+				5A79807D1E68803700E684ED /* PublisherApp.h in Headers */,
 				5A79805A1E687DE000E684ED /* MUOHtmlEditor.h in Headers */,
 				5A7980561E687DE000E684ED /* FontSelectorView.h in Headers */,
 				5A7980601E687DE000E684ED /* MUOPostsRequestManager.h in Headers */,

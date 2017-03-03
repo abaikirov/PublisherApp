@@ -7,8 +7,8 @@
 //
 
 #import "MUOGalleryViewController.h"
-#import <SDWebImage/SDWebImageDownloader.h>
 #import "MUOScrollingImageView.h"
+@import SDWebImage;
 
 @interface MUOGalleryViewController()<UIScrollViewDelegate, ScrollingImageViewDelegate>
 

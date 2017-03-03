@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Dmitry Zheshinsky. All rights reserved.
 //
 
-#import <SDWebImage/UIImageView+WebCache.h>
+@import SDWebImage;
 @import DateTools;
 @import UIColor_HexString;
 
@@ -64,7 +64,7 @@
 
 - (void)viewDidLoad {
    [super viewDidLoad];
-   self.title = @"Feed";
+   
    self.navigationItem.title = @"Feed";
    
    self.viewModel = [PostsViewModel new];
@@ -72,11 +72,12 @@
    self.posts = [NSMutableArray new];
    [self initRefreshControl];
    
-   [self.collectionView registerNib:[UINib nibWithNibName:[ReaderSmallCell leftNibName] bundle:nil]
+   NSBundle* bundle = [NSBundle bundleForClass:[ReaderSmallCell class]];
+   [self.collectionView registerNib:[UINib nibWithNibName:[ReaderSmallCell leftNibName] bundle:bundle]
          forCellWithReuseIdentifier:[ReaderSmallCell leftCellID]];
-   [self.collectionView registerNib:[UINib nibWithNibName:[ReaderSmallCell rightNibName] bundle:nil]
+   [self.collectionView registerNib:[UINib nibWithNibName:[ReaderSmallCell rightNibName] bundle:bundle]
          forCellWithReuseIdentifier:[ReaderSmallCell rightCellID]];
-   [self.collectionView registerNib:[UINib nibWithNibName:[ReaderLargeCell nibName] bundle:nil] forCellWithReuseIdentifier:[ReaderLargeCell cellID]];
+   [self.collectionView registerNib:[UINib nibWithNibName:[ReaderLargeCell nibName] bundle:bundle] forCellWithReuseIdentifier:[ReaderLargeCell cellID]];
    self.collectionView.dataSource = self;
    self.collectionView.delegate = self;
    self.collectionView.delaysContentTouches = NO;
@@ -215,8 +216,9 @@
    self.loadingInProgress = YES;
    @weakify(self);
    [[self.viewModel fetchPosts] subscribeNext:^(NSArray* posts) {
-      @strongify(self);      self.loadingInProgress = NO;
-      //[self.refreshControl endRefreshing];
+      @strongify(self);
+      self.loadingInProgress = NO;
+      [self.refreshControl endRefreshing];
       
       //If newly loaded posts are equal to displayed posts, do nothing
       if (posts.count == 0) {

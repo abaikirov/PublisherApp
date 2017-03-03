@@ -8,8 +8,7 @@
 
 #import "Post.h"
 @import DateTools;
-#import <DCKeyValueObjectMapping/DCParserConfiguration.h>
-#import <DCKeyValueObjectMapping/DCArrayMapping.h>
+@import DCKeyValueObjectMapping;
 
 @implementation FeaturedImage
 

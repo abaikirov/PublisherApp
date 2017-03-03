@@ -10,7 +10,7 @@
 #import "Post.h"
 #import "UserSettings.h"
 #import "PostsSessionManager.h"
-#import <DCKeyValueObjectMapping/DCKeyValueObjectMapping.h>
+@import DCKeyValueObjectMapping;
 
 @interface MUOPostsRequestManager()
 

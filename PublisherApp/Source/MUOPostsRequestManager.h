@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+@import ReactiveCocoa;
 
 @interface MUOPostsRequestManager : NSObject
 

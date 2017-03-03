@@ -7,8 +7,8 @@
 //
 
 #import "ReaderLargeCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <ReactiveCocoa/RACEXTScope.h>
+@import SDWebImage;
+@import ReactiveCocoa;
 
 @interface ReaderLargeCell()
 

@@ -7,9 +7,9 @@
 //
 
 #import "ReaderSmallCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import "UIColor+HexString.h"
-#import <ReactiveCocoa/RACEXTScope.h>
+@import SDWebImage;
+@import ReactiveCocoa;
+@import UIColor_HexString;
 
 @interface ReaderSmallCell()
 

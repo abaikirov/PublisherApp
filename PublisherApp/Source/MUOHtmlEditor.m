@@ -8,7 +8,7 @@
 
 #import "MUOHtmlEditor.h"
 #import "NSString+MUO.h"
-#import "RegExCategories.h"
+@import RegExCategories;
 
 NSString* cssFontSizePattern = @"font-size:(([^;\"}]*[;\"}]))";
 NSString* imgSrcPattern = @"src\\s*=\\s*(\"|')(([^\"';]*))(\"|')";

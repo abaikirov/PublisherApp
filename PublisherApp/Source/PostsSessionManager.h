@@ -13,7 +13,6 @@
 
 + (PostsSessionManager*) sharedManager;
 
-+ (void) setupWithProvider:(id<SessionManagerSetupProvider>) provider;
 - (void) updateHeaders;
 
 @end

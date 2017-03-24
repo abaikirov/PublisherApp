@@ -57,9 +57,10 @@
 }
 
 - (void) setupCollectionView {
-   [self.collectionView registerNib:[UINib nibWithNibName:[SmallPostCollectionViewCell nibName] bundle:nil]
+   NSBundle* bundle = [NSBundle bundleForClass:[SmallPostCollectionViewCell class]];
+   [self.collectionView registerNib:[UINib nibWithNibName:[SmallPostCollectionViewCell nibName] bundle:bundle]
          forCellWithReuseIdentifier:[SmallPostCollectionViewCell cellID]];
-   [self.collectionView registerNib:[UINib nibWithNibName:[LargePostCollectionViewCell nibName] bundle:nil] forCellWithReuseIdentifier:[LargePostCollectionViewCell cellID]];
+   [self.collectionView registerNib:[UINib nibWithNibName:[LargePostCollectionViewCell nibName] bundle:bundle] forCellWithReuseIdentifier:[LargePostCollectionViewCell cellID]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

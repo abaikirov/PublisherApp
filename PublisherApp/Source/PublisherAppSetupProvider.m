@@ -25,8 +25,7 @@
    return provider;
 }
 
-
-+ (void) setBaseURL:(NSString*) url {
++ (void)setBaseURL:(NSString *)url {
    [PublisherAppSetupProvider sharedProvider].baseURL = [[NSURL alloc] initWithString:url];
 }
 

@@ -23,6 +23,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - Realm (1.0.2):
+    - Realm/Headers (= 1.0.2)
+  - Realm/Headers (1.0.2)
   - RegExCategories (1.0)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -34,6 +37,7 @@ DEPENDENCIES:
   - DateTools (~> 1.7.0)
   - DCKeyValueObjectMapping (~> 1.5)
   - ReactiveCocoa (~> 2.5)
+  - Realm
   - RegExCategories (~> 1.0)
   - SDWebImage (~> 3.8.1)
   - UIColor-HexString (~> 1.1.0)
@@ -43,10 +47,11 @@ SPEC CHECKSUMS:
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   DCKeyValueObjectMapping: c2eb5a6529da100b2e49ef6a599663578051f077
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   UIColor-HexString: f8a5612bd6772fed8db58ee594b42a0b2831750e
 
-PODFILE CHECKSUM: 4de43544cdd77c25cd8916d656fd1cc6091b4c9d
+PODFILE CHECKSUM: c38d3474105d3c8cc9a6613c191bd726fdfa9eaa
 
 COCOAPODS: 1.1.1

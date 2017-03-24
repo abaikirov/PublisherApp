@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 @import AFNetworking;
 
-
 @protocol SessionManagerSetupProvider <NSObject>
 
 + (instancetype) sharedProvider;

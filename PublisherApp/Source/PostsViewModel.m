@@ -8,7 +8,6 @@
 
 #import "PostsViewModel.h"
 #import "MUOPostsRequestManager.h"
-
 #import "Post.h"
 @import DateTools;
 

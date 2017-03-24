@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 MakeUseOf. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 @import ReactiveCocoa;
 
 @interface MUOPostsRequestManager : NSObject
 
 - (RACSignal *)fetchLatestPosts:(NSInteger)page lastPostID:(NSNumber *) lastPostID;
+- (RACSignal *) likePost:(NSNumber*) postID;
 
 @end

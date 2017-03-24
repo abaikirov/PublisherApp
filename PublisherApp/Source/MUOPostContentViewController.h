@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MUOPagingPostsController.h"
 
-@class Post;
+@class ost;
 @class PostContentBottomView;
 @class MUOSavedPost;
 @interface MUOPostContentViewController : UIViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (strong, nonatomic) NSNumber *postID;
+@property (strong, nonatomic) NSString* postSlug;
 
 @property (nonatomic, strong) Post* post;
 

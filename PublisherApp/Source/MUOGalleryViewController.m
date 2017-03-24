@@ -7,8 +7,8 @@
 //
 
 #import "MUOGalleryViewController.h"
-#import "MUOScrollingImageView.h"
 @import SDWebImage;
+#import "MUOScrollingImageView.h"
 
 @interface MUOGalleryViewController()<UIScrollViewDelegate, ScrollingImageViewDelegate>
 
@@ -185,7 +185,7 @@ const int kDismissOffset = 120;
 
 
 - (void)dealloc {
-   NSLog(@"GALLERY DEALLOC");
+   
 }
 
 @end

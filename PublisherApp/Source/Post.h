@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class DCParserConfiguration;
+@class MUOSavedPost;
 
 @interface FeaturedImage : NSObject
 
@@ -25,13 +26,29 @@
 @property (nonatomic) NSString* url;
 @property (nonatomic) NSDate *postDate;
 @property FeaturedImage *featuredImage;
+@property (nonatomic) NSNumber *likesCount;
 
 - (NSURL *)imageUrl;
 
 //Presentation
 @property (nonatomic) NSString* relativeDateString;
+@property (nonatomic) NSString* likesString;
 
 //Parsing
 + (DCParserConfiguration *)parserConfiguration;
+
+//Bookmarks related code
++ (instancetype) postWithSavedPost:(MUOSavedPost*) savedPost;
+
+//This section links remote URLs with local URLs
+- (void) addLocalURL:(NSString*)localUrl forRemoteImage:(NSString*) imageUrl;
+- (void) replaceRemoteUrlsWithLocal;
+- (void) clearLocalURLs;
+
+/**
+ Gets the post for saving to Realm
+ **/
+- (MUOSavedPost*) postToSave:(BOOL) isBookmarked;
+- (void) fillWithSavedPost:(MUOSavedPost *) post;
 
 @end

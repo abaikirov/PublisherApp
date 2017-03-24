@@ -9,6 +9,7 @@ pod 'ReactiveCocoa', '~> 2.5'
 pod 'SDWebImage', '~> 3.8.1'
 pod 'UIColor-HexString', '~> 1.1.0'
 pod 'RegExCategories', '~> 1.0'
+pod 'Realm'
 end
 
 target 'PublisherApp' do

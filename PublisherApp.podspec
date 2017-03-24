@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
 s.name         = "PublisherApp"
-s.version      = "0.1.2"
+s.version      = "0.1.4"
 s.ios.deployment_target = '8.2'
 s.summary      = "Feed for wordpess"
 
@@ -35,6 +35,7 @@ s.dependency 'ReactiveCocoa', '~> 2.5'
 s.dependency 'SDWebImage', '~> 3.8.1'
 s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
+s.dependency 'Realm'
 
 # 8
 s.source_files = "PublisherApp/Source/*"

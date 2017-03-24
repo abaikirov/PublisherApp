@@ -8,7 +8,7 @@
 
 #import "MUOPostContentViewController.h"
 #import "MUOPagingPostsController.h"
-#import "UserSettings.h"
+#import "ReaderSettings.h"
 
 @interface MUOPagingPostsController ()<UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
@@ -36,10 +36,6 @@
    return UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldPresentProgress {
-   return YES;
-}
-
 - (BOOL)prefersStatusBarHidden {
    return self.shouldHideStatusBar;
 }
@@ -54,7 +50,7 @@
    self.bottomViewHidden = NO;
    self.topViewHidden = NO;
    self.pageViewController = self.childViewControllers[0];
-   self.currentFontSize = [UserSettings sharedSettings].preferredFontSize;
+   self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
    
    if (self.viewControllerToDisplay) {
       [self.pageViewController setViewControllers:@[self.viewControllerToDisplay] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -185,7 +181,7 @@
 }
 
 - (void)dealloc {
-   NSLog(@"PAGE VIEW CONTROLLER DEALLOC");
+   
 }
 
 @end

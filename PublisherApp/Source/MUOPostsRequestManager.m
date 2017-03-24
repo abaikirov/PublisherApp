@@ -8,14 +8,12 @@
 
 #import "MUOPostsRequestManager.h"
 #import "Post.h"
-#import "UserSettings.h"
 #import "PostsSessionManager.h"
 @import DCKeyValueObjectMapping;
 
 @interface MUOPostsRequestManager()
 
 @property (nonatomic, strong) NSURLSessionDataTask* postsTask;
-@property (nonatomic, strong) UserSettings* userSettings;
 
 @property (nonatomic, strong) PostsSessionManager* sessionManager;
 
@@ -69,5 +67,24 @@
    }
 }
 
+- (RACSignal *)likePost:(NSNumber *)postID {
+   @weakify(self);
+   RACSignal* signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+      @strongify(self);
+      
+      NSString* url = [NSString stringWithFormat:@"posts/%@/like", postID];
+      [self.sessionManager POST:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+         
+      } success:^(NSURLSessionDataTask *task, id responseObject) {
+         [subscriber sendNext:responseObject];
+         [subscriber sendCompleted];
+      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+         [subscriber sendError:error];
+      }];
+      
+      return nil;
+   }];
+   return signal;
+}
 
 @end

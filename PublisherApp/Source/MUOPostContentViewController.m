@@ -6,16 +6,21 @@
 //  Copyright (c) 2015 Dmitry Zheshinsky. All rights reserved.
 //
 
+@import UIColor_HexString;
+@import AFNetworking;
 #import "MUOPostContentViewController.h"
+#import "MUOPostContentViewModel.h"
+#import "FontSelectorView.h"
+#import "PostScrollListener.h"
+#import "MUOHtmlEditor.h"
+#import "ReaderSettings.h"
+#import "CoreContext.h"
 #import "Post.h"
 
-#import "UIColor+HexString.h"
-#import "MUOHtmlEditor.h"
-#import "MUOGalleryViewController.h"
-#import "UserSettings.h"
-#import "FontSelectorView.h"
+#import "UIView+Toast.h"
 #import "PublisherApp.h"
 
+#define CONNECTION_AVAILABLE [AFNetworkReachabilityManager sharedManager].reachable
 #define BASE_URL @"http://makeuseof.com"
 
 #pragma mark -
@@ -117,7 +122,7 @@
 
 - (void) buttonPressed:(UIButton*) btn {
    if ([self.delegate respondsToSelector:@selector(didPressedButtonAtIndex:)]) {
-      [self.delegate didPressedButtonAtIndex:btn.tag];
+      [self.delegate didPressedButtonAtIndex:(int) btn.tag];
    }
 }
 
@@ -127,13 +132,17 @@
 
 #pragma mark -
 #pragma mark - View controller
-@interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, TopBarDelegate, FontSelectorViewDelegate>
+@interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate>
 
+@property(nonatomic) MUOPostContentViewModel *viewModel;
+
+@property (nonatomic, strong) MUOHtmlEditor* htmlEditor;
+
+//@property (nonatomic, strong) CustomIOSAlertView* alertView;
 
 @property (nonatomic) int currentFontSize;
 @property (nonatomic) BOOL finishedLoading;
-
-@property (nonatomic, strong) UIBarButtonItem* fontItem;
+@property (nonatomic) PostScrollListener* scrollListener;
 
 @end
 
@@ -148,22 +157,18 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
    self = [super initWithCoder:aDecoder];
    if (self) {
+      self.htmlEditor = [MUOHtmlEditor editor];
+      self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
       self.finishedLoading = NO;
-      self.currentFontSize = [UserSettings sharedSettings].preferredFontSize;
    }
    return self;
 }
 
 -(void)dealloc {
-   NSLog(@"DEALLOC:%@", self.post.postTitle);
    self.webView.delegate = nil;
 }
 
-
 #pragma mark - View lifecycle
-- (void)bookmarkButtonPressed:(UIButton *)sender {
-   
-}
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations {
    return UIInterfaceOrientationMaskPortrait;
@@ -178,6 +183,9 @@
    self.webView.scrollView.bounces = NO;
    self.webView.delegate = self;
    self.webView.allowsInlineMediaPlayback = YES;
+   
+   self.scrollListener = [PostScrollListener new];
+   
    
    if (!self.parentNavigationItem) {
       self.parentNavigationItem = self.navigationItem;
@@ -198,8 +206,11 @@
 
 -(void)viewDidAppear:(BOOL)animated {
    [super viewDidAppear:animated];
+   self.scrollListener.delegate = self;
+   [self.scrollListener followScrollView:self.webView.scrollView delay:60.0f];
    
    [(PostContentBottomView*)self.pagingController.bottomView setDelegate:self];
+   [self updateBookmarkStatus];
    [self.pagingController hideBottomView:NO];
    [self.pagingController animateTopView:NO];
    self.pagingController.topBarDelegate = self;
@@ -207,13 +218,59 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
    [super viewWillDisappear:animated];
+   [self.scrollListener stopFollowingScrollView];
 }
 
+#pragma mark - Navigation
+- (void)scrolledTop {
+   [self.pagingController hideBottomView:NO];
+   [self.pagingController animateTopView:NO];
+}
+
+- (void)scrolledBottom {
+   [self.pagingController hideBottomView:YES];
+   [self.pagingController animateTopView:YES];
+}
 
 
 #pragma mark - Content
 -(void) fillContent {
-   [self displayHTML:_post.html];
+   if (self.post && _isOffline) {                                              //Displaying bookmarked post
+      //_post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:_post.html];
+      [self displayHTML:_post.html];
+      return;
+   }
+   
+   self.viewModel = [MUOPostContentViewModel new];
+   if (self.postID) self.viewModel.postId = self.postID;
+   if (self.postSlug) self.viewModel.postSlug = self.postSlug;
+   
+   
+   if (CONNECTION_AVAILABLE) { //If there is internet connection, display post if available, else fetch post
+      _isOffline = NO;
+      if (self.post) {
+         [self displayHTML:_post.html];
+      } else {
+         [[self.viewModel loadPost] subscribeError:^(NSError *error) {
+            [self.navigationController.view makeToast:@"Failed to load post" duration:1.0 position:CSToastPositionBottom];
+         }];
+      }
+   } else {                                                       //If there is no internet connection, try to display offline post
+      _isOffline = YES;
+      NSString* html = self.post.html;
+      [self displayHTML:html];
+      [self.viewModel loadSavedPost];
+   }
+   
+   @weakify(self);
+   [[RACObserve(self.viewModel, post) ignore:nil] subscribeNext:^(Post* post){
+      @strongify(self);
+      self.post = post;
+      if (!CONNECTION_AVAILABLE) {
+         //post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:post.html];
+      }
+      [self displayHTML:post.html];
+   }];
 }
 
 - (void) displayHTML:(NSString *) html {
@@ -226,9 +283,64 @@
 
 -(void)setPost:(Post *)post {
    _post = post;
+   _postID = post.ID;
    _post.html = [[MUOHtmlEditor editor] setBodyFontSize:_currentFontSize forHTML:_post.html];
+   //_post.html = [[MUOHtmlEditor editor] addCSS:[MUOUserSession sharedSession].remoteCSS toHTML:post.html];
+   
+   [self updateBookmarkStatus];
 }
 
+
+
+#pragma mark - Bottom view
+- (void)didPressedButtonAtIndex:(int)index {
+   switch (index) {
+      case 0: [self likePost]; break;
+      case 1: [[CoreContext sharedContext].shareHelper sharePostToFacebook:self.post fromVC:self]; break;
+      case 2: [[CoreContext sharedContext].shareHelper sharePostToFBMessenger:self.post fromVC:self]; break;
+      case 3: [[CoreContext sharedContext].shareHelper sharePostToWhatsapp:self.post]; break;
+      case 4: [[CoreContext sharedContext].shareHelper sharePostToTwitter:self.post fromVC:self]; break;
+      default:
+         break;
+   }
+}
+
+- (void) likePost {
+   [[CoreContext sharedContext].likesManager likePost:self.post];
+   [(PostContentBottomView*)self.pagingController.bottomView animateLikeButton];
+}
+
+
+#pragma mark - Actions
+- (void)shareButtonPressed:(UIButton*) sender {
+   if(self.post != nil) {
+      [[CoreContext sharedContext].shareHelper sharePostWithURL:[NSURL URLWithString:self.post.url] title:self.post.postTitle presentingViewController:self fromView:sender];
+   }
+}
+
+- (void) updateBookmarkStatus {
+   if (!self.post) {
+      return;
+   }
+   [self.pagingController updateBookmarkStatus:[[CoreContext sharedContext].savesManager bookmarkExists:self.post.ID]];
+}
+
+- (void)bookmarkButtonPressed:(UIButton *)sender {
+   [self handleBookmark];
+}
+
+- (void) handleBookmark {
+   @weakify(self);
+   [[[CoreContext sharedContext].savesManager handleBookmark:self.post postID:self.post.ID] subscribeNext:^(NSNumber* saved) {
+      @strongify(self);
+      [self updateBookmarkStatus];
+      if ([saved boolValue]) {
+         [self.navigationController.view makeToast:@"Bookmark saved" duration:1.0 position:CSToastPositionBottom];
+      } else {
+         [self.navigationController.view makeToast:@"Bookmark removed" duration:1.0 position:CSToastPositionBottom];
+      }
+   }];
+}
 
 #pragma mark - Font size
 - (void)fontSizeButtonPressed {
@@ -263,7 +375,7 @@
    if (currentFontSize < -2) currentFontSize = -2;
    _currentFontSize = currentFontSize;
    [self.pagingController setCurrentFontSize:_currentFontSize];
-   [UserSettings sharedSettings].preferredFontSize = _currentFontSize;
+   [ReaderSettings sharedSettings].preferredFontSize = _currentFontSize;
 }
 
 -(void) increaseFontSize {
@@ -278,68 +390,6 @@
 
 
 
-#pragma mark - Bottom view 
-- (void)didPressedButtonAtIndex:(int)index {
-   switch (index) {
-      case 0: //Like
-         [self likePost];
-      break;
-         
-      case 3: {
-         NSString* shareText = [NSString stringWithFormat:@"whatsapp://send?text=%@\n\nvia MakeUseOf.com/app", self.post.url];
-         shareText = [shareText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-         NSURL *whatsappURL = [NSURL URLWithString:shareText];
-         if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
-            [[UIApplication sharedApplication] openURL: whatsappURL];
-         }
-      }
-      break;
-      
-      case 4:
-         [self shareToTwitter];
-         break;
-         
-      case 1:
-         [self shareToFacebook];
-      break;
-      case 2:
-         [self shareToMessenger];
-      break;
-         
-      default:
-         break;
-   }
-}
-
-- (void) shareToTwitter {
-   
-}
-
-- (void) shareToFacebook {
-   
-}
-
-- (void) shareToMessenger {
-   
-}
-
-- (void) likePost {
-   
-}
-
-
-
-#pragma mark - Actions
-- (void)shareButtonPressed:(UIButton*) sender {
-   if(self.post != nil) {
-      //[MUOShareHelper sharePostWithURL:[NSURL URLWithString:self.post.url] title:self.post.postTitle presentingViewController:self fromView:sender];
-   }
-}
-
-
-
-
-
 #pragma mark - UIWebView
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
    self.finishedLoading = YES;
@@ -347,24 +397,17 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-      NSString* urlString = [request.URL absoluteString];
-      if ([urlString hasPrefix:@"http://cdn.makeuseof.com"]) {
-         MUOGalleryViewController* galleryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GalleryVC"];
-         NSArray* images = [[MUOHtmlEditor editor] getImagesFromHTML:self.post.html];
-         [galleryVC fillWithImages:images currentImage:urlString];
-         
-         //It's better to show gallery from page view controller. It is more stable in such way
-         [self.parentViewController presentViewController:galleryVC animated:YES completion:^{
-            
-         }];
-      } else {
-         [[UIApplication sharedApplication] openURL:request.URL];
+      if ([[CoreContext sharedContext].linksHandler canHandleWebviewRequest:request forViewController:self withPost:self.post]) {
+         return NO;
       }
-      return NO;
    }
    return YES;
 }
 
+- (void) refreshWebView {
+   self.post.html = [[MUOHtmlEditor editor] setBodyFontSize:self.currentFontSize forHTML:self.post.html];
+   [self displayHTML:self.post.html];
+}
 
 
 @end

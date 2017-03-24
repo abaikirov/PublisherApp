@@ -39,8 +39,8 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
    if (self = [super initWithCoder:aDecoder]) {
       self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-      likeImageInactive = [UIImage imageNamed:@"Like-white"];
-      likeImageActive = [UIImage imageNamed:@"Like-active-white"];
+      likeImageInactive = [UIImage imageNamed:@"Like-white" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+      likeImageActive = [UIImage imageNamed:@"Like-active-white" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
    }
    return self;
 }

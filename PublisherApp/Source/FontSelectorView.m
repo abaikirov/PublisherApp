@@ -60,7 +60,8 @@ static const CGFloat topOffset = 50;
    self.slider.maximumValue = 2;
    self.slider.minimumTrackTintColor = [UIColor whiteColor];
    self.slider.maximumTrackTintColor = [UIColor whiteColor];
-   [self.slider setThumbImage:[UIImage imageNamed:@"Knob"] forState:UIControlStateNormal];
+   UIImage* knob = [UIImage imageNamed:@"Knob" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+   [self.slider setThumbImage:knob forState:UIControlStateNormal];
    [sliderBackgroundView addSubview:self.slider];
    
    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];

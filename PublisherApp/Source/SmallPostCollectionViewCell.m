@@ -54,8 +54,8 @@
       titleColorActive = [UIColor colorWithHexString:@"E22524"];
       textFont = [UIFont systemFontOfSize:15.0  weight:UIFontWeightMedium];
       borderColor = [UIColor colorWithHexString:@"D8D8D8"];
-      likeImageInactive = [UIImage imageNamed:@"Like"];
-      likeImageActive = [UIImage imageNamed:@"Like-active"];
+      likeImageInactive = [UIImage imageNamed:@"Like" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+      likeImageActive = [UIImage imageNamed:@"Like-active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
    }
    return self;
 }

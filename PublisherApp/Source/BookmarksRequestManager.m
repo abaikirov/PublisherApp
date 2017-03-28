@@ -59,8 +59,8 @@
 }
 
 -(RACSignal *)fetchBookmarks:(NSArray *) bookmarkIDs {
-   @weakify(self);
-   /*self.userSettings = [MUOUserSettings new];
+   /*@weakify(self);
+   self.userSettings = [MUOUserSettings new];
    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
       @strongify(self);
       NSMutableDictionary* parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"with_body" : @"true", @"without_css" : @"true"}];

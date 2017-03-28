@@ -11,4 +11,6 @@
 
 @interface PublisherAppSetupProvider : NSObject<SessionManagerSetupProvider>
 
++ (void) setBaseURL:(NSString*) url;
+
 @end

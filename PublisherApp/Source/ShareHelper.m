@@ -33,7 +33,7 @@
    shareText = [shareText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
    NSURL *whatsappURL = [NSURL URLWithString:shareText];
    if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
-      [[UIApplication sharedApplication] openURL: whatsappURL];
+      [[UIApplication sharedApplication] openURL:whatsappURL options:@{} completionHandler:nil];
    }
 }
 

@@ -11,7 +11,7 @@
 @implementation ExternalLinksHandler
 
 - (BOOL)canHandleWebviewRequest:(NSURLRequest *)request forViewController:(UIViewController *)vc withPost:(Post *)post {
-   [[UIApplication sharedApplication] openURL:request.URL];
+   [[UIApplication sharedApplication] openURL:request.URL options:@{} completionHandler:nil];
    return YES;
 }
 

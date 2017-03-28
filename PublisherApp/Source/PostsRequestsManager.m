@@ -1,30 +1,31 @@
 //
-//  MUOPostsHTTPManager.m
+//  PostsRequestsManager.m
 //  MakeUseOf
 //
-//  Created by Dmitry Zheshinsky on 8/27/15.
-//  Copyright (c) 2015 MakeUseOf. All rights reserved.
+//  Created by Dmitry Zheshinsky on 3/23/17.
+//  Copyright © 2017 MakeUseOf. All rights reserved.
 //
 
-#import "MUOPostsRequestManager.h"
+@import ReactiveCocoa;
+#import "PostsRequestsManager.h"
 #import "Post.h"
-#import "PostsSessionManager.h"
 @import DCKeyValueObjectMapping;
+#import "PostsSessionManager.h"
 
-@interface MUOPostsRequestManager()
-
-@property (nonatomic, strong) NSURLSessionDataTask* postsTask;
-
-@property (nonatomic, strong) PostsSessionManager* sessionManager;
-
-@end
-
-@implementation MUOPostsRequestManager
+@implementation PostsRequestsManager
 
 - (PostsSessionManager *)sessionManager {
    _sessionManager = [PostsSessionManager sharedManager];
    [_sessionManager updateHeaders];
    return _sessionManager;
+}
+
++ (Class)postClass {
+   return [Post class];
+}
+
++ (DCParserConfiguration*) parserConfiguration {
+   return [Post parserConfiguration];
 }
 
 #pragma mark - Latest posts
@@ -47,7 +48,7 @@
          
       } success:^(NSURLSessionDataTask *task, id responseObject) {
          DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:
-                                            [Post class] andConfiguration:[Post parserConfiguration]] ;
+                                            [self.class postClass] andConfiguration:[self.class parserConfiguration]] ;
          NSArray* posts = [parser parseArray:[responseObject valueForKey:@"posts"]];
          
          [subscriber sendNext:posts];
@@ -56,6 +57,33 @@
          [subscriber sendError:error];
       }];
       
+      return nil;
+   }];
+   return signal;
+}
+
+
+-(RACSignal *)fetchPostByID:(NSString *)ID{
+   NSLog(@"fetchPostById %ld", (long)ID);
+   @weakify(self);
+   RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+      @strongify(self);
+      NSDictionary* parameters = nil;
+      /*if ([MUOUserSession sharedSession].remoteCSS) {
+         parameters = @{@"without_css" : @"true"};
+      }*/
+      
+      [self.sessionManager GET:[NSString stringWithFormat:@"posts/%@", ID] parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+         
+      } success:^(NSURLSessionDataTask *task, id responseObject){
+         DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:[self.class postClass] andConfiguration:[self.class parserConfiguration]];
+         Post *post = [parser parseDictionary:responseObject];
+         
+         [subscriber sendNext:post];
+         [subscriber sendCompleted];
+      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+         [subscriber sendError:error];
+      }];
       return nil;
    }];
    return signal;
@@ -86,5 +114,6 @@
    }];
    return signal;
 }
+
 
 @end

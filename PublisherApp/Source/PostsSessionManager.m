@@ -8,7 +8,6 @@
 
 #import "PostsSessionManager.h"
 #import "SessionManagerSetupProvider.h"
-#import "PublisherAppSetupProvider.h"
 
 @interface PostsSessionManager()
 @property (nonatomic, strong) id<SessionManagerSetupProvider> setupProvider;
@@ -20,13 +19,6 @@
 static PostsSessionManager* manager;
 
 + (PostsSessionManager *)sharedManager {
-   static dispatch_once_t onceToken;
-   dispatch_once(&onceToken, ^{
-      id<SessionManagerSetupProvider> provider = [PublisherAppSetupProvider sharedProvider];
-      manager = [[PostsSessionManager alloc] initWithBaseURL:[provider sessionManagerBaseURL]];
-      [provider setupHeadersForManager:manager];
-      manager.setupProvider = provider;
-   });
    return manager;
 }
 

@@ -7,12 +7,12 @@
 //
 
 #import "LikesManager.h"
-#import "MUOPostsRequestManager.h"
+#import "PostsRequestsManager.h"
 
 @interface LikesManager()
 
 @property (nonatomic, strong) NSMutableArray* likedPosts;
-@property (nonatomic, strong) MUOPostsRequestManager* postsManager;
+@property (nonatomic, strong) PostsRequestsManager* postsManager;
 
 @end
 
@@ -36,7 +36,7 @@
       return NO;
    }
    if (!self.postsManager) {
-      self.postsManager = [MUOPostsRequestManager new];
+      self.postsManager = [PostsRequestsManager new];
    }
    [[self.postsManager likePost:post.ID] subscribeNext:^(id x) {
       

@@ -7,8 +7,9 @@
 //
 
 #import "LargePostCollectionViewCell.h"
-@import SDWebImage;
 #import "CoreContext.h"
+@import SDWebImage;
+@import ReactiveCocoa;
 
 @interface LargePostCollectionViewCell(){
    UIImage* likeImageInactive;
@@ -56,7 +57,7 @@
 
 + (CGRect)labelFrame:(Post *)post cellSize:(CGSize)cellSize {
    UIFont* textFont = [UIFont systemFontOfSize:20 weight:UIFontWeightSemibold];
-   NSAttributedString* text = [[NSAttributedString alloc] initWithString:post.postTitle attributes:@{NSFontAttributeName : textFont}];
+   NSAttributedString* text = [[NSAttributedString alloc] initWithString:post.postTitle != nil ? post.postTitle : @"" attributes:@{NSFontAttributeName : textFont}];
    CGSize maxSize = CGSizeMake(cellSize.width - 30, CGFLOAT_MAX);
    CGRect size = [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
    CGRect frame = CGRectMake(15, cellSize.height - size.size.height - 39, maxSize.width, size.size.height);

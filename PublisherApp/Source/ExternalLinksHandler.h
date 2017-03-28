@@ -6,8 +6,8 @@
 //  Copyright © 2017 MakeUseOf. All rights reserved.
 //
 
+@import UIKit;
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "Post.h"
 
 @interface ExternalLinksHandler : NSObject

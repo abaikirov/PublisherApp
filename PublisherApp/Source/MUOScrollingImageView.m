@@ -153,6 +153,7 @@
 }
 
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    NSLog(@"SCALE: %f", scale);
     BOOL scrollEnabled = NO;
     if (scale <= 1)
         scrollEnabled = YES;

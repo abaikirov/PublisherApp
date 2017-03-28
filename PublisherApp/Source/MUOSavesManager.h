@@ -12,13 +12,8 @@
 @class Post;
 @class MUOSavedPost;
 @class MUODownloadPool;
+
 @interface MUOSavesManager : NSObject
-
-typedef enum {
-    Latest10,
-    Last3Days
-} DownloadPeriod;
-
 //Used for posts downloading
 @property (nonatomic, strong) RACReplaySubject* downloadFinishedSignal;
 @property (nonatomic, strong) MUODownloadPool* downloadPool;

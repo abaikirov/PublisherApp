@@ -9,70 +9,7 @@
 /* Begin PBXBuildFile section */
 		158941357C33807F379C5E53 /* Pods_PublisherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581121547B8A67E80DDD7EF2 /* Pods_PublisherApp.framework */; };
 		5A79807D1E68803700E684ED /* PublisherApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A79807C1E68803700E684ED /* PublisherApp.h */; };
-		5AC92A3B1E8519BF00879CBF /* BasePostsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC929FD1E8519BF00879CBF /* BasePostsViewController.h */; };
-		5AC92A3C1E8519BF00879CBF /* BasePostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC929FE1E8519BF00879CBF /* BasePostsViewController.m */; };
-		5AC92A3D1E8519BF00879CBF /* BookmarksRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC929FF1E8519BF00879CBF /* BookmarksRequestManager.h */; };
-		5AC92A3E1E8519BF00879CBF /* BookmarksRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A001E8519BF00879CBF /* BookmarksRequestManager.m */; };
-		5AC92A3F1E8519BF00879CBF /* CoreContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A011E8519BF00879CBF /* CoreContext.h */; };
-		5AC92A401E8519BF00879CBF /* CoreContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A021E8519BF00879CBF /* CoreContext.m */; };
-		5AC92A411E8519BF00879CBF /* ExternalLinksHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A031E8519BF00879CBF /* ExternalLinksHandler.h */; };
-		5AC92A421E8519BF00879CBF /* ExternalLinksHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A041E8519BF00879CBF /* ExternalLinksHandler.m */; };
-		5AC92A431E8519BF00879CBF /* FontSelectorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A051E8519BF00879CBF /* FontSelectorView.h */; };
-		5AC92A441E8519BF00879CBF /* FontSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A061E8519BF00879CBF /* FontSelectorView.m */; };
-		5AC92A451E8519BF00879CBF /* LargePostCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A071E8519BF00879CBF /* LargePostCollectionViewCell.h */; };
-		5AC92A461E8519BF00879CBF /* LargePostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A081E8519BF00879CBF /* LargePostCollectionViewCell.m */; };
-		5AC92A471E8519BF00879CBF /* LikesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A091E8519BF00879CBF /* LikesManager.h */; };
-		5AC92A481E8519BF00879CBF /* LikesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A0A1E8519BF00879CBF /* LikesManager.m */; };
-		5AC92A491E8519BF00879CBF /* MUODownloadPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A0B1E8519BF00879CBF /* MUODownloadPool.h */; };
-		5AC92A4A1E8519BF00879CBF /* MUODownloadPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A0C1E8519BF00879CBF /* MUODownloadPool.m */; };
-		5AC92A4B1E8519BF00879CBF /* MUOFileCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A0D1E8519BF00879CBF /* MUOFileCache.h */; };
-		5AC92A4C1E8519BF00879CBF /* MUOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A0E1E8519BF00879CBF /* MUOFileCache.m */; };
-		5AC92A4D1E8519BF00879CBF /* MUOGalleryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A0F1E8519BF00879CBF /* MUOGalleryViewController.h */; };
-		5AC92A4E1E8519BF00879CBF /* MUOGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A101E8519BF00879CBF /* MUOGalleryViewController.m */; };
-		5AC92A4F1E8519BF00879CBF /* MUOHtmlEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A111E8519BF00879CBF /* MUOHtmlEditor.h */; };
-		5AC92A501E8519BF00879CBF /* MUOHtmlEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A121E8519BF00879CBF /* MUOHtmlEditor.m */; };
-		5AC92A511E8519BF00879CBF /* MUOPagingPostsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A131E8519BF00879CBF /* MUOPagingPostsController.h */; };
-		5AC92A521E8519BF00879CBF /* MUOPagingPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A141E8519BF00879CBF /* MUOPagingPostsController.m */; };
-		5AC92A531E8519BF00879CBF /* MUOPostContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A151E8519BF00879CBF /* MUOPostContentViewController.h */; };
-		5AC92A541E8519BF00879CBF /* MUOPostContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A161E8519BF00879CBF /* MUOPostContentViewController.m */; };
-		5AC92A551E8519BF00879CBF /* MUOPostContentViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A171E8519BF00879CBF /* MUOPostContentViewModel.h */; };
-		5AC92A561E8519BF00879CBF /* MUOPostContentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A181E8519BF00879CBF /* MUOPostContentViewModel.m */; };
-		5AC92A571E8519BF00879CBF /* MUOPostsRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A191E8519BF00879CBF /* MUOPostsRequestManager.h */; };
-		5AC92A581E8519BF00879CBF /* MUOPostsRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A1A1E8519BF00879CBF /* MUOPostsRequestManager.m */; };
-		5AC92A591E8519BF00879CBF /* MUOSavedPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A1B1E8519BF00879CBF /* MUOSavedPost.h */; };
-		5AC92A5A1E8519BF00879CBF /* MUOSavedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A1C1E8519BF00879CBF /* MUOSavedPost.m */; };
-		5AC92A5B1E8519BF00879CBF /* MUOSavesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A1D1E8519BF00879CBF /* MUOSavesManager.h */; };
-		5AC92A5C1E8519BF00879CBF /* MUOSavesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A1E1E8519BF00879CBF /* MUOSavesManager.m */; };
-		5AC92A5D1E8519BF00879CBF /* MUOScrollingImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A1F1E8519BF00879CBF /* MUOScrollingImageView.h */; };
-		5AC92A5E1E8519BF00879CBF /* MUOScrollingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A201E8519BF00879CBF /* MUOScrollingImageView.m */; };
-		5AC92A5F1E8519BF00879CBF /* NSString+MUO.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A211E8519BF00879CBF /* NSString+MUO.h */; };
-		5AC92A601E8519BF00879CBF /* NSString+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A221E8519BF00879CBF /* NSString+MUO.m */; };
-		5AC92A611E8519BF00879CBF /* Post.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A231E8519BF00879CBF /* Post.h */; };
-		5AC92A621E8519BF00879CBF /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A241E8519BF00879CBF /* Post.m */; };
-		5AC92A631E8519BF00879CBF /* PostRepresentable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A251E8519BF00879CBF /* PostRepresentable.h */; };
-		5AC92A641E8519BF00879CBF /* PostScrollListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A261E8519BF00879CBF /* PostScrollListener.h */; };
-		5AC92A651E8519BF00879CBF /* PostScrollListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A271E8519BF00879CBF /* PostScrollListener.m */; };
-		5AC92A661E8519BF00879CBF /* PostsSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A281E8519BF00879CBF /* PostsSessionManager.h */; };
-		5AC92A671E8519BF00879CBF /* PostsSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A291E8519BF00879CBF /* PostsSessionManager.m */; };
-		5AC92A681E8519BF00879CBF /* PostsViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A2A1E8519BF00879CBF /* PostsViewModel.h */; };
-		5AC92A691E8519BF00879CBF /* PostsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A2B1E8519BF00879CBF /* PostsViewModel.m */; };
-		5AC92A6A1E8519BF00879CBF /* PublisherAppSetupProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A2C1E8519BF00879CBF /* PublisherAppSetupProvider.h */; };
-		5AC92A6B1E8519BF00879CBF /* PublisherAppSetupProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A2D1E8519BF00879CBF /* PublisherAppSetupProvider.m */; };
-		5AC92A6C1E8519BF00879CBF /* ReaderSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A2E1E8519BF00879CBF /* ReaderSettings.h */; };
-		5AC92A6D1E8519BF00879CBF /* ReaderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A2F1E8519BF00879CBF /* ReaderSettings.m */; };
-		5AC92A6E1E8519BF00879CBF /* SDWebImagePrefetcher+MUO.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A301E8519BF00879CBF /* SDWebImagePrefetcher+MUO.h */; };
-		5AC92A6F1E8519BF00879CBF /* SDWebImagePrefetcher+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A311E8519BF00879CBF /* SDWebImagePrefetcher+MUO.m */; };
-		5AC92A701E8519BF00879CBF /* SessionManagerSetupProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A321E8519BF00879CBF /* SessionManagerSetupProvider.h */; };
-		5AC92A711E8519BF00879CBF /* ShareHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A331E8519BF00879CBF /* ShareHelper.h */; };
-		5AC92A721E8519BF00879CBF /* ShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A341E8519BF00879CBF /* ShareHelper.m */; };
-		5AC92A731E8519BF00879CBF /* SmallPostCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A351E8519BF00879CBF /* SmallPostCollectionViewCell.h */; };
-		5AC92A741E8519BF00879CBF /* SmallPostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A361E8519BF00879CBF /* SmallPostCollectionViewCell.m */; };
-		5AC92A751E8519BF00879CBF /* UIImage+MUO.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A371E8519BF00879CBF /* UIImage+MUO.h */; };
-		5AC92A761E8519BF00879CBF /* UIImage+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A381E8519BF00879CBF /* UIImage+MUO.m */; };
-		5AC92A771E8519BF00879CBF /* UIView+Toast.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC92A391E8519BF00879CBF /* UIView+Toast.h */; };
-		5AC92A781E8519BF00879CBF /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC92A3A1E8519BF00879CBF /* UIView+Toast.m */; };
 		5AC92A7C1E8519DA00879CBF /* LargePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */; };
-		5AC92A7D1E8519DA00879CBF /* PublisherApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A7A1E8519DA00879CBF /* PublisherApp.storyboard */; };
 		5AC92A7E1E8519DA00879CBF /* SmallPostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */; };
 		5AC92AB71E8519F300879CBF /* bookmark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A7F1E8519F200879CBF /* bookmark-active.png */; };
 		5AC92AB81E8519F300879CBF /* bookmark-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A801E8519F200879CBF /* bookmark-active@2x.png */; };
@@ -130,6 +67,71 @@
 		5AC92AEC1E8519F300879CBF /* whats-app.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92AB41E8519F300879CBF /* whats-app.png */; };
 		5AC92AED1E8519F300879CBF /* whats-app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92AB51E8519F300879CBF /* whats-app@2x.png */; };
 		5AC92AEE1E8519F300879CBF /* whats-app@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92AB61E8519F300879CBF /* whats-app@3x.png */; };
+		5AD94C9E1E8A4E640013E725 /* PublisherApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD94C9D1E8A4E640013E725 /* PublisherApp.storyboard */; };
+		5AD94CA21E8A4E810013E725 /* UIView+Toast.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CA01E8A4E810013E725 /* UIView+Toast.h */; };
+		5AD94CA31E8A4E810013E725 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CA11E8A4E810013E725 /* UIView+Toast.m */; };
+		5AD94CA61E8A4E8E0013E725 /* CoreContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CA41E8A4E8E0013E725 /* CoreContext.h */; };
+		5AD94CA71E8A4E8E0013E725 /* CoreContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CA51E8A4E8E0013E725 /* CoreContext.m */; };
+		5AD94CB11E8A4EA50013E725 /* MUOPagingPostsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CA91E8A4EA50013E725 /* MUOPagingPostsController.h */; };
+		5AD94CB21E8A4EA50013E725 /* MUOPagingPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CAA1E8A4EA50013E725 /* MUOPagingPostsController.m */; };
+		5AD94CB31E8A4EA50013E725 /* MUOPostContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CAB1E8A4EA50013E725 /* MUOPostContentViewController.h */; };
+		5AD94CB41E8A4EA50013E725 /* MUOPostContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CAC1E8A4EA50013E725 /* MUOPostContentViewController.m */; };
+		5AD94CB51E8A4EA50013E725 /* PostScrollListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CAD1E8A4EA50013E725 /* PostScrollListener.h */; };
+		5AD94CB61E8A4EA50013E725 /* PostScrollListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CAE1E8A4EA50013E725 /* PostScrollListener.m */; };
+		5AD94CB71E8A4EA50013E725 /* BasePostsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CAF1E8A4EA50013E725 /* BasePostsViewController.h */; };
+		5AD94CB81E8A4EA50013E725 /* BasePostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CB01E8A4EA50013E725 /* BasePostsViewController.m */; };
+		5AD94CC61E8A4EB60013E725 /* MUOSavesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CBA1E8A4EB60013E725 /* MUOSavesManager.h */; };
+		5AD94CC71E8A4EB60013E725 /* MUOSavesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CBB1E8A4EB60013E725 /* MUOSavesManager.m */; };
+		5AD94CC81E8A4EB60013E725 /* MUODownloadPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CBC1E8A4EB60013E725 /* MUODownloadPool.h */; };
+		5AD94CC91E8A4EB60013E725 /* MUODownloadPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CBD1E8A4EB60013E725 /* MUODownloadPool.m */; };
+		5AD94CCA1E8A4EB60013E725 /* MUOFileCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CBE1E8A4EB60013E725 /* MUOFileCache.h */; };
+		5AD94CCB1E8A4EB60013E725 /* MUOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CBF1E8A4EB60013E725 /* MUOFileCache.m */; };
+		5AD94CCC1E8A4EB60013E725 /* LikesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CC01E8A4EB60013E725 /* LikesManager.h */; };
+		5AD94CCD1E8A4EB60013E725 /* LikesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CC11E8A4EB60013E725 /* LikesManager.m */; };
+		5AD94CCE1E8A4EB60013E725 /* ExternalLinksHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CC21E8A4EB60013E725 /* ExternalLinksHandler.h */; };
+		5AD94CCF1E8A4EB60013E725 /* ExternalLinksHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CC31E8A4EB60013E725 /* ExternalLinksHandler.m */; };
+		5AD94CD01E8A4EB60013E725 /* ShareHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CC41E8A4EB60013E725 /* ShareHelper.h */; };
+		5AD94CD11E8A4EB60013E725 /* ShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CC51E8A4EB60013E725 /* ShareHelper.m */; };
+		5AD94CDC1E8A4EDD0013E725 /* BookmarksRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CD31E8A4EDD0013E725 /* BookmarksRequestManager.h */; };
+		5AD94CDD1E8A4EDD0013E725 /* BookmarksRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CD41E8A4EDD0013E725 /* BookmarksRequestManager.m */; };
+		5AD94CDE1E8A4EDD0013E725 /* SessionManagerSetupProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CD51E8A4EDD0013E725 /* SessionManagerSetupProvider.h */; };
+		5AD94CDF1E8A4EDD0013E725 /* PostsSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CD61E8A4EDD0013E725 /* PostsSessionManager.h */; };
+		5AD94CE01E8A4EDD0013E725 /* PostsSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CD71E8A4EDD0013E725 /* PostsSessionManager.m */; };
+		5AD94CE11E8A4EDD0013E725 /* PublisherAppSetupProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CD81E8A4EDD0013E725 /* PublisherAppSetupProvider.h */; };
+		5AD94CE21E8A4EDD0013E725 /* PublisherAppSetupProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CD91E8A4EDD0013E725 /* PublisherAppSetupProvider.m */; };
+		5AD94CE31E8A4EDD0013E725 /* PostsRequestsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CDA1E8A4EDD0013E725 /* PostsRequestsManager.h */; };
+		5AD94CE41E8A4EDD0013E725 /* PostsRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CDB1E8A4EDD0013E725 /* PostsRequestsManager.m */; };
+		5AD94CEE1E8A4EF40013E725 /* MUOHtmlEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CE61E8A4EF40013E725 /* MUOHtmlEditor.h */; };
+		5AD94CEF1E8A4EF40013E725 /* MUOHtmlEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CE71E8A4EF40013E725 /* MUOHtmlEditor.m */; };
+		5AD94CF01E8A4EF40013E725 /* NSString+MUO.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CE81E8A4EF40013E725 /* NSString+MUO.h */; };
+		5AD94CF11E8A4EF40013E725 /* NSString+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CE91E8A4EF40013E725 /* NSString+MUO.m */; };
+		5AD94CF21E8A4EF40013E725 /* UIImage+MUO.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CEA1E8A4EF40013E725 /* UIImage+MUO.h */; };
+		5AD94CF31E8A4EF40013E725 /* UIImage+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CEB1E8A4EF40013E725 /* UIImage+MUO.m */; };
+		5AD94CF41E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CEC1E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.h */; };
+		5AD94CF51E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CED1E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.m */; };
+		5AD94D041E8A4F090013E725 /* FontSelectorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CF71E8A4F090013E725 /* FontSelectorView.h */; };
+		5AD94D051E8A4F090013E725 /* FontSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CF81E8A4F090013E725 /* FontSelectorView.m */; };
+		5AD94D061E8A4F090013E725 /* MUOGalleryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CF91E8A4F090013E725 /* MUOGalleryViewController.h */; };
+		5AD94D071E8A4F090013E725 /* MUOGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CFA1E8A4F090013E725 /* MUOGalleryViewController.m */; };
+		5AD94D081E8A4F090013E725 /* MUOScrollingImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CFB1E8A4F090013E725 /* MUOScrollingImageView.h */; };
+		5AD94D091E8A4F090013E725 /* MUOScrollingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CFC1E8A4F090013E725 /* MUOScrollingImageView.m */; };
+		5AD94D0A1E8A4F090013E725 /* LargePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD94CFD1E8A4F090013E725 /* LargePostCollectionViewCell.xib */; };
+		5AD94D0B1E8A4F090013E725 /* SmallPostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD94CFE1E8A4F090013E725 /* SmallPostCollectionViewCell.xib */; };
+		5AD94D0C1E8A4F090013E725 /* SmallPostCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CFF1E8A4F090013E725 /* SmallPostCollectionViewCell.h */; };
+		5AD94D0D1E8A4F090013E725 /* SmallPostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D001E8A4F090013E725 /* SmallPostCollectionViewCell.m */; };
+		5AD94D0E1E8A4F090013E725 /* LargePostCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D011E8A4F090013E725 /* LargePostCollectionViewCell.h */; };
+		5AD94D0F1E8A4F090013E725 /* LargePostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D021E8A4F090013E725 /* LargePostCollectionViewCell.m */; };
+		5AD94D101E8A4F090013E725 /* PostRepresentable.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D031E8A4F090013E725 /* PostRepresentable.h */; };
+		5AD94D171E8A4F2B0013E725 /* MUOPostContentViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D131E8A4F2B0013E725 /* MUOPostContentViewModel.h */; };
+		5AD94D181E8A4F2B0013E725 /* MUOPostContentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D141E8A4F2B0013E725 /* MUOPostContentViewModel.m */; };
+		5AD94D191E8A4F2B0013E725 /* PostsViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D151E8A4F2B0013E725 /* PostsViewModel.h */; };
+		5AD94D1A1E8A4F2B0013E725 /* PostsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D161E8A4F2B0013E725 /* PostsViewModel.m */; };
+		5AD94D221E8A4F410013E725 /* ReaderSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D1C1E8A4F410013E725 /* ReaderSettings.h */; };
+		5AD94D231E8A4F410013E725 /* ReaderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D1D1E8A4F410013E725 /* ReaderSettings.m */; };
+		5AD94D241E8A4F410013E725 /* MUOSavedPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D1E1E8A4F410013E725 /* MUOSavedPost.h */; };
+		5AD94D251E8A4F410013E725 /* MUOSavedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D1F1E8A4F410013E725 /* MUOSavedPost.m */; };
+		5AD94D261E8A4F410013E725 /* Post.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D201E8A4F410013E725 /* Post.h */; };
+		5AD94D271E8A4F410013E725 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D211E8A4F410013E725 /* Post.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,70 +139,7 @@
 		5A797F391E6841F900E684ED /* PublisherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PublisherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A797F3D1E6841F900E684ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A79807C1E68803700E684ED /* PublisherApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublisherApp.h; path = Source/PublisherApp.h; sourceTree = "<group>"; };
-		5AC929FD1E8519BF00879CBF /* BasePostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePostsViewController.h; sourceTree = "<group>"; };
-		5AC929FE1E8519BF00879CBF /* BasePostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePostsViewController.m; sourceTree = "<group>"; };
-		5AC929FF1E8519BF00879CBF /* BookmarksRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksRequestManager.h; sourceTree = "<group>"; };
-		5AC92A001E8519BF00879CBF /* BookmarksRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksRequestManager.m; sourceTree = "<group>"; };
-		5AC92A011E8519BF00879CBF /* CoreContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreContext.h; sourceTree = "<group>"; };
-		5AC92A021E8519BF00879CBF /* CoreContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreContext.m; sourceTree = "<group>"; };
-		5AC92A031E8519BF00879CBF /* ExternalLinksHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalLinksHandler.h; sourceTree = "<group>"; };
-		5AC92A041E8519BF00879CBF /* ExternalLinksHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalLinksHandler.m; sourceTree = "<group>"; };
-		5AC92A051E8519BF00879CBF /* FontSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSelectorView.h; sourceTree = "<group>"; };
-		5AC92A061E8519BF00879CBF /* FontSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSelectorView.m; sourceTree = "<group>"; };
-		5AC92A071E8519BF00879CBF /* LargePostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargePostCollectionViewCell.h; sourceTree = "<group>"; };
-		5AC92A081E8519BF00879CBF /* LargePostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargePostCollectionViewCell.m; sourceTree = "<group>"; };
-		5AC92A091E8519BF00879CBF /* LikesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesManager.h; sourceTree = "<group>"; };
-		5AC92A0A1E8519BF00879CBF /* LikesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikesManager.m; sourceTree = "<group>"; };
-		5AC92A0B1E8519BF00879CBF /* MUODownloadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUODownloadPool.h; sourceTree = "<group>"; };
-		5AC92A0C1E8519BF00879CBF /* MUODownloadPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUODownloadPool.m; sourceTree = "<group>"; };
-		5AC92A0D1E8519BF00879CBF /* MUOFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOFileCache.h; sourceTree = "<group>"; };
-		5AC92A0E1E8519BF00879CBF /* MUOFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOFileCache.m; sourceTree = "<group>"; };
-		5AC92A0F1E8519BF00879CBF /* MUOGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOGalleryViewController.h; sourceTree = "<group>"; };
-		5AC92A101E8519BF00879CBF /* MUOGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOGalleryViewController.m; sourceTree = "<group>"; };
-		5AC92A111E8519BF00879CBF /* MUOHtmlEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOHtmlEditor.h; sourceTree = "<group>"; };
-		5AC92A121E8519BF00879CBF /* MUOHtmlEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOHtmlEditor.m; sourceTree = "<group>"; };
-		5AC92A131E8519BF00879CBF /* MUOPagingPostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPagingPostsController.h; sourceTree = "<group>"; };
-		5AC92A141E8519BF00879CBF /* MUOPagingPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPagingPostsController.m; sourceTree = "<group>"; };
-		5AC92A151E8519BF00879CBF /* MUOPostContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPostContentViewController.h; sourceTree = "<group>"; };
-		5AC92A161E8519BF00879CBF /* MUOPostContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPostContentViewController.m; sourceTree = "<group>"; };
-		5AC92A171E8519BF00879CBF /* MUOPostContentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPostContentViewModel.h; sourceTree = "<group>"; };
-		5AC92A181E8519BF00879CBF /* MUOPostContentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPostContentViewModel.m; sourceTree = "<group>"; };
-		5AC92A191E8519BF00879CBF /* MUOPostsRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPostsRequestManager.h; sourceTree = "<group>"; };
-		5AC92A1A1E8519BF00879CBF /* MUOPostsRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPostsRequestManager.m; sourceTree = "<group>"; };
-		5AC92A1B1E8519BF00879CBF /* MUOSavedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOSavedPost.h; sourceTree = "<group>"; };
-		5AC92A1C1E8519BF00879CBF /* MUOSavedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOSavedPost.m; sourceTree = "<group>"; };
-		5AC92A1D1E8519BF00879CBF /* MUOSavesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOSavesManager.h; sourceTree = "<group>"; };
-		5AC92A1E1E8519BF00879CBF /* MUOSavesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOSavesManager.m; sourceTree = "<group>"; };
-		5AC92A1F1E8519BF00879CBF /* MUOScrollingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOScrollingImageView.h; sourceTree = "<group>"; };
-		5AC92A201E8519BF00879CBF /* MUOScrollingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOScrollingImageView.m; sourceTree = "<group>"; };
-		5AC92A211E8519BF00879CBF /* NSString+MUO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MUO.h"; sourceTree = "<group>"; };
-		5AC92A221E8519BF00879CBF /* NSString+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MUO.m"; sourceTree = "<group>"; };
-		5AC92A231E8519BF00879CBF /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
-		5AC92A241E8519BF00879CBF /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
-		5AC92A251E8519BF00879CBF /* PostRepresentable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRepresentable.h; sourceTree = "<group>"; };
-		5AC92A261E8519BF00879CBF /* PostScrollListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostScrollListener.h; sourceTree = "<group>"; };
-		5AC92A271E8519BF00879CBF /* PostScrollListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostScrollListener.m; sourceTree = "<group>"; };
-		5AC92A281E8519BF00879CBF /* PostsSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsSessionManager.h; sourceTree = "<group>"; };
-		5AC92A291E8519BF00879CBF /* PostsSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsSessionManager.m; sourceTree = "<group>"; };
-		5AC92A2A1E8519BF00879CBF /* PostsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsViewModel.h; sourceTree = "<group>"; };
-		5AC92A2B1E8519BF00879CBF /* PostsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsViewModel.m; sourceTree = "<group>"; };
-		5AC92A2C1E8519BF00879CBF /* PublisherAppSetupProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublisherAppSetupProvider.h; sourceTree = "<group>"; };
-		5AC92A2D1E8519BF00879CBF /* PublisherAppSetupProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublisherAppSetupProvider.m; sourceTree = "<group>"; };
-		5AC92A2E1E8519BF00879CBF /* ReaderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderSettings.h; sourceTree = "<group>"; };
-		5AC92A2F1E8519BF00879CBF /* ReaderSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderSettings.m; sourceTree = "<group>"; };
-		5AC92A301E8519BF00879CBF /* SDWebImagePrefetcher+MUO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImagePrefetcher+MUO.h"; sourceTree = "<group>"; };
-		5AC92A311E8519BF00879CBF /* SDWebImagePrefetcher+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImagePrefetcher+MUO.m"; sourceTree = "<group>"; };
-		5AC92A321E8519BF00879CBF /* SessionManagerSetupProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManagerSetupProvider.h; sourceTree = "<group>"; };
-		5AC92A331E8519BF00879CBF /* ShareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareHelper.h; sourceTree = "<group>"; };
-		5AC92A341E8519BF00879CBF /* ShareHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareHelper.m; sourceTree = "<group>"; };
-		5AC92A351E8519BF00879CBF /* SmallPostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallPostCollectionViewCell.h; sourceTree = "<group>"; };
-		5AC92A361E8519BF00879CBF /* SmallPostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallPostCollectionViewCell.m; sourceTree = "<group>"; };
-		5AC92A371E8519BF00879CBF /* UIImage+MUO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MUO.h"; sourceTree = "<group>"; };
-		5AC92A381E8519BF00879CBF /* UIImage+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MUO.m"; sourceTree = "<group>"; };
-		5AC92A391E8519BF00879CBF /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
-		5AC92A3A1E8519BF00879CBF /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargePostCollectionViewCell.xib; sourceTree = "<group>"; };
-		5AC92A7A1E8519DA00879CBF /* PublisherApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublisherApp.storyboard; sourceTree = "<group>"; };
 		5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallPostCollectionViewCell.xib; sourceTree = "<group>"; };
 		5AC92A7F1E8519F200879CBF /* bookmark-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark-active.png"; sourceTree = "<group>"; };
 		5AC92A801E8519F200879CBF /* bookmark-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark-active@2x.png"; sourceTree = "<group>"; };
@@ -258,6 +197,71 @@
 		5AC92AB41E8519F300879CBF /* whats-app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whats-app.png"; sourceTree = "<group>"; };
 		5AC92AB51E8519F300879CBF /* whats-app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whats-app@2x.png"; sourceTree = "<group>"; };
 		5AC92AB61E8519F300879CBF /* whats-app@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whats-app@3x.png"; sourceTree = "<group>"; };
+		5AD94C9D1E8A4E640013E725 /* PublisherApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublisherApp.storyboard; sourceTree = "<group>"; };
+		5AD94CA01E8A4E810013E725 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		5AD94CA11E8A4E810013E725 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		5AD94CA41E8A4E8E0013E725 /* CoreContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreContext.h; sourceTree = "<group>"; };
+		5AD94CA51E8A4E8E0013E725 /* CoreContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreContext.m; sourceTree = "<group>"; };
+		5AD94CA91E8A4EA50013E725 /* MUOPagingPostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPagingPostsController.h; sourceTree = "<group>"; };
+		5AD94CAA1E8A4EA50013E725 /* MUOPagingPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPagingPostsController.m; sourceTree = "<group>"; };
+		5AD94CAB1E8A4EA50013E725 /* MUOPostContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPostContentViewController.h; sourceTree = "<group>"; };
+		5AD94CAC1E8A4EA50013E725 /* MUOPostContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPostContentViewController.m; sourceTree = "<group>"; };
+		5AD94CAD1E8A4EA50013E725 /* PostScrollListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostScrollListener.h; sourceTree = "<group>"; };
+		5AD94CAE1E8A4EA50013E725 /* PostScrollListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostScrollListener.m; sourceTree = "<group>"; };
+		5AD94CAF1E8A4EA50013E725 /* BasePostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePostsViewController.h; sourceTree = "<group>"; };
+		5AD94CB01E8A4EA50013E725 /* BasePostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePostsViewController.m; sourceTree = "<group>"; };
+		5AD94CBA1E8A4EB60013E725 /* MUOSavesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOSavesManager.h; sourceTree = "<group>"; };
+		5AD94CBB1E8A4EB60013E725 /* MUOSavesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOSavesManager.m; sourceTree = "<group>"; };
+		5AD94CBC1E8A4EB60013E725 /* MUODownloadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUODownloadPool.h; sourceTree = "<group>"; };
+		5AD94CBD1E8A4EB60013E725 /* MUODownloadPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUODownloadPool.m; sourceTree = "<group>"; };
+		5AD94CBE1E8A4EB60013E725 /* MUOFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOFileCache.h; sourceTree = "<group>"; };
+		5AD94CBF1E8A4EB60013E725 /* MUOFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOFileCache.m; sourceTree = "<group>"; };
+		5AD94CC01E8A4EB60013E725 /* LikesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesManager.h; sourceTree = "<group>"; };
+		5AD94CC11E8A4EB60013E725 /* LikesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikesManager.m; sourceTree = "<group>"; };
+		5AD94CC21E8A4EB60013E725 /* ExternalLinksHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalLinksHandler.h; sourceTree = "<group>"; };
+		5AD94CC31E8A4EB60013E725 /* ExternalLinksHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalLinksHandler.m; sourceTree = "<group>"; };
+		5AD94CC41E8A4EB60013E725 /* ShareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareHelper.h; sourceTree = "<group>"; };
+		5AD94CC51E8A4EB60013E725 /* ShareHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareHelper.m; sourceTree = "<group>"; };
+		5AD94CD31E8A4EDD0013E725 /* BookmarksRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksRequestManager.h; sourceTree = "<group>"; };
+		5AD94CD41E8A4EDD0013E725 /* BookmarksRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksRequestManager.m; sourceTree = "<group>"; };
+		5AD94CD51E8A4EDD0013E725 /* SessionManagerSetupProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManagerSetupProvider.h; sourceTree = "<group>"; };
+		5AD94CD61E8A4EDD0013E725 /* PostsSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsSessionManager.h; sourceTree = "<group>"; };
+		5AD94CD71E8A4EDD0013E725 /* PostsSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsSessionManager.m; sourceTree = "<group>"; };
+		5AD94CD81E8A4EDD0013E725 /* PublisherAppSetupProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublisherAppSetupProvider.h; sourceTree = "<group>"; };
+		5AD94CD91E8A4EDD0013E725 /* PublisherAppSetupProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublisherAppSetupProvider.m; sourceTree = "<group>"; };
+		5AD94CDA1E8A4EDD0013E725 /* PostsRequestsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsRequestsManager.h; sourceTree = "<group>"; };
+		5AD94CDB1E8A4EDD0013E725 /* PostsRequestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsRequestsManager.m; sourceTree = "<group>"; };
+		5AD94CE61E8A4EF40013E725 /* MUOHtmlEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOHtmlEditor.h; sourceTree = "<group>"; };
+		5AD94CE71E8A4EF40013E725 /* MUOHtmlEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOHtmlEditor.m; sourceTree = "<group>"; };
+		5AD94CE81E8A4EF40013E725 /* NSString+MUO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MUO.h"; sourceTree = "<group>"; };
+		5AD94CE91E8A4EF40013E725 /* NSString+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MUO.m"; sourceTree = "<group>"; };
+		5AD94CEA1E8A4EF40013E725 /* UIImage+MUO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MUO.h"; sourceTree = "<group>"; };
+		5AD94CEB1E8A4EF40013E725 /* UIImage+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MUO.m"; sourceTree = "<group>"; };
+		5AD94CEC1E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImagePrefetcher+MUO.h"; sourceTree = "<group>"; };
+		5AD94CED1E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImagePrefetcher+MUO.m"; sourceTree = "<group>"; };
+		5AD94CF71E8A4F090013E725 /* FontSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSelectorView.h; sourceTree = "<group>"; };
+		5AD94CF81E8A4F090013E725 /* FontSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSelectorView.m; sourceTree = "<group>"; };
+		5AD94CF91E8A4F090013E725 /* MUOGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOGalleryViewController.h; sourceTree = "<group>"; };
+		5AD94CFA1E8A4F090013E725 /* MUOGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOGalleryViewController.m; sourceTree = "<group>"; };
+		5AD94CFB1E8A4F090013E725 /* MUOScrollingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOScrollingImageView.h; sourceTree = "<group>"; };
+		5AD94CFC1E8A4F090013E725 /* MUOScrollingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOScrollingImageView.m; sourceTree = "<group>"; };
+		5AD94CFD1E8A4F090013E725 /* LargePostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargePostCollectionViewCell.xib; sourceTree = "<group>"; };
+		5AD94CFE1E8A4F090013E725 /* SmallPostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallPostCollectionViewCell.xib; sourceTree = "<group>"; };
+		5AD94CFF1E8A4F090013E725 /* SmallPostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallPostCollectionViewCell.h; sourceTree = "<group>"; };
+		5AD94D001E8A4F090013E725 /* SmallPostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallPostCollectionViewCell.m; sourceTree = "<group>"; };
+		5AD94D011E8A4F090013E725 /* LargePostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargePostCollectionViewCell.h; sourceTree = "<group>"; };
+		5AD94D021E8A4F090013E725 /* LargePostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LargePostCollectionViewCell.m; sourceTree = "<group>"; };
+		5AD94D031E8A4F090013E725 /* PostRepresentable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRepresentable.h; sourceTree = "<group>"; };
+		5AD94D131E8A4F2B0013E725 /* MUOPostContentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOPostContentViewModel.h; sourceTree = "<group>"; };
+		5AD94D141E8A4F2B0013E725 /* MUOPostContentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOPostContentViewModel.m; sourceTree = "<group>"; };
+		5AD94D151E8A4F2B0013E725 /* PostsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsViewModel.h; sourceTree = "<group>"; };
+		5AD94D161E8A4F2B0013E725 /* PostsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsViewModel.m; sourceTree = "<group>"; };
+		5AD94D1C1E8A4F410013E725 /* ReaderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderSettings.h; sourceTree = "<group>"; };
+		5AD94D1D1E8A4F410013E725 /* ReaderSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderSettings.m; sourceTree = "<group>"; };
+		5AD94D1E1E8A4F410013E725 /* MUOSavedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOSavedPost.h; sourceTree = "<group>"; };
+		5AD94D1F1E8A4F410013E725 /* MUOSavedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOSavedPost.m; sourceTree = "<group>"; };
+		5AD94D201E8A4F410013E725 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		5AD94D211E8A4F410013E725 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		7C093653783401FD653BA67E /* Pods-PublisherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BFF57FE27C5190B79DFF1250 /* Pods-PublisherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -379,8 +383,8 @@
 				5AC92AB41E8519F300879CBF /* whats-app.png */,
 				5AC92AB51E8519F300879CBF /* whats-app@2x.png */,
 				5AC92AB61E8519F300879CBF /* whats-app@3x.png */,
+				5AD94C9D1E8A4E640013E725 /* PublisherApp.storyboard */,
 				5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */,
-				5AC92A7A1E8519DA00879CBF /* PublisherApp.storyboard */,
 				5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */,
 			);
 			path = Assets;
@@ -389,70 +393,144 @@
 		5A79802F1E687DE000E684ED /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5AC929FD1E8519BF00879CBF /* BasePostsViewController.h */,
-				5AC929FE1E8519BF00879CBF /* BasePostsViewController.m */,
-				5AC929FF1E8519BF00879CBF /* BookmarksRequestManager.h */,
-				5AC92A001E8519BF00879CBF /* BookmarksRequestManager.m */,
-				5AC92A011E8519BF00879CBF /* CoreContext.h */,
-				5AC92A021E8519BF00879CBF /* CoreContext.m */,
-				5AC92A031E8519BF00879CBF /* ExternalLinksHandler.h */,
-				5AC92A041E8519BF00879CBF /* ExternalLinksHandler.m */,
-				5AC92A051E8519BF00879CBF /* FontSelectorView.h */,
-				5AC92A061E8519BF00879CBF /* FontSelectorView.m */,
-				5AC92A071E8519BF00879CBF /* LargePostCollectionViewCell.h */,
-				5AC92A081E8519BF00879CBF /* LargePostCollectionViewCell.m */,
-				5AC92A091E8519BF00879CBF /* LikesManager.h */,
-				5AC92A0A1E8519BF00879CBF /* LikesManager.m */,
-				5AC92A0B1E8519BF00879CBF /* MUODownloadPool.h */,
-				5AC92A0C1E8519BF00879CBF /* MUODownloadPool.m */,
-				5AC92A0D1E8519BF00879CBF /* MUOFileCache.h */,
-				5AC92A0E1E8519BF00879CBF /* MUOFileCache.m */,
-				5AC92A0F1E8519BF00879CBF /* MUOGalleryViewController.h */,
-				5AC92A101E8519BF00879CBF /* MUOGalleryViewController.m */,
-				5AC92A111E8519BF00879CBF /* MUOHtmlEditor.h */,
-				5AC92A121E8519BF00879CBF /* MUOHtmlEditor.m */,
-				5AC92A131E8519BF00879CBF /* MUOPagingPostsController.h */,
-				5AC92A141E8519BF00879CBF /* MUOPagingPostsController.m */,
-				5AC92A151E8519BF00879CBF /* MUOPostContentViewController.h */,
-				5AC92A161E8519BF00879CBF /* MUOPostContentViewController.m */,
-				5AC92A171E8519BF00879CBF /* MUOPostContentViewModel.h */,
-				5AC92A181E8519BF00879CBF /* MUOPostContentViewModel.m */,
-				5AC92A191E8519BF00879CBF /* MUOPostsRequestManager.h */,
-				5AC92A1A1E8519BF00879CBF /* MUOPostsRequestManager.m */,
-				5AC92A1B1E8519BF00879CBF /* MUOSavedPost.h */,
-				5AC92A1C1E8519BF00879CBF /* MUOSavedPost.m */,
-				5AC92A1D1E8519BF00879CBF /* MUOSavesManager.h */,
-				5AC92A1E1E8519BF00879CBF /* MUOSavesManager.m */,
-				5AC92A1F1E8519BF00879CBF /* MUOScrollingImageView.h */,
-				5AC92A201E8519BF00879CBF /* MUOScrollingImageView.m */,
-				5AC92A211E8519BF00879CBF /* NSString+MUO.h */,
-				5AC92A221E8519BF00879CBF /* NSString+MUO.m */,
-				5AC92A231E8519BF00879CBF /* Post.h */,
-				5AC92A241E8519BF00879CBF /* Post.m */,
-				5AC92A251E8519BF00879CBF /* PostRepresentable.h */,
-				5AC92A261E8519BF00879CBF /* PostScrollListener.h */,
-				5AC92A271E8519BF00879CBF /* PostScrollListener.m */,
-				5AC92A281E8519BF00879CBF /* PostsSessionManager.h */,
-				5AC92A291E8519BF00879CBF /* PostsSessionManager.m */,
-				5AC92A2A1E8519BF00879CBF /* PostsViewModel.h */,
-				5AC92A2B1E8519BF00879CBF /* PostsViewModel.m */,
-				5AC92A2C1E8519BF00879CBF /* PublisherAppSetupProvider.h */,
-				5AC92A2D1E8519BF00879CBF /* PublisherAppSetupProvider.m */,
-				5AC92A2E1E8519BF00879CBF /* ReaderSettings.h */,
-				5AC92A2F1E8519BF00879CBF /* ReaderSettings.m */,
-				5AC92A301E8519BF00879CBF /* SDWebImagePrefetcher+MUO.h */,
-				5AC92A311E8519BF00879CBF /* SDWebImagePrefetcher+MUO.m */,
-				5AC92A321E8519BF00879CBF /* SessionManagerSetupProvider.h */,
-				5AC92A331E8519BF00879CBF /* ShareHelper.h */,
-				5AC92A341E8519BF00879CBF /* ShareHelper.m */,
-				5AC92A351E8519BF00879CBF /* SmallPostCollectionViewCell.h */,
-				5AC92A361E8519BF00879CBF /* SmallPostCollectionViewCell.m */,
-				5AC92A371E8519BF00879CBF /* UIImage+MUO.h */,
-				5AC92A381E8519BF00879CBF /* UIImage+MUO.m */,
-				5AC92A391E8519BF00879CBF /* UIView+Toast.h */,
-				5AC92A3A1E8519BF00879CBF /* UIView+Toast.m */,
+				5AD94D1B1E8A4F370013E725 /* Model */,
+				5AD94D121E8A4F200013E725 /* ViewModel */,
+				5AD94CF61E8A4EFD0013E725 /* UI */,
+				5AD94CE51E8A4EE90013E725 /* Categories */,
+				5AD94CD21E8A4ECB0013E725 /* API */,
+				5AD94CA41E8A4E8E0013E725 /* CoreContext.h */,
+				5AD94CA51E8A4E8E0013E725 /* CoreContext.m */,
+				5AD94CB91E8A4EAA0013E725 /* Helpers */,
+				5AD94CA81E8A4E970013E725 /* ViewControllers */,
+				5AD94C9F1E8A4E710013E725 /* 3rd party */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		5AD94C9F1E8A4E710013E725 /* 3rd party */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94CA01E8A4E810013E725 /* UIView+Toast.h */,
+				5AD94CA11E8A4E810013E725 /* UIView+Toast.m */,
+			);
+			name = "3rd party";
+			sourceTree = "<group>";
+		};
+		5AD94CA81E8A4E970013E725 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94CA91E8A4EA50013E725 /* MUOPagingPostsController.h */,
+				5AD94CAA1E8A4EA50013E725 /* MUOPagingPostsController.m */,
+				5AD94CAB1E8A4EA50013E725 /* MUOPostContentViewController.h */,
+				5AD94CAC1E8A4EA50013E725 /* MUOPostContentViewController.m */,
+				5AD94CAD1E8A4EA50013E725 /* PostScrollListener.h */,
+				5AD94CAE1E8A4EA50013E725 /* PostScrollListener.m */,
+				5AD94CAF1E8A4EA50013E725 /* BasePostsViewController.h */,
+				5AD94CB01E8A4EA50013E725 /* BasePostsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5AD94CB91E8A4EAA0013E725 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94CBA1E8A4EB60013E725 /* MUOSavesManager.h */,
+				5AD94CBB1E8A4EB60013E725 /* MUOSavesManager.m */,
+				5AD94CBC1E8A4EB60013E725 /* MUODownloadPool.h */,
+				5AD94CBD1E8A4EB60013E725 /* MUODownloadPool.m */,
+				5AD94CBE1E8A4EB60013E725 /* MUOFileCache.h */,
+				5AD94CBF1E8A4EB60013E725 /* MUOFileCache.m */,
+				5AD94CC01E8A4EB60013E725 /* LikesManager.h */,
+				5AD94CC11E8A4EB60013E725 /* LikesManager.m */,
+				5AD94CC21E8A4EB60013E725 /* ExternalLinksHandler.h */,
+				5AD94CC31E8A4EB60013E725 /* ExternalLinksHandler.m */,
+				5AD94CC41E8A4EB60013E725 /* ShareHelper.h */,
+				5AD94CC51E8A4EB60013E725 /* ShareHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		5AD94CD21E8A4ECB0013E725 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94CD31E8A4EDD0013E725 /* BookmarksRequestManager.h */,
+				5AD94CD41E8A4EDD0013E725 /* BookmarksRequestManager.m */,
+				5AD94CD51E8A4EDD0013E725 /* SessionManagerSetupProvider.h */,
+				5AD94CD61E8A4EDD0013E725 /* PostsSessionManager.h */,
+				5AD94CD71E8A4EDD0013E725 /* PostsSessionManager.m */,
+				5AD94CD81E8A4EDD0013E725 /* PublisherAppSetupProvider.h */,
+				5AD94CD91E8A4EDD0013E725 /* PublisherAppSetupProvider.m */,
+				5AD94CDA1E8A4EDD0013E725 /* PostsRequestsManager.h */,
+				5AD94CDB1E8A4EDD0013E725 /* PostsRequestsManager.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		5AD94CE51E8A4EE90013E725 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94CE61E8A4EF40013E725 /* MUOHtmlEditor.h */,
+				5AD94CE71E8A4EF40013E725 /* MUOHtmlEditor.m */,
+				5AD94CE81E8A4EF40013E725 /* NSString+MUO.h */,
+				5AD94CE91E8A4EF40013E725 /* NSString+MUO.m */,
+				5AD94CEA1E8A4EF40013E725 /* UIImage+MUO.h */,
+				5AD94CEB1E8A4EF40013E725 /* UIImage+MUO.m */,
+				5AD94CEC1E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.h */,
+				5AD94CED1E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		5AD94CF61E8A4EFD0013E725 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94D111E8A4F0D0013E725 /* Cells */,
+				5AD94CF71E8A4F090013E725 /* FontSelectorView.h */,
+				5AD94CF81E8A4F090013E725 /* FontSelectorView.m */,
+				5AD94CF91E8A4F090013E725 /* MUOGalleryViewController.h */,
+				5AD94CFA1E8A4F090013E725 /* MUOGalleryViewController.m */,
+				5AD94CFB1E8A4F090013E725 /* MUOScrollingImageView.h */,
+				5AD94CFC1E8A4F090013E725 /* MUOScrollingImageView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		5AD94D111E8A4F0D0013E725 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94CFD1E8A4F090013E725 /* LargePostCollectionViewCell.xib */,
+				5AD94CFE1E8A4F090013E725 /* SmallPostCollectionViewCell.xib */,
+				5AD94CFF1E8A4F090013E725 /* SmallPostCollectionViewCell.h */,
+				5AD94D001E8A4F090013E725 /* SmallPostCollectionViewCell.m */,
+				5AD94D011E8A4F090013E725 /* LargePostCollectionViewCell.h */,
+				5AD94D021E8A4F090013E725 /* LargePostCollectionViewCell.m */,
+				5AD94D031E8A4F090013E725 /* PostRepresentable.h */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		5AD94D121E8A4F200013E725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94D131E8A4F2B0013E725 /* MUOPostContentViewModel.h */,
+				5AD94D141E8A4F2B0013E725 /* MUOPostContentViewModel.m */,
+				5AD94D151E8A4F2B0013E725 /* PostsViewModel.h */,
+				5AD94D161E8A4F2B0013E725 /* PostsViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		5AD94D1B1E8A4F370013E725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5AD94D1C1E8A4F410013E725 /* ReaderSettings.h */,
+				5AD94D1D1E8A4F410013E725 /* ReaderSettings.m */,
+				5AD94D1E1E8A4F410013E725 /* MUOSavedPost.h */,
+				5AD94D1F1E8A4F410013E725 /* MUOSavedPost.m */,
+				5AD94D201E8A4F410013E725 /* Post.h */,
+				5AD94D211E8A4F410013E725 /* Post.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,39 +540,39 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AC92A751E8519BF00879CBF /* UIImage+MUO.h in Headers */,
-				5AC92A3D1E8519BF00879CBF /* BookmarksRequestManager.h in Headers */,
-				5AC92A531E8519BF00879CBF /* MUOPostContentViewController.h in Headers */,
-				5AC92A3F1E8519BF00879CBF /* CoreContext.h in Headers */,
-				5AC92A611E8519BF00879CBF /* Post.h in Headers */,
-				5AC92A511E8519BF00879CBF /* MUOPagingPostsController.h in Headers */,
-				5AC92A4F1E8519BF00879CBF /* MUOHtmlEditor.h in Headers */,
-				5AC92A711E8519BF00879CBF /* ShareHelper.h in Headers */,
-				5AC92A771E8519BF00879CBF /* UIView+Toast.h in Headers */,
-				5AC92A731E8519BF00879CBF /* SmallPostCollectionViewCell.h in Headers */,
-				5AC92A5B1E8519BF00879CBF /* MUOSavesManager.h in Headers */,
-				5AC92A4D1E8519BF00879CBF /* MUOGalleryViewController.h in Headers */,
-				5AC92A3B1E8519BF00879CBF /* BasePostsViewController.h in Headers */,
-				5AC92A411E8519BF00879CBF /* ExternalLinksHandler.h in Headers */,
+				5AD94D061E8A4F090013E725 /* MUOGalleryViewController.h in Headers */,
+				5AD94CF41E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.h in Headers */,
+				5AD94CF21E8A4EF40013E725 /* UIImage+MUO.h in Headers */,
+				5AD94CD01E8A4EB60013E725 /* ShareHelper.h in Headers */,
+				5AD94CE11E8A4EDD0013E725 /* PublisherAppSetupProvider.h in Headers */,
+				5AD94CB11E8A4EA50013E725 /* MUOPagingPostsController.h in Headers */,
 				5A79807D1E68803700E684ED /* PublisherApp.h in Headers */,
-				5AC92A661E8519BF00879CBF /* PostsSessionManager.h in Headers */,
-				5AC92A451E8519BF00879CBF /* LargePostCollectionViewCell.h in Headers */,
-				5AC92A491E8519BF00879CBF /* MUODownloadPool.h in Headers */,
-				5AC92A6C1E8519BF00879CBF /* ReaderSettings.h in Headers */,
-				5AC92A5F1E8519BF00879CBF /* NSString+MUO.h in Headers */,
-				5AC92A6E1E8519BF00879CBF /* SDWebImagePrefetcher+MUO.h in Headers */,
-				5AC92A4B1E8519BF00879CBF /* MUOFileCache.h in Headers */,
-				5AC92A681E8519BF00879CBF /* PostsViewModel.h in Headers */,
-				5AC92A701E8519BF00879CBF /* SessionManagerSetupProvider.h in Headers */,
-				5AC92A571E8519BF00879CBF /* MUOPostsRequestManager.h in Headers */,
-				5AC92A431E8519BF00879CBF /* FontSelectorView.h in Headers */,
-				5AC92A471E8519BF00879CBF /* LikesManager.h in Headers */,
-				5AC92A6A1E8519BF00879CBF /* PublisherAppSetupProvider.h in Headers */,
-				5AC92A5D1E8519BF00879CBF /* MUOScrollingImageView.h in Headers */,
-				5AC92A631E8519BF00879CBF /* PostRepresentable.h in Headers */,
-				5AC92A551E8519BF00879CBF /* MUOPostContentViewModel.h in Headers */,
-				5AC92A641E8519BF00879CBF /* PostScrollListener.h in Headers */,
-				5AC92A591E8519BF00879CBF /* MUOSavedPost.h in Headers */,
+				5AD94CEE1E8A4EF40013E725 /* MUOHtmlEditor.h in Headers */,
+				5AD94CDF1E8A4EDD0013E725 /* PostsSessionManager.h in Headers */,
+				5AD94CCE1E8A4EB60013E725 /* ExternalLinksHandler.h in Headers */,
+				5AD94CDE1E8A4EDD0013E725 /* SessionManagerSetupProvider.h in Headers */,
+				5AD94D221E8A4F410013E725 /* ReaderSettings.h in Headers */,
+				5AD94D191E8A4F2B0013E725 /* PostsViewModel.h in Headers */,
+				5AD94D101E8A4F090013E725 /* PostRepresentable.h in Headers */,
+				5AD94D241E8A4F410013E725 /* MUOSavedPost.h in Headers */,
+				5AD94CA61E8A4E8E0013E725 /* CoreContext.h in Headers */,
+				5AD94CB51E8A4EA50013E725 /* PostScrollListener.h in Headers */,
+				5AD94CDC1E8A4EDD0013E725 /* BookmarksRequestManager.h in Headers */,
+				5AD94CA21E8A4E810013E725 /* UIView+Toast.h in Headers */,
+				5AD94CF01E8A4EF40013E725 /* NSString+MUO.h in Headers */,
+				5AD94CC61E8A4EB60013E725 /* MUOSavesManager.h in Headers */,
+				5AD94D041E8A4F090013E725 /* FontSelectorView.h in Headers */,
+				5AD94CC81E8A4EB60013E725 /* MUODownloadPool.h in Headers */,
+				5AD94D0C1E8A4F090013E725 /* SmallPostCollectionViewCell.h in Headers */,
+				5AD94D261E8A4F410013E725 /* Post.h in Headers */,
+				5AD94CCA1E8A4EB60013E725 /* MUOFileCache.h in Headers */,
+				5AD94CE31E8A4EDD0013E725 /* PostsRequestsManager.h in Headers */,
+				5AD94CB71E8A4EA50013E725 /* BasePostsViewController.h in Headers */,
+				5AD94D0E1E8A4F090013E725 /* LargePostCollectionViewCell.h in Headers */,
+				5AD94CCC1E8A4EB60013E725 /* LikesManager.h in Headers */,
+				5AD94D171E8A4F2B0013E725 /* MUOPostContentViewModel.h in Headers */,
+				5AD94D081E8A4F090013E725 /* MUOScrollingImageView.h in Headers */,
+				5AD94CB31E8A4EA50013E725 /* MUOPostContentViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +676,9 @@
 				5AC92AD51E8519F300879CBF /* post_back.png in Resources */,
 				5AC92ABF1E8519F300879CBF /* facebook@3x.png in Resources */,
 				5AC92AD11E8519F300879CBF /* messenger@3x.png in Resources */,
+				5AD94D0B1E8A4F090013E725 /* SmallPostCollectionViewCell.xib in Resources */,
 				5AC92AEE1E8519F300879CBF /* whats-app@3x.png in Resources */,
+				5AD94D0A1E8A4F090013E725 /* LargePostCollectionViewCell.xib in Resources */,
 				5AC92ADA1E8519F300879CBF /* post_bookmark@3x.png in Resources */,
 				5AC92A7E1E8519DA00879CBF /* SmallPostCollectionViewCell.xib in Resources */,
 				5AC92ADC1E8519F300879CBF /* post_like@2x.png in Resources */,
@@ -611,13 +691,13 @@
 				5AC92AE31E8519F300879CBF /* post_share@3x.png in Resources */,
 				5AC92AE21E8519F300879CBF /* post_share@2x.png in Resources */,
 				5AC92ABD1E8519F300879CBF /* facebook.png in Resources */,
+				5AD94C9E1E8A4E640013E725 /* PublisherApp.storyboard in Resources */,
 				5AC92ADF1E8519F300879CBF /* post_multiply@2x.png in Resources */,
 				5AC92AB81E8519F300879CBF /* bookmark-active@2x.png in Resources */,
 				5AC92AC71E8519F300879CBF /* Like-active@2x.png in Resources */,
 				5AC92AD41E8519F300879CBF /* navbar_white@3x.png in Resources */,
 				5AC92AE91E8519F300879CBF /* twitter.png in Resources */,
 				5AC92AC51E8519F300879CBF /* Like-active-white@3x.png in Resources */,
-				5AC92A7D1E8519DA00879CBF /* PublisherApp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,36 +741,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AC92A4C1E8519BF00879CBF /* MUOFileCache.m in Sources */,
-				5AC92A6B1E8519BF00879CBF /* PublisherAppSetupProvider.m in Sources */,
-				5AC92A3C1E8519BF00879CBF /* BasePostsViewController.m in Sources */,
-				5AC92A671E8519BF00879CBF /* PostsSessionManager.m in Sources */,
-				5AC92A401E8519BF00879CBF /* CoreContext.m in Sources */,
-				5AC92A761E8519BF00879CBF /* UIImage+MUO.m in Sources */,
-				5AC92A5A1E8519BF00879CBF /* MUOSavedPost.m in Sources */,
-				5AC92A691E8519BF00879CBF /* PostsViewModel.m in Sources */,
-				5AC92A4E1E8519BF00879CBF /* MUOGalleryViewController.m in Sources */,
-				5AC92A461E8519BF00879CBF /* LargePostCollectionViewCell.m in Sources */,
-				5AC92A521E8519BF00879CBF /* MUOPagingPostsController.m in Sources */,
-				5AC92A651E8519BF00879CBF /* PostScrollListener.m in Sources */,
-				5AC92A581E8519BF00879CBF /* MUOPostsRequestManager.m in Sources */,
-				5AC92A501E8519BF00879CBF /* MUOHtmlEditor.m in Sources */,
-				5AC92A601E8519BF00879CBF /* NSString+MUO.m in Sources */,
-				5AC92A441E8519BF00879CBF /* FontSelectorView.m in Sources */,
-				5AC92A721E8519BF00879CBF /* ShareHelper.m in Sources */,
-				5AC92A5E1E8519BF00879CBF /* MUOScrollingImageView.m in Sources */,
-				5AC92A781E8519BF00879CBF /* UIView+Toast.m in Sources */,
-				5AC92A561E8519BF00879CBF /* MUOPostContentViewModel.m in Sources */,
-				5AC92A741E8519BF00879CBF /* SmallPostCollectionViewCell.m in Sources */,
-				5AC92A481E8519BF00879CBF /* LikesManager.m in Sources */,
-				5AC92A3E1E8519BF00879CBF /* BookmarksRequestManager.m in Sources */,
-				5AC92A621E8519BF00879CBF /* Post.m in Sources */,
-				5AC92A421E8519BF00879CBF /* ExternalLinksHandler.m in Sources */,
-				5AC92A5C1E8519BF00879CBF /* MUOSavesManager.m in Sources */,
-				5AC92A6D1E8519BF00879CBF /* ReaderSettings.m in Sources */,
-				5AC92A4A1E8519BF00879CBF /* MUODownloadPool.m in Sources */,
-				5AC92A541E8519BF00879CBF /* MUOPostContentViewController.m in Sources */,
-				5AC92A6F1E8519BF00879CBF /* SDWebImagePrefetcher+MUO.m in Sources */,
+				5AD94CCB1E8A4EB60013E725 /* MUOFileCache.m in Sources */,
+				5AD94CE41E8A4EDD0013E725 /* PostsRequestsManager.m in Sources */,
+				5AD94CA71E8A4E8E0013E725 /* CoreContext.m in Sources */,
+				5AD94CCF1E8A4EB60013E725 /* ExternalLinksHandler.m in Sources */,
+				5AD94D251E8A4F410013E725 /* MUOSavedPost.m in Sources */,
+				5AD94CF31E8A4EF40013E725 /* UIImage+MUO.m in Sources */,
+				5AD94CD11E8A4EB60013E725 /* ShareHelper.m in Sources */,
+				5AD94D1A1E8A4F2B0013E725 /* PostsViewModel.m in Sources */,
+				5AD94D0D1E8A4F090013E725 /* SmallPostCollectionViewCell.m in Sources */,
+				5AD94CE21E8A4EDD0013E725 /* PublisherAppSetupProvider.m in Sources */,
+				5AD94CB81E8A4EA50013E725 /* BasePostsViewController.m in Sources */,
+				5AD94CC71E8A4EB60013E725 /* MUOSavesManager.m in Sources */,
+				5AD94D231E8A4F410013E725 /* ReaderSettings.m in Sources */,
+				5AD94D0F1E8A4F090013E725 /* LargePostCollectionViewCell.m in Sources */,
+				5AD94CE01E8A4EDD0013E725 /* PostsSessionManager.m in Sources */,
+				5AD94D181E8A4F2B0013E725 /* MUOPostContentViewModel.m in Sources */,
+				5AD94CF11E8A4EF40013E725 /* NSString+MUO.m in Sources */,
+				5AD94CA31E8A4E810013E725 /* UIView+Toast.m in Sources */,
+				5AD94CB41E8A4EA50013E725 /* MUOPostContentViewController.m in Sources */,
+				5AD94D091E8A4F090013E725 /* MUOScrollingImageView.m in Sources */,
+				5AD94CF51E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.m in Sources */,
+				5AD94CCD1E8A4EB60013E725 /* LikesManager.m in Sources */,
+				5AD94CB61E8A4EA50013E725 /* PostScrollListener.m in Sources */,
+				5AD94CEF1E8A4EF40013E725 /* MUOHtmlEditor.m in Sources */,
+				5AD94CB21E8A4EA50013E725 /* MUOPagingPostsController.m in Sources */,
+				5AD94D271E8A4F410013E725 /* Post.m in Sources */,
+				5AD94D051E8A4F090013E725 /* FontSelectorView.m in Sources */,
+				5AD94D071E8A4F090013E725 /* MUOGalleryViewController.m in Sources */,
+				5AD94CDD1E8A4EDD0013E725 /* BookmarksRequestManager.m in Sources */,
+				5AD94CC91E8A4EB60013E725 /* MUODownloadPool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

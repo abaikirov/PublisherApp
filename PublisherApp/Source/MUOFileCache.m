@@ -26,7 +26,7 @@
    NSString* directory = [self cacheDirectoryForPostID:postID];
    [[NSFileManager defaultManager] removeItemAtPath:directory error:&error];
    if (!error) {
-      
+      NSLog(@"%@ cleared", [directory lastPathComponent]);
    }
 }
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Dmitry Zheshinsky. All rights reserved.
 //
 
-@import Realm;
+#import "Realm/Realm.h"
 
 @interface MUOSavedPost : RLMObject
 

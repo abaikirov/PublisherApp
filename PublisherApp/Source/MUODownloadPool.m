@@ -10,14 +10,14 @@
 #import "Post.h"
 #import "MUOHtmlEditor.h"
 #import "MUOFileCache.h"
-#import "MUOPostsRequestManager.h"
-@import ReactiveCocoa;
+#import "PostsRequestsManager.h"
 @import SDWebImage;
+@import ReactiveCocoa;
 
 @interface MUODownloadPool()
 
 @property (nonatomic, strong) MUOHtmlEditor* htmlEditor;
-@property (nonatomic, strong) MUOPostsRequestManager* postsManager;
+@property (nonatomic, strong) PostsRequestsManager* postsManager;
 @property (nonatomic, strong) RACReplaySubject* downloadSignal;
 @property (nonatomic) CGFloat progress;
 
@@ -38,7 +38,7 @@
    self = [super init];
    if (self) {
       self.htmlEditor = [MUOHtmlEditor editor];
-      self.postsManager = [MUOPostsRequestManager new];
+      self.postsManager = [PostsRequestsManager new];
       self.signalsPool = [NSMutableArray new];
       self.imagesCount = 0;
    }
@@ -80,6 +80,7 @@
          
          filePath = [[NSURL fileURLWithPath:filePath] absoluteString];
          [[NSURL fileURLWithPath:filePath] setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+         NSLog(@"DOWNLOAD COMPLETE: %@", filePath);
          [post addLocalURL:filePath forRemoteImage:[tuple.second absoluteString]];
          
          self.progress += 1.0 / self.imagesCount;

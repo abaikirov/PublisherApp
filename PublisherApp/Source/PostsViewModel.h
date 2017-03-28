@@ -7,22 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
-@import ReactiveCocoa;
+#import "PostsRequestsManager.h"
 
 
-@interface PostsViewModel : NSObject
 
 
+@protocol ViewModelPaginator <NSObject>
 
 @property (nonatomic) NSInteger total;
-@property (nonatomic) NSNumber* lastPostID;
 
 - (NSInteger) getPage;
-
 - (void) resetPage;
 - (void) setNextPage;
 
+
+@end
+
+@class MUOCategory;
+@interface PostsViewModel : NSObject<ViewModelPaginator>
+
+@property (nonatomic, strong) PostsRequestsManager* postsManager;
+@property (nonatomic) NSInteger totalPosts;
+
+@property (nonatomic, strong) NSArray* savedPosts;
+@property (nonatomic) NSNumber* lastPostID;
+
 - (RACSignal *) fetchPosts;
+- (void) fetchSavedPosts;
 
 
 @end

@@ -181,7 +181,7 @@
 }
 
 - (void)dealloc {
-   
+   NSLog(@"PAGE VIEW CONTROLLER DEALLOC");
 }
 
 @end

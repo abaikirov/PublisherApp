@@ -12,7 +12,20 @@
 
 + (instancetype) editor;
 
-- (NSArray *) getImagesFromHTML:(NSString*) htmlString;
 - (NSString *) setBodyFontSize:(NSInteger) fontSize forHTML:(NSString *) htmlString;
+- (NSString *) increaseFontSizeForHTML:(NSString*) htmlString;
+- (NSString *) decreaseFontSizeForHTML:(NSString*) htmlString;
+
+- (NSArray *) getImagesFromHTML:(NSString*) htmlString;
+/**
+ *  After app updates, Library directory path changing, so we should update path
+ *
+ *  @param htmlString oldHTMLString
+ *
+ *  @return newHTMLString
+ */
+- (NSString*) replaceLocalURLsWithNewLibraryPath:(NSString *) htmlString;
+- (NSString *) replaceImagesWithPlaceholder:(NSString *) htmlString;
+- (NSString *) addCSS:(NSString*) css toHTML:(NSString *) htmlString;
 
 @end

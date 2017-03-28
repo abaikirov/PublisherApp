@@ -11,15 +11,16 @@
 @import UIColor_HexString;
 @import DateTools;
 
+#import "PostsViewModel.h"
 #import "Post.h"
 #import "SDWebImagePrefetcher+MUO.h"
 #import "MUOPagingPostsController.h"
 #import "SmallPostCollectionViewCell.h"
 #import "LargePostCollectionViewCell.h"
 #import "BasePostsViewController.h"
-#import "UIView+Toast.h"
-#import "PublisherApp.h"
 
+#define screen_width [UIScreen mainScreen].bounds.size.width
+#define screen_height [UIScreen mainScreen].bounds.size.height
 
 @interface BasePostsViewController ()
 
@@ -44,6 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
    self.viewModel = [PostsViewModel new];
    self.cellCalculcationsCache = [NSMutableArray new];
    self.posts = [NSMutableArray new];
@@ -57,7 +59,7 @@
 }
 
 - (void) setupCollectionView {
-   NSBundle* bundle = [NSBundle bundleForClass:[SmallPostCollectionViewCell class]];
+   NSBundle* bundle = [NSBundle bundleForClass:[self class]];
    [self.collectionView registerNib:[UINib nibWithNibName:[SmallPostCollectionViewCell nibName] bundle:bundle]
          forCellWithReuseIdentifier:[SmallPostCollectionViewCell cellID]];
    [self.collectionView registerNib:[UINib nibWithNibName:[LargePostCollectionViewCell nibName] bundle:bundle] forCellWithReuseIdentifier:[LargePostCollectionViewCell cellID]];
@@ -156,6 +158,11 @@
       }
    }
    [cell fillWithPost:presentedPost labelFrame:[self.cellCalculcationsCache[indexPath.row] CGRectValue]];
+   if ([self.unreadPostIDs containsObject:presentedPost.ID]) {
+      if ([cell isKindOfClass:[SmallPostCollectionViewCell class]]) {
+         [(SmallPostCollectionViewCell*)cell markAsNew];
+      }
+   }
    return cell;
 }
 
@@ -302,6 +309,7 @@
 -(void) initRefreshControl {
    self.refreshControl = [[UIRefreshControl alloc] init];
    self.refreshControl.backgroundColor = [UIColor clearColor];
+   //self.refreshControl.tintColor = [[MUOUserSession sharedSession].colorSchemeManager.progressBarColor colorWithAlphaComponent:0.6];
    self.refreshControl.tintColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
    [self.refreshControl addTarget:self
                            action:@selector(refresh)

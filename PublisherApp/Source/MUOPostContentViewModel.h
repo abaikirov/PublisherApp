@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@import ReactiveCocoa;
 #import "Post.h"
+@import ReactiveCocoa;
 
 @interface MUOPostContentViewModel : NSObject
 

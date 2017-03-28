@@ -18,10 +18,10 @@
 #import "Post.h"
 
 #import "UIView+Toast.h"
-#import "PublisherApp.h"
 
+#define screen_width [UIScreen mainScreen].bounds.size.width
+#define screen_height [UIScreen mainScreen].bounds.size.height
 #define CONNECTION_AVAILABLE [AFNetworkReachabilityManager sharedManager].reachable
-#define BASE_URL @"http://makeuseof.com"
 
 #pragma mark -
 #pragma mark - Button class to use at the bottom of screen
@@ -81,8 +81,10 @@
    float width = (screen_width) / buttonsCount;
    float leftOffset = 0;
    NSArray* images = @[@"post_like", @"facebook", @"messenger", @"whats-app", @"twitter"];
+   NSBundle* imagesBundle = [NSBundle bundleForClass:[self class]];
    for (int i = 0; i < buttonsCount; i++) {
-      BottomButton* btn = [self buttonWithImage:[UIImage imageNamed:images[i]] frame:CGRectMake(leftOffset + width * i, 0, width, 50)];
+      UIImage* btnImage = [UIImage imageNamed:images[i] inBundle:imagesBundle compatibleWithTraitCollection:nil];
+      BottomButton* btn = [self buttonWithImage:btnImage frame:CGRectMake(leftOffset + width * i, 0, width, 50)];
       btn.tag = i;
       [btn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
       if (i == 0) {
@@ -165,6 +167,7 @@
 }
 
 -(void)dealloc {
+   NSLog(@"DEALLOC:%@", self.post.postTitle);
    self.webView.delegate = nil;
 }
 
@@ -218,7 +221,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
    [super viewWillDisappear:animated];
-   [self.scrollListener stopFollowingScrollView];
+    [self.scrollListener stopFollowingScrollView];
 }
 
 #pragma mark - Navigation
@@ -236,7 +239,7 @@
 #pragma mark - Content
 -(void) fillContent {
    if (self.post && _isOffline) {                                              //Displaying bookmarked post
-      //_post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:_post.html];
+      _post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:_post.html];
       [self displayHTML:_post.html];
       return;
    }
@@ -267,7 +270,7 @@
       @strongify(self);
       self.post = post;
       if (!CONNECTION_AVAILABLE) {
-         //post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:post.html];
+         post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:post.html];
       }
       [self displayHTML:post.html];
    }];
@@ -277,7 +280,7 @@
    if (_isOffline) {
       [_webView loadHTMLString:html baseURL:[NSURL URLWithString:nil]];
    } else {
-      [_webView loadHTMLString:html baseURL:[NSURL URLWithString:BASE_URL]];
+      [_webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://makeuseof.com"]];
    }
 }
 
@@ -292,7 +295,7 @@
 
 
 
-#pragma mark - Bottom view
+#pragma mark - Bottom view 
 - (void)didPressedButtonAtIndex:(int)index {
    switch (index) {
       case 0: [self likePost]; break;

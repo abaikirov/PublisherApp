@@ -7,15 +7,15 @@
 //
 
 #import "MUOPostContentViewModel.h"
-#import "MUOPostsRequestManager.h"
-#import "Post.h"
+#import "PostsRequestsManager.h"
 #import "MUOHtmlEditor.h"
+#import "MUOSavesManager.h"
+#import "MUOSavedPost.h"
 #import "CoreContext.h"
-@import ReactiveCocoa;
 
 @interface MUOPostContentViewModel ()
 
-@property (nonatomic, strong) MUOPostsRequestManager* postsManager;
+@property (nonatomic, strong) PostsRequestsManager* postsManager;
 
 
 @end
@@ -26,17 +26,17 @@
     self = [super init];
     if(self)
     {
-        self.postsManager = [MUOPostsRequestManager new];
+        self.postsManager = [PostsRequestsManager new];
     }
     return self;
 }
 
 - (RACSignal *)loadPost {
-    /*@weakify(self);
+    @weakify(self);
     NSString* fetchIdentifier = _postId ? [_postId stringValue] : _postSlug;
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-       [[self.postsManager fetchPostByID:fetchIdentifier] subscribeNext:^(Post *post) {
+        [[self.postsManager fetchPostByID:fetchIdentifier] subscribeNext:^(Post *post) {
             
             @strongify(self);
             self.post = post;
@@ -46,8 +46,7 @@
             [subscriber sendError:error];
         }];
         return nil;
-    }];*/
-   return nil;
+    }];
 }
 
 - (void)loadSavedPost {

@@ -185,7 +185,7 @@ const int kDismissOffset = 120;
 
 
 - (void)dealloc {
-   
+   NSLog(@"GALLERY DEALLOC");
 }
 
 @end

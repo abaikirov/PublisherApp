@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PostsViewModel.h"
 
-#define CONNECTION_AVAILABLE [AFNetworkReachabilityManager sharedManager].reachable
-#define PUBLISHER_APP_BUNDLE [NSBundle bundleForClass:[BasePostsViewController class]]
-
 @interface BasePostsViewController : UIViewController<UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

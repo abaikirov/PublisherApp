@@ -8,12 +8,6 @@
 
 #import "PublisherAppSetupProvider.h"
 
-@interface PublisherAppSetupProvider()
-
-@property (nonatomic, strong) NSURL* baseURL;
-
-@end
-
 @implementation PublisherAppSetupProvider
 
 + (instancetype)sharedProvider {
@@ -25,12 +19,9 @@
    return provider;
 }
 
-+ (void)setBaseURL:(NSString *)url {
-   [PublisherAppSetupProvider sharedProvider].baseURL = [[NSURL alloc] initWithString:url];
-}
-
 - (NSURL *)sessionManagerBaseURL {
-   return self.baseURL;
+   NSURL* url = [[NSURL alloc] initWithString:@"http://pa.grouvi.org:8082/makeuseof/"];
+   return url;
 }
 
 - (void)setupHeadersForManager:(AFHTTPSessionManager *)manager {

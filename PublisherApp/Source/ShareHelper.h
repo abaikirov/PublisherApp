@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "Post.h"
+@import UIKit;
 
 @interface ShareHelper : NSObject
 

@@ -8,9 +8,8 @@
 
 #import "SmallPostCollectionViewCell.h"
 @import SDWebImage;
-@import UIColor_HexString;
-@import ReactiveCocoa;
 #import "CoreContext.h"
+@import UIColor_HexString;
 
 @interface SmallPostCollectionViewCell() {
    UIColor* titleColorInactive;

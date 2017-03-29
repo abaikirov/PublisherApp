@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="110" id="SNi-JJ-v2D" customClass="PostTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SNi-JJ-v2D" id="Bts-0R-8IK">
+                <frame key="frameInset" width="320" height="94"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQr-qy-zxs">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="WfG-e0-4QX"/>
+                            <constraint firstAttribute="height" constant="70" id="aR7-I5-8hK"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facts why inkjet printing is very appealing compared to ordinary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG6-s2-j3l">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="Ogz-xw-OxL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.26274509800000001" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6G-jC-Leb">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="mGI-8m-ad4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INTERNET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-u1-Iy9">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="zuB-1Y-PEf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.88627450980392153" green="0.14509803921568626" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="PiB-u1-Iy9" secondAttribute="trailing" constant="12" id="5E5-Pb-Xmn"/>
+                    <constraint firstItem="PiB-u1-Iy9" firstAttribute="top" secondItem="Bts-0R-8IK" secondAttribute="top" constant="12" id="Fcm-CI-n2j"/>
+                    <constraint firstAttribute="bottom" secondItem="z6G-jC-Leb" secondAttribute="bottom" constant="10" id="JEQ-Li-Kui"/>
+                    <constraint firstItem="dQr-qy-zxs" firstAttribute="top" secondItem="Bts-0R-8IK" secondAttribute="top" constant="12" id="Lxk-D1-Vaf"/>
+                    <constraint firstItem="PiB-u1-Iy9" firstAttribute="leading" secondItem="dQr-qy-zxs" secondAttribute="trailing" constant="8" id="Pif-eU-n8C"/>
+                    <constraint firstItem="dQr-qy-zxs" firstAttribute="leading" secondItem="Bts-0R-8IK" secondAttribute="leading" constant="12" id="Q0J-zu-fDL"/>
+                    <constraint firstItem="z6G-jC-Leb" firstAttribute="top" secondItem="fG6-s2-j3l" secondAttribute="bottom" constant="10" id="Q0M-Vc-WPB"/>
+                    <constraint firstItem="fG6-s2-j3l" firstAttribute="leading" secondItem="dQr-qy-zxs" secondAttribute="trailing" constant="8" id="WCG-jB-ETa"/>
+                    <constraint firstAttribute="trailing" secondItem="fG6-s2-j3l" secondAttribute="trailing" constant="12" id="aHJ-nk-zTq"/>
+                    <constraint firstItem="z6G-jC-Leb" firstAttribute="leading" secondItem="dQr-qy-zxs" secondAttribute="trailing" constant="8" id="o9F-o4-DJU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+            <connections>
+                <outlet property="categoryLabel" destination="PiB-u1-Iy9" id="SLF-S8-1wg"/>
+                <outlet property="dateLabel" destination="z6G-jC-Leb" id="feb-mV-3GH"/>
+                <outlet property="postImageView" destination="dQr-qy-zxs" id="kq1-dn-9BW"/>
+                <outlet property="postTitleLabel" destination="fG6-s2-j3l" id="pc1-rH-nwM"/>
+            </connections>
+            <point key="canvasLocation" x="-972" y="260"/>
+        </tableViewCell>
+    </objects>
+</document>

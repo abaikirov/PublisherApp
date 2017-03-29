@@ -11,6 +11,7 @@
 #import "ShareHelper.h"
 #import "LikesManager.h"
 #import "MUOSavesManager.h"
+#import "NavigationRouter.h"
 
 @interface CoreContext : NSObject
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) ExternalLinksHandler* linksHandler;
 @property (nonatomic, strong) ShareHelper* shareHelper;
 @property (nonatomic, strong) MUOSavesManager* savesManager;
+@property (nonatomic, strong) NavigationRouter* navigationRouter;
 
 + (instancetype) sharedContext;
 

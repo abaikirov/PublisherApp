@@ -142,6 +142,11 @@
    return result;
 }
 
+- (NSInteger)bookmarksCount {
+   RLMResults* bookmarks = [MUOSavedPost objectsWhere:@"isBookmarked=YES"];
+   return bookmarks.count;
+}
+
 -(RACSignal *)savePost:(Post *)post {
    RACSignal* imagesSignal = [self.downloadPool downloadImagesForPost:post];
    self.finishSignal = [RACReplaySubject subject];

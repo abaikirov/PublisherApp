@@ -7,13 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-@import ReactiveCocoa;
 
 @class Post;
 @class MUOSavedPost;
 @class MUODownloadPool;
-
+@import ReactiveCocoa;
 @interface MUOSavesManager : NSObject
+
+typedef enum {
+   Latest10,
+   Last3Days
+} DownloadPeriod;
+
 //Used for posts downloading
 @property (nonatomic, strong) RACReplaySubject* downloadFinishedSignal;
 @property (nonatomic, strong) MUODownloadPool* downloadPool;
@@ -26,6 +31,7 @@
 - (RACSignal*) handleBookmark:(Post*) post postID:(NSNumber *) postID;
 
 - (BOOL) bookmarkExists:(NSNumber*) postID;
+- (NSInteger) bookmarksCount;
 
 /**
  Get all bookmarks

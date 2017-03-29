@@ -21,6 +21,7 @@
       context.shareHelper = [ShareHelper new];
       context.likesManager = [LikesManager new];
       context.savesManager = [MUOSavesManager new];
+      context.navigationRouter = [NavigationRouter new];
    });
    return context;
 }

@@ -67,7 +67,6 @@
 		5AC92AEC1E8519F300879CBF /* whats-app.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92AB41E8519F300879CBF /* whats-app.png */; };
 		5AC92AED1E8519F300879CBF /* whats-app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92AB51E8519F300879CBF /* whats-app@2x.png */; };
 		5AC92AEE1E8519F300879CBF /* whats-app@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92AB61E8519F300879CBF /* whats-app@3x.png */; };
-		5AD94C9E1E8A4E640013E725 /* PublisherApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD94C9D1E8A4E640013E725 /* PublisherApp.storyboard */; };
 		5AD94CA21E8A4E810013E725 /* UIView+Toast.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CA01E8A4E810013E725 /* UIView+Toast.h */; };
 		5AD94CA31E8A4E810013E725 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94CA11E8A4E810013E725 /* UIView+Toast.m */; };
 		5AD94CA61E8A4E8E0013E725 /* CoreContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94CA41E8A4E8E0013E725 /* CoreContext.h */; };
@@ -132,6 +131,16 @@
 		5AD94D251E8A4F410013E725 /* MUOSavedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D1F1E8A4F410013E725 /* MUOSavedPost.m */; };
 		5AD94D261E8A4F410013E725 /* Post.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D201E8A4F410013E725 /* Post.h */; };
 		5AD94D271E8A4F410013E725 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D211E8A4F410013E725 /* Post.m */; };
+		5AD94D371E8B9C810013E725 /* PublisherApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD94D361E8B9C810013E725 /* PublisherApp.storyboard */; };
+		5AD94D3A1E8B9C9F0013E725 /* NavigationRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D381E8B9C9F0013E725 /* NavigationRouter.h */; };
+		5AD94D3B1E8B9C9F0013E725 /* NavigationRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D391E8B9C9F0013E725 /* NavigationRouter.m */; };
+		5AD94D3D1E8B9CAB0013E725 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD94D3C1E8B9CAB0013E725 /* PostTableViewCell.xib */; };
+		5AD94D401E8B9CB90013E725 /* PostTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D3E1E8B9CB90013E725 /* PostTableViewCell.h */; };
+		5AD94D411E8B9CB90013E725 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D3F1E8B9CB90013E725 /* PostTableViewCell.m */; };
+		5AD94D441E8B9CCE0013E725 /* SavesViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D421E8B9CCE0013E725 /* SavesViewModel.h */; };
+		5AD94D451E8B9CCE0013E725 /* SavesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D431E8B9CCE0013E725 /* SavesViewModel.m */; };
+		5AD94D481E8B9CF90013E725 /* MUOSavesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AD94D461E8B9CF90013E725 /* MUOSavesViewController.h */; };
+		5AD94D491E8B9CF90013E725 /* MUOSavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD94D471E8B9CF90013E725 /* MUOSavesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,7 +206,6 @@
 		5AC92AB41E8519F300879CBF /* whats-app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whats-app.png"; sourceTree = "<group>"; };
 		5AC92AB51E8519F300879CBF /* whats-app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whats-app@2x.png"; sourceTree = "<group>"; };
 		5AC92AB61E8519F300879CBF /* whats-app@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whats-app@3x.png"; sourceTree = "<group>"; };
-		5AD94C9D1E8A4E640013E725 /* PublisherApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublisherApp.storyboard; sourceTree = "<group>"; };
 		5AD94CA01E8A4E810013E725 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		5AD94CA11E8A4E810013E725 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		5AD94CA41E8A4E8E0013E725 /* CoreContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreContext.h; sourceTree = "<group>"; };
@@ -262,6 +270,16 @@
 		5AD94D1F1E8A4F410013E725 /* MUOSavedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOSavedPost.m; sourceTree = "<group>"; };
 		5AD94D201E8A4F410013E725 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		5AD94D211E8A4F410013E725 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		5AD94D361E8B9C810013E725 /* PublisherApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublisherApp.storyboard; sourceTree = "<group>"; };
+		5AD94D381E8B9C9F0013E725 /* NavigationRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationRouter.h; sourceTree = "<group>"; };
+		5AD94D391E8B9C9F0013E725 /* NavigationRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationRouter.m; sourceTree = "<group>"; };
+		5AD94D3C1E8B9CAB0013E725 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		5AD94D3E1E8B9CB90013E725 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
+		5AD94D3F1E8B9CB90013E725 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
+		5AD94D421E8B9CCE0013E725 /* SavesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavesViewModel.h; sourceTree = "<group>"; };
+		5AD94D431E8B9CCE0013E725 /* SavesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavesViewModel.m; sourceTree = "<group>"; };
+		5AD94D461E8B9CF90013E725 /* MUOSavesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUOSavesViewController.h; sourceTree = "<group>"; };
+		5AD94D471E8B9CF90013E725 /* MUOSavesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUOSavesViewController.m; sourceTree = "<group>"; };
 		7C093653783401FD653BA67E /* Pods-PublisherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BFF57FE27C5190B79DFF1250 /* Pods-PublisherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublisherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PublisherApp/Pods-PublisherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,6 +345,7 @@
 		5A797FF21E687DD600E684ED /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5AD94D3C1E8B9CAB0013E725 /* PostTableViewCell.xib */,
 				5AC92A7F1E8519F200879CBF /* bookmark-active.png */,
 				5AC92A801E8519F200879CBF /* bookmark-active@2x.png */,
 				5AC92A811E8519F200879CBF /* bookmark-active@3x.png */,
@@ -383,9 +402,9 @@
 				5AC92AB41E8519F300879CBF /* whats-app.png */,
 				5AC92AB51E8519F300879CBF /* whats-app@2x.png */,
 				5AC92AB61E8519F300879CBF /* whats-app@3x.png */,
-				5AD94C9D1E8A4E640013E725 /* PublisherApp.storyboard */,
 				5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */,
 				5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */,
+				5AD94D361E8B9C810013E725 /* PublisherApp.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -393,13 +412,13 @@
 		5A79802F1E687DE000E684ED /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5AD94CA41E8A4E8E0013E725 /* CoreContext.h */,
+				5AD94CA51E8A4E8E0013E725 /* CoreContext.m */,
 				5AD94D1B1E8A4F370013E725 /* Model */,
 				5AD94D121E8A4F200013E725 /* ViewModel */,
 				5AD94CF61E8A4EFD0013E725 /* UI */,
 				5AD94CE51E8A4EE90013E725 /* Categories */,
 				5AD94CD21E8A4ECB0013E725 /* API */,
-				5AD94CA41E8A4E8E0013E725 /* CoreContext.h */,
-				5AD94CA51E8A4E8E0013E725 /* CoreContext.m */,
 				5AD94CB91E8A4EAA0013E725 /* Helpers */,
 				5AD94CA81E8A4E970013E725 /* ViewControllers */,
 				5AD94C9F1E8A4E710013E725 /* 3rd party */,
@@ -419,6 +438,8 @@
 		5AD94CA81E8A4E970013E725 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5AD94D461E8B9CF90013E725 /* MUOSavesViewController.h */,
+				5AD94D471E8B9CF90013E725 /* MUOSavesViewController.m */,
 				5AD94CA91E8A4EA50013E725 /* MUOPagingPostsController.h */,
 				5AD94CAA1E8A4EA50013E725 /* MUOPagingPostsController.m */,
 				5AD94CAB1E8A4EA50013E725 /* MUOPostContentViewController.h */,
@@ -484,6 +505,8 @@
 		5AD94CF61E8A4EFD0013E725 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5AD94D381E8B9C9F0013E725 /* NavigationRouter.h */,
+				5AD94D391E8B9C9F0013E725 /* NavigationRouter.m */,
 				5AD94D111E8A4F0D0013E725 /* Cells */,
 				5AD94CF71E8A4F090013E725 /* FontSelectorView.h */,
 				5AD94CF81E8A4F090013E725 /* FontSelectorView.m */,
@@ -498,6 +521,8 @@
 		5AD94D111E8A4F0D0013E725 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5AD94D3E1E8B9CB90013E725 /* PostTableViewCell.h */,
+				5AD94D3F1E8B9CB90013E725 /* PostTableViewCell.m */,
 				5AD94CFD1E8A4F090013E725 /* LargePostCollectionViewCell.xib */,
 				5AD94CFE1E8A4F090013E725 /* SmallPostCollectionViewCell.xib */,
 				5AD94CFF1E8A4F090013E725 /* SmallPostCollectionViewCell.h */,
@@ -512,6 +537,8 @@
 		5AD94D121E8A4F200013E725 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5AD94D421E8B9CCE0013E725 /* SavesViewModel.h */,
+				5AD94D431E8B9CCE0013E725 /* SavesViewModel.m */,
 				5AD94D131E8A4F2B0013E725 /* MUOPostContentViewModel.h */,
 				5AD94D141E8A4F2B0013E725 /* MUOPostContentViewModel.m */,
 				5AD94D151E8A4F2B0013E725 /* PostsViewModel.h */,
@@ -549,19 +576,23 @@
 				5A79807D1E68803700E684ED /* PublisherApp.h in Headers */,
 				5AD94CEE1E8A4EF40013E725 /* MUOHtmlEditor.h in Headers */,
 				5AD94CDF1E8A4EDD0013E725 /* PostsSessionManager.h in Headers */,
+				5AD94D401E8B9CB90013E725 /* PostTableViewCell.h in Headers */,
 				5AD94CCE1E8A4EB60013E725 /* ExternalLinksHandler.h in Headers */,
 				5AD94CDE1E8A4EDD0013E725 /* SessionManagerSetupProvider.h in Headers */,
 				5AD94D221E8A4F410013E725 /* ReaderSettings.h in Headers */,
 				5AD94D191E8A4F2B0013E725 /* PostsViewModel.h in Headers */,
+				5AD94D3A1E8B9C9F0013E725 /* NavigationRouter.h in Headers */,
 				5AD94D101E8A4F090013E725 /* PostRepresentable.h in Headers */,
 				5AD94D241E8A4F410013E725 /* MUOSavedPost.h in Headers */,
 				5AD94CA61E8A4E8E0013E725 /* CoreContext.h in Headers */,
+				5AD94D481E8B9CF90013E725 /* MUOSavesViewController.h in Headers */,
 				5AD94CB51E8A4EA50013E725 /* PostScrollListener.h in Headers */,
 				5AD94CDC1E8A4EDD0013E725 /* BookmarksRequestManager.h in Headers */,
 				5AD94CA21E8A4E810013E725 /* UIView+Toast.h in Headers */,
 				5AD94CF01E8A4EF40013E725 /* NSString+MUO.h in Headers */,
 				5AD94CC61E8A4EB60013E725 /* MUOSavesManager.h in Headers */,
 				5AD94D041E8A4F090013E725 /* FontSelectorView.h in Headers */,
+				5AD94D441E8B9CCE0013E725 /* SavesViewModel.h in Headers */,
 				5AD94CC81E8A4EB60013E725 /* MUODownloadPool.h in Headers */,
 				5AD94D0C1E8A4F090013E725 /* SmallPostCollectionViewCell.h in Headers */,
 				5AD94D261E8A4F410013E725 /* Post.h in Headers */,
@@ -644,6 +675,7 @@
 				5AC92AE11E8519F300879CBF /* post_share.png in Resources */,
 				5AC92AD21E8519F300879CBF /* navbar_white.png in Resources */,
 				5AC92AE41E8519F300879CBF /* post_text.png in Resources */,
+				5AD94D3D1E8B9CAB0013E725 /* PostTableViewCell.xib in Resources */,
 				5AC92ACE1E8519F300879CBF /* Like@3x.png in Resources */,
 				5AC92AEB1E8519F300879CBF /* twitter@3x.png in Resources */,
 				5AC92ABB1E8519F300879CBF /* closeButtonX@2x.png in Resources */,
@@ -667,6 +699,7 @@
 				5AC92AEA1E8519F300879CBF /* twitter@2x.png in Resources */,
 				5AC92AC21E8519F300879CBF /* Knob@3x.png in Resources */,
 				5AC92AE01E8519F300879CBF /* post_multiply@3x.png in Resources */,
+				5AD94D371E8B9C810013E725 /* PublisherApp.storyboard in Resources */,
 				5AC92ACC1E8519F300879CBF /* Like.png in Resources */,
 				5AC92AEC1E8519F300879CBF /* whats-app.png in Resources */,
 				5AC92AC11E8519F300879CBF /* Knob@2x.png in Resources */,
@@ -691,7 +724,6 @@
 				5AC92AE31E8519F300879CBF /* post_share@3x.png in Resources */,
 				5AC92AE21E8519F300879CBF /* post_share@2x.png in Resources */,
 				5AC92ABD1E8519F300879CBF /* facebook.png in Resources */,
-				5AD94C9E1E8A4E640013E725 /* PublisherApp.storyboard in Resources */,
 				5AC92ADF1E8519F300879CBF /* post_multiply@2x.png in Resources */,
 				5AC92AB81E8519F300879CBF /* bookmark-active@2x.png in Resources */,
 				5AC92AC71E8519F300879CBF /* Like-active@2x.png in Resources */,
@@ -763,6 +795,10 @@
 				5AD94D091E8A4F090013E725 /* MUOScrollingImageView.m in Sources */,
 				5AD94CF51E8A4EF40013E725 /* SDWebImagePrefetcher+MUO.m in Sources */,
 				5AD94CCD1E8A4EB60013E725 /* LikesManager.m in Sources */,
+				5AD94D451E8B9CCE0013E725 /* SavesViewModel.m in Sources */,
+				5AD94D491E8B9CF90013E725 /* MUOSavesViewController.m in Sources */,
+				5AD94D3B1E8B9C9F0013E725 /* NavigationRouter.m in Sources */,
+				5AD94D411E8B9CB90013E725 /* PostTableViewCell.m in Sources */,
 				5AD94CB61E8A4EA50013E725 /* PostScrollListener.m in Sources */,
 				5AD94CEF1E8A4EF40013E725 /* MUOHtmlEditor.m in Sources */,
 				5AD94CB21E8A4EA50013E725 /* MUOPagingPostsController.m in Sources */,

@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
    [super viewDidLoad];
-   
+   self.navigationController.title = [CoreContext sharedContext].savesTitle;
    self.viewModel = [SavesViewModel new];
    self.savesTableView.dataSource = self;
    self.savesTableView.delegate = self;

@@ -22,6 +22,7 @@
       context.likesManager = [LikesManager new];
       context.savesManager = [MUOSavesManager new];
       context.navigationRouter = [NavigationRouter new];
+      context.savesTitle = @"Saves";
    });
    return context;
 }

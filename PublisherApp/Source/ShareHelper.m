@@ -32,9 +32,7 @@
    NSString* shareText = [NSString stringWithFormat:@"whatsapp://send?text=%@", post.url];
    shareText = [shareText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
    NSURL *whatsappURL = [NSURL URLWithString:shareText];
-   if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
-      [[UIApplication sharedApplication] openURL:whatsappURL options:@{} completionHandler:nil];
-   }
+   [[UIApplication sharedApplication] openURL:whatsappURL options:@{} completionHandler:nil];
 }
 
 - (void)sharePostToTwitter:(Post *)post fromVC:(UIViewController *)vc{

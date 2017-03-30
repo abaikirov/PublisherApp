@@ -44,8 +44,9 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+   [super viewDidLoad];
    
+   [[AFNetworkReachabilityManager sharedManager] startMonitoring];
    self.viewModel = [PostsViewModel new];
    self.cellCalculcationsCache = [NSMutableArray new];
    self.posts = [NSMutableArray new];

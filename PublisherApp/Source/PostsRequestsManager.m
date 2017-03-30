@@ -73,7 +73,9 @@
          parameters = @{@"without_css" : @"true"};
       }*/
       
-      [self.sessionManager GET:[NSString stringWithFormat:@"posts/%@", ID] parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+      NSString* postEncodedURL = [ID stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+      NSString* url = [NSString stringWithFormat:@"posts/?url=%@", postEncodedURL];
+      [self.sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
          
       } success:^(NSURLSessionDataTask *task, id responseObject){
          DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:[self.class postClass] andConfiguration:[self.class parserConfiguration]];

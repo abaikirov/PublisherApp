@@ -7,6 +7,7 @@
 //
 
 #import "CoreContext.h"
+#import "MUOExternalLinksHandler.h"
 
 @implementation CoreContext
 
@@ -17,12 +18,13 @@
       context = [CoreContext new];
       
       //Default implementations
-      context.linksHandler = [ExternalLinksHandler new];
+      context.linksHandler = [MUOExternalLinksHandler new];
       context.shareHelper = [ShareHelper new];
       context.likesManager = [LikesManager new];
       context.savesManager = [MUOSavesManager new];
       context.navigationRouter = [NavigationRouter new];
       context.savesTitle = @"Saves";
+      context.siteURL = @"http://www.makeuseof.com";
    });
    return context;
 }

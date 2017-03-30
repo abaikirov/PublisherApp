@@ -28,6 +28,7 @@
 @property (nonatomic) CGRect initialPanViewFrame;
 @property (nonatomic) CGPoint initialPanCenter;
 
+@property (nonatomic) BOOL isLocal;
 @property (nonatomic, strong) SDWebImageDownloader* downloader;
 
 @end
@@ -72,7 +73,11 @@ const int kDismissOffset = 120;
    [_scrollView setContentOffset:CGPointMake(frame.size.width * _page, 0) animated:YES];
    [self updateWithCounter:(int)_page];
    
-   [self displayRemoteImages];
+   if (_isLocal) {
+      [self displayLocalImages];
+   } else {
+      [self displayRemoteImages];
+   }
    
    [self.view bringSubviewToFront:_closeButton];
    [self.view bringSubviewToFront:_shareButton];
@@ -131,11 +136,22 @@ const int kDismissOffset = 120;
 }
 
 #pragma mark - Displaying images
-- (void)fillWithImages:(NSArray *)imageURLs currentImage:(NSString *)imageURL {
+- (void) fillWithImages:(NSArray *) imageURLs isLocal:(BOOL) isLocal currentImage:(NSString*) imageURL{
    _imageURLs = imageURLs;
+   _isLocal = isLocal;
    
    _page = [_imageURLs indexOfObject:imageURL];
 }
+
+-(void) displayLocalImages {
+   for (int i = 0; i < _imageURLs.count; i++) {
+      NSString* fileURL = [_imageURLs[i] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+      NSData* data = [[NSData alloc] initWithContentsOfFile:fileURL];
+      UIImage* img = [[UIImage alloc] initWithData:data];
+      [self.scrollingImageViews[i] setImage:img];
+   }
+}
+
 
 -(void) displayRemoteImages {
    for (int i = 0; i < _imageURLs.count; i++) {

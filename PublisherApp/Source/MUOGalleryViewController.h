@@ -11,6 +11,6 @@
 @interface MUOGalleryViewController : UIViewController
 
 
-- (void) fillWithImages:(NSArray *) imageURLs currentImage:(NSString*) imageURL;
+- (void) fillWithImages:(NSArray *) imageURLs isLocal:(BOOL) isLocal currentImage:(NSString*) imageURL;
 
 @end

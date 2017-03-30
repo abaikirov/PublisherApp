@@ -21,6 +21,8 @@
 @property (nonatomic, strong) MUOSavesManager* savesManager;
 @property (nonatomic, strong) NavigationRouter* navigationRouter;
 
+@property (nonatomic, strong) NSString* siteURL;
+
 @property (nonatomic, strong) NSString* savesTitle;
 
 + (instancetype) sharedContext;

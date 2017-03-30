@@ -27,4 +27,10 @@
    [presenter pushViewController:pagingVC animated:YES];
 }
 
+- (void)showPagingControllerWithVC:(MUOPostContentViewController *)vc fromNavigationController:(UINavigationController *)navCtrl {
+   MUOPagingPostsController* pagingVC = [[UIStoryboard storyboardWithName:@"PublisherApp" bundle:[NSBundle bundleForClass:[MUOPagingPostsController class]]] instantiateViewControllerWithIdentifier:@"PagingController"];
+   pagingVC.viewControllerToDisplay = vc;
+   [navCtrl pushViewController:pagingVC animated:YES];
+}
+
 @end

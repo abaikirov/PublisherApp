@@ -193,6 +193,7 @@
       post.isBookmarked = bookmarked;
       post.isOfflineSaved = isOfflineSaved;
       [MUOSavedPost createOrUpdateInRealm:realm withValue:post];
+      [self.bookmarksCountObserver bookmarksCountChanged:[self bookmarksCount]];
    }];
 }
 
@@ -210,6 +211,7 @@
       } else {
          [realm transactionWithBlock:^{
             [realm deleteObject:postToDelete];
+            [self.bookmarksCountObserver bookmarksCountChanged:[self bookmarksCount]];
          }];
          [[MUOFileCache sharedCache] clearCacheDirectoryForPostID:postID.integerValue];
       }

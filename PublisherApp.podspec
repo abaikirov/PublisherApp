@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
 s.name         = "PublisherApp"
-s.version      = "0.1.6"
+s.version      = "0.1.7"
 s.ios.deployment_target = '8.2'
 s.summary      = "Feed for wordpess"
 
@@ -36,6 +36,7 @@ s.dependency 'SDWebImage', '~> 3.8.1'
 s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
 s.dependency 'Realm'
+s.dependency 'JBWebViewController', '~> 1.0.8'
 
 # 8
 s.source_files = "PublisherApp/Source/*"

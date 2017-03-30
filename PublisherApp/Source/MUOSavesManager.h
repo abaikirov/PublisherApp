@@ -12,12 +12,16 @@
 @class MUOSavedPost;
 @class MUODownloadPool;
 @import ReactiveCocoa;
+
+@protocol BookmarksCountObserver <NSObject>
+
+- (void) bookmarksCountChanged:(NSInteger) count;
+
+@end
+
 @interface MUOSavesManager : NSObject
 
-typedef enum {
-   Latest10,
-   Last3Days
-} DownloadPeriod;
+@property (nonatomic, weak) id<BookmarksCountObserver> bookmarksCountObserver;
 
 //Used for posts downloading
 @property (nonatomic, strong) RACReplaySubject* downloadFinishedSignal;

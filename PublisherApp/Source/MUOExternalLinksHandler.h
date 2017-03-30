@@ -10,6 +10,5 @@
 
 @interface MUOExternalLinksHandler : ExternalLinksHandler
 
--(void) handleExternalURL:(NSURL*) url forViewController:(UIViewController*) vc;
 
 @end

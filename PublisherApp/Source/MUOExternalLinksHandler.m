@@ -12,6 +12,7 @@
 #import "MUOHtmlEditor.h"
 #import "CoreContext.h"
 #import "MUOGalleryViewController.h"
+@import JBWebViewController;
 
 @interface MUOExternalLinksHandler()
 
@@ -41,7 +42,8 @@
       [galleryVC fillWithImages:images isLocal:YES currentImage:urlString];
       [vc.parentViewController presentViewController:galleryVC animated:YES completion:nil];
    } else {
-      [[UIApplication sharedApplication] openURL:request.URL];
+      JBWebViewController* controller = [[JBWebViewController alloc] initWithUrl:request.URL];
+      [controller showFromController:vc];
    }
    
    return YES;

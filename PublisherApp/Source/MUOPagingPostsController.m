@@ -63,15 +63,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
    [super viewWillAppear:animated];
-   
+   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
    [super viewDidAppear:animated];
    self.shouldHideStatusBar = YES;
-   [UIView animateWithDuration:0.5 animations:^{
-      [self setNeedsStatusBarAppearanceUpdate];
+   
+   [UIView animateWithDuration:0.3 animations:^{
+      [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
    }];
    
    self.popGestureDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;
@@ -89,7 +90,9 @@
             return;
          }
       }
+      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
       [self.navigationController setNavigationBarHidden:NO animated:YES];
+      [[UIApplication sharedApplication] setStatusBarHidden:NO];
    }
    self.shouldHideStatusBar = NO;
 }

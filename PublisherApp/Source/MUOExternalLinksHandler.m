@@ -12,7 +12,7 @@
 #import "MUOHtmlEditor.h"
 #import "CoreContext.h"
 #import "MUOGalleryViewController.h"
-@import JBWebViewController;
+@import SafariServices;
 
 @interface MUOExternalLinksHandler()
 
@@ -42,8 +42,8 @@
       [galleryVC fillWithImages:images isLocal:YES currentImage:urlString];
       [vc.parentViewController presentViewController:galleryVC animated:YES completion:nil];
    } else {
-      JBWebViewController* controller = [[JBWebViewController alloc] initWithUrl:request.URL];
-      [controller showFromController:vc];
+      SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:request.URL];
+      [vc.parentViewController presentViewController:safari animated:YES completion:nil];
    }
    
    return YES;

@@ -36,7 +36,6 @@ s.dependency 'SDWebImage', '~> 3.8.1'
 s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
 s.dependency 'Realm'
-s.dependency 'JBWebViewController', '~> 1.0.8'
 
 # 8
 s.source_files = "PublisherApp/Source/*"

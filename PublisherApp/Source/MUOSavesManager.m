@@ -42,6 +42,10 @@
    return self;
 }
 
+- (void)setBookmarksCountObserver:(id<BookmarksCountObserver>)bookmarksCountObserver {
+   _bookmarksCountObserver = bookmarksCountObserver;
+   [_bookmarksCountObserver bookmarksCountChanged:[self bookmarksCount]];
+}
 
 #pragma mark - Fetching saves
 -(NSArray *)getBookmarks {

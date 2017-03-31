@@ -27,4 +27,6 @@
 
 + (instancetype) sharedContext;
 
+- (void) shouldOpenLinksInApp:(BOOL) inApp;
+
 @end

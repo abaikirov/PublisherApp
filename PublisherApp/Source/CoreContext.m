@@ -8,6 +8,7 @@
 
 #import "CoreContext.h"
 #import "MUOExternalLinksHandler.h"
+#import "ReaderSettings.h"
 
 @implementation CoreContext
 
@@ -27,6 +28,10 @@
       context.siteURL = @"http://www.makeuseof.com";
    });
    return context;
+}
+
+- (void)shouldOpenLinksInApp:(BOOL)inApp {
+   [ReaderSettings sharedSettings].shouldOpenLinksInApp = inApp;
 }
 
 @end

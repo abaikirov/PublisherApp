@@ -13,5 +13,6 @@
 + (instancetype) sharedSettings;
 
 @property (nonatomic) int preferredFontSize;
+@property (nonatomic) BOOL shouldOpenLinksInApp;
 
 @end

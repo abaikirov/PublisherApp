@@ -11,6 +11,7 @@
 #import "MUOGalleryViewController.h"
 #import "MUOHtmlEditor.h"
 #import "CoreContext.h"
+#import "ReaderSettings.h"
 #import "MUOGalleryViewController.h"
 @import SafariServices;
 
@@ -42,8 +43,12 @@
       [galleryVC fillWithImages:images isLocal:YES currentImage:urlString];
       [vc.parentViewController presentViewController:galleryVC animated:YES completion:nil];
    } else {
-      SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:request.URL];
-      [vc.parentViewController presentViewController:safari animated:YES completion:nil];
+      if ([ReaderSettings sharedSettings].shouldOpenLinksInApp) {
+         SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:request.URL];
+         [vc.parentViewController presentViewController:safari animated:YES completion:nil];
+      } else {
+         [[UIApplication sharedApplication] openURL:request.URL options:@{} completionHandler:nil];
+      }
    }
    
    return YES;

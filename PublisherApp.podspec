@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
 s.name         = "PublisherApp"
-s.version      = "0.1.9"
+s.version      = "0.1.10"
 s.ios.deployment_target = '8.2'
 s.summary      = "Feed for wordpess"
 

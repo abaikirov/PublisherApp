@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "PostTableViewCell.h"
 #import "CategoryPostsViewModel.h"
+#import "CoreContext.h"
 
 @interface CategoryPostsViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -64,6 +65,11 @@
    PostTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[PostTableViewCell cellID]];
    [cell fillWithPost:post];
    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   Post* selectedPost = self.posts[indexPath.row];
+   [[CoreContext sharedContext].navigationRouter showPost:selectedPost fromNavigationController:self.navigationController isOffline:NO];
 }
 
 #pragma mark - Server interaction

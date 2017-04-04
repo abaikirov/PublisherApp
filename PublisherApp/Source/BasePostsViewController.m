@@ -18,6 +18,9 @@
 #import "SmallPostCollectionViewCell.h"
 #import "LargePostCollectionViewCell.h"
 #import "BasePostsViewController.h"
+#import "MUONavigationController.h"
+#import "SearchViewController.h"
+#import "CoreContext.h"
 
 #define screen_width [UIScreen mainScreen].bounds.size.width
 #define screen_height [UIScreen mainScreen].bounds.size.height
@@ -57,6 +60,7 @@
    [self setupCollectionView];
    
    self.loadingInProgress = NO;
+   [self setupTabBar];
 }
 
 - (void) setupCollectionView {
@@ -73,6 +77,19 @@
       [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath]];
       self.selectedIndexPath = nil;
    }
+}
+
+#pragma mark - Tab bar
+- (void) setupTabBar {
+   UIImage* menuImage = [UIImage imageNamed:@"menu" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+   UIBarButtonItem* menuItem = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStylePlain target:self action:@selector(showSearch)];
+   self.navigationItem.leftBarButtonItem = menuItem;
+}
+
+- (void) showSearch {
+   SearchViewController* searchController = [SearchViewController new];
+   MUONavigationController* navCtrl = [[MUONavigationController alloc] initWithRootViewController:searchController];
+   [self presentViewController:navCtrl animated:YES completion:nil];
 }
 
 #pragma mark - Calculations
@@ -179,6 +196,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+   //[[CoreContext sharedContext].navigationRouter showSavesControllerFromNavigationController:self.navigationController];
    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
    
    Post *post = self.posts[indexPath.row];

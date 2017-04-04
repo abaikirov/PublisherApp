@@ -18,6 +18,13 @@
 
 @end
 
+@interface PostCategory : NSObject
+
+@property (nonatomic, strong) NSNumber* id;
+@property (nonatomic, strong) NSString* title;
+
+@end
+
 @interface Post : NSObject
 
 @property (nonatomic) NSNumber *ID;
@@ -27,12 +34,15 @@
 @property (nonatomic) NSDate *postDate;
 @property FeaturedImage *featuredImage;
 @property (nonatomic) NSNumber *likesCount;
+@property (nonatomic, strong) NSArray* categories;
 
 - (NSURL *)imageUrl;
 
 //Presentation
 @property (nonatomic) NSString* relativeDateString;
 @property (nonatomic) NSString* likesString;
+
+- (NSString*) longDate;
 
 //Parsing
 + (DCParserConfiguration *)parserConfiguration;

@@ -16,6 +16,12 @@
 
 @end
 
+
+@implementation PostCategory
+
+
+@end
+
 @interface Post()
 
 @property (nonatomic, strong) NSMutableDictionary* localURLs;
@@ -59,7 +65,9 @@
 
 +(DCParserConfiguration *)parserConfiguration {
    DCParserConfiguration *config = [DCParserConfiguration configuration];
+   DCArrayMapping *mapper = [DCArrayMapping mapperForClassElements:[PostCategory class] forAttribute:@"categories" onClass:[Post class]];
    config.datePattern = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+   [config addArrayMapper:mapper];
    return config;
 }
 
@@ -67,7 +75,11 @@
    return self.featuredImage.featured;
 }
 
-#pragma mark - saved post
+- (NSString*) longDate {
+   return [self.postDate formattedDateWithFormat:@"MMMM dd, YYYY"];
+}
+
+#pragma mark - Saved post
 -(MUOSavedPost *)postToSave:(BOOL)isBookmarked {
    MUOSavedPost* post = [MUOSavedPost new];
    
@@ -78,6 +90,7 @@
    } else {
       post.imageUrl = [self.featuredImage.middle absoluteString];
    }
+   post.primaryCategory = [[self.categories firstObject] title];
    post.postURL = self.url;
    post.content = self.html;
    post.date = self.postDate;

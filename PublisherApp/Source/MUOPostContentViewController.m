@@ -280,7 +280,7 @@
    if (_isOffline) {
       [_webView loadHTMLString:html baseURL:[NSURL URLWithString:nil]];
    } else {
-      [_webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://makeuseof.com"]];
+      [_webView loadHTMLString:html baseURL:[NSURL URLWithString:[CoreContext sharedContext].siteURL]];
    }
 }
 

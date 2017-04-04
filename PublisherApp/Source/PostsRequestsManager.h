@@ -26,5 +26,6 @@
 - (RACSignal *) fetchLatestPosts:(NSInteger)page lastPostID:(NSNumber *) lastPostID;
 - (RACSignal *) likePost:(NSNumber*) postID;
 - (RACSignal *) fetchPostByID:(NSString *)ID;
+- (RACSignal *) fetchPostsByCategoryID:(NSNumber*) categoryID lastPostID:(NSNumber*) lastPostID;
 
 @end

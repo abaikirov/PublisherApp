@@ -40,6 +40,14 @@
    return [self fetchPostsWithParameters:params];
 }
 
+- (RACSignal *)fetchPostsByCategoryID:(NSNumber *)categoryID lastPostID:(NSNumber *)lastPostID {
+   NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:@{@"cats" : categoryID}];
+   if (lastPostID) {
+      [params setObject:lastPostID forKey:@"last_item_id"];
+   }
+   return [self fetchPostsWithParameters:params];
+}
+
 - (RACSignal *) fetchPostsWithParameters:(NSDictionary *) parameters {
    @weakify(self);
    RACSignal* signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

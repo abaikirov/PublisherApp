@@ -327,9 +327,9 @@
         <scene sceneID="Apf-tm-Arm">
             <objects>
                 <navigationController storyboardIdentifier="TopicsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="LyP-wb-77c" customClass="MUONavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="E6072C81-15B6-431D-9168-507D607F1307" id="tCZ-0J-SuX">
+                    <tabBarItem key="tabBarItem" title="Home" image="D5F5019B-D5E9-45D5-B6CE-CAE64F920B6C" id="tCZ-0J-SuX">
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="071188CE-8C32-4069-ABD4-E19AF83F389F"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="BDE525A0-C823-4164-BA20-727DD240AD18"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
@@ -389,9 +389,42 @@
             </objects>
             <point key="canvasLocation" x="2119" y="2120"/>
         </scene>
+        <!--Category Posts View Controller-->
+        <scene sceneID="ARu-AE-665">
+            <objects>
+                <viewController storyboardIdentifier="CategoryPostsVC" id="07C-cd-8EU" customClass="CategoryPostsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WuE-fn-n6j"/>
+                        <viewControllerLayoutGuide type="bottom" id="yQB-Sa-fky"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rG1-mX-5aP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adf-8A-SeV">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="adf-8A-SeV" secondAttribute="trailing" id="0Q5-Mo-Gp6"/>
+                            <constraint firstItem="adf-8A-SeV" firstAttribute="top" secondItem="rG1-mX-5aP" secondAttribute="top" id="3YL-Q4-l6A"/>
+                            <constraint firstItem="adf-8A-SeV" firstAttribute="leading" secondItem="rG1-mX-5aP" secondAttribute="leading" id="kcc-Z3-HiN"/>
+                            <constraint firstItem="yQB-Sa-fky" firstAttribute="top" secondItem="adf-8A-SeV" secondAttribute="bottom" id="m4B-RI-Jht"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="j9S-ga-5vw"/>
+                    <connections>
+                        <outlet property="tableView" destination="adf-8A-SeV" id="21j-1t-u3f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7h-7Q-6nN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2857" y="2120"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="071188CE-8C32-4069-ABD4-E19AF83F389F" width="24" height="24">
+        <image name="BDE525A0-C823-4164-BA20-727DD240AD18" width="24" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -481,7 +514,7 @@ EvIS+hMHEwwTDhMQExUTHRMgEyUTLRMwE0ITRRNKAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAA
 E0w
 </mutableData>
         </image>
-        <image name="E6072C81-15B6-431D-9168-507D607F1307" width="24" height="24">
+        <image name="D5F5019B-D5E9-45D5-B6CE-CAE64F920B6C" width="24" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

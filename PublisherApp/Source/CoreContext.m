@@ -26,6 +26,7 @@
       context.navigationRouter = [NavigationRouter new];
       context.savesTitle = @"Saves";
       context.siteURL = @"http://www.makeuseof.com";
+      context.cdnPath = @"cdn.makeuseof.com";
    });
    return context;
 }

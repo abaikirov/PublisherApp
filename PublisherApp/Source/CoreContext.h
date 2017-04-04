@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NavigationRouter* navigationRouter;
 
 @property (nonatomic, strong) NSString* siteURL;
-
+@property (nonatomic, strong) NSString* cdnPath;
 @property (nonatomic, strong) NSString* savesTitle;
 
 + (instancetype) sharedContext;

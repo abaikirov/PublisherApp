@@ -32,7 +32,7 @@
       MUOPostContentViewController* postVC = [vc.storyboard instantiateViewControllerWithIdentifier:@"PostContentController"];
       postVC.postSlug = urlString;
       [[CoreContext sharedContext].navigationRouter showPagingControllerWithVC:postVC fromNavigationController:vc.navigationController];
-   } else if ([urlString hasPrefix:@"http://cdn.makeuseof.com"]) {
+   } else if ([urlString hasPrefix:[CoreContext sharedContext].cdnPath]) {
       MUOGalleryViewController* galleryVC = [vc.storyboard instantiateViewControllerWithIdentifier:@"GalleryVC"];
       NSArray* images = [self.htmlEditor getImagesFromHTML:post.html];
       [galleryVC fillWithImages:images isLocal:NO currentImage:urlString];

@@ -20,6 +20,12 @@
 
 @implementation BookmarksRequestManager
 
+- (PostsSessionManager *)sessionManager {
+   _sessionManager = [PostsSessionManager sharedManager];
+   [_sessionManager updateHeaders];
+   return _sessionManager;
+}
+
 #pragma mark - Bookmarks
 - (RACSignal *)bookmarkPostsWithIDs:(NSArray *)postsID {
    @weakify(self);

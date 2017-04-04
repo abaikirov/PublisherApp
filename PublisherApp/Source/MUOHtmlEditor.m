@@ -7,6 +7,7 @@
 //
 
 @import RegExCategories;
+#import "CoreContext.h"
 #import "MUOHtmlEditor.h"
 #import "NSString+MUO.h"
 
@@ -88,7 +89,7 @@ NSString* bracesPattern = @"\"(.*?)\"";
    //Get links from matches
    NSMutableArray* imageLinks = [NSMutableArray new];
    for (NSString* match in matches) {
-      if (![match containsString:@"cdn.makeuseof.com"] && ![match containsString:@"file:///"]) {
+      if (![match containsString:[CoreContext sharedContext].cdnPath] && ![match containsString:@"file:///"]) {
          continue;
       }
       NSString* imgSrc = [match substringFromIndex:5];

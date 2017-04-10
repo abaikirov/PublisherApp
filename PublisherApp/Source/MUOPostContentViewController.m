@@ -162,6 +162,7 @@
       self.htmlEditor = [MUOHtmlEditor editor];
       self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
       self.finishedLoading = NO;
+      [[AFNetworkReachabilityManager sharedManager] startMonitoring];
    }
    return self;
 }

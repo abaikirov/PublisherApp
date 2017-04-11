@@ -9,6 +9,7 @@
 #import "CoreContext.h"
 #import "MUOExternalLinksHandler.h"
 #import "ReaderSettings.h"
+@import AFNetworking;
 
 @implementation CoreContext
 
@@ -33,6 +34,10 @@
 
 - (void)shouldOpenLinksInApp:(BOOL)inApp {
    [ReaderSettings sharedSettings].shouldOpenLinksInApp = inApp;
+}
+
+- (void)appDidFinishLaunching {
+   [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 @end

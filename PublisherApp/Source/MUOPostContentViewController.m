@@ -162,7 +162,6 @@
       self.htmlEditor = [MUOHtmlEditor editor];
       self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
       self.finishedLoading = NO;
-      [[AFNetworkReachabilityManager sharedManager] startMonitoring];
    }
    return self;
 }
@@ -248,22 +247,11 @@
    self.viewModel = [MUOPostContentViewModel new];
    if (self.postID) self.viewModel.postId = self.postID;
    if (self.postSlug) self.viewModel.postSlug = self.postSlug;
-   
-   
+
    if (CONNECTION_AVAILABLE) { //If there is internet connection, display post if available, else fetch post
-      _isOffline = NO;
-      if (self.post) {
-         [self displayHTML:_post.html];
-      } else {
-         [[self.viewModel loadPost] subscribeError:^(NSError *error) {
-            [self.navigationController.view makeToast:@"Failed to load post" duration:1.0 position:CSToastPositionBottom];
-         }];
-      }
+      [self showPost];
    } else {                                                       //If there is no internet connection, try to display offline post
-      _isOffline = YES;
-      NSString* html = self.post.html;
-      [self displayHTML:html];
-      [self.viewModel loadSavedPost];
+      [self showOfflinePost];
    }
    
    @weakify(self);
@@ -275,6 +263,24 @@
       }
       [self displayHTML:post.html];
    }];
+}
+
+- (void) showPost {
+   _isOffline = NO;
+   if (self.post) {
+      [self displayHTML:_post.html];
+   } else {
+      [[self.viewModel loadPost] subscribeError:^(NSError *error) {
+         [self.navigationController.view makeToast:@"Failed to load post" duration:1.0 position:CSToastPositionBottom];
+      }];
+   }
+}
+
+- (void) showOfflinePost {
+   _isOffline = YES;
+   NSString* html = self.post.html;
+   [self displayHTML:html];
+   [self.viewModel loadSavedPost];
 }
 
 - (void) displayHTML:(NSString *) html {

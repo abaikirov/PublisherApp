@@ -9,6 +9,7 @@
 #import "MUOPostContentViewController.h"
 #import "MUOPagingPostsController.h"
 #import "ReaderSettings.h"
+#import "CoreContext.h"
 
 @interface MUOPagingPostsController ()<UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
@@ -22,6 +23,7 @@
 @property BOOL shouldHideStatusBar;
 
 @property (weak, nonatomic) id<UIGestureRecognizerDelegate> popGestureDelegate;
+   @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookmarkButtonWidth;
 
 @end
 
@@ -63,6 +65,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
    [super viewWillAppear:animated];
+   if (![CoreContext sharedContext].bookmarksEnabled) {
+      self.bookmarkButtonWidth.constant = 0;
+   }
    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }

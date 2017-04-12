@@ -204,6 +204,9 @@
 - (void)viewWillAppear:(BOOL)animated  {
    [super viewWillAppear:YES];
    [self applyFont];
+   if (![CoreContext sharedContext].bottomBarEnabled) {
+      [(PostContentBottomView*)self.pagingController.bottomView removeFromSuperview];
+   }
    [self setNeedsStatusBarAppearanceUpdate];
 }
 

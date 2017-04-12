@@ -28,6 +28,8 @@
       context.savesTitle = @"Saves";
       context.siteURL = @"http://www.makeuseof.com";
       context.cdnPath = @"http://cdn.makeuseof.com";
+      context.bottomBarEnabled = YES;
+      context.bookmarksEnabled = YES;
    });
    return context;
 }

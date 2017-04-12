@@ -24,6 +24,9 @@
 @property (nonatomic, strong) NSString* siteURL;
 @property (nonatomic, strong) NSString* cdnPath;
 @property (nonatomic, strong) NSString* savesTitle;
+   
+@property (nonatomic) BOOL bottomBarEnabled;
+@property (nonatomic) BOOL bookmarksEnabled;
 
 + (instancetype) sharedContext;
 

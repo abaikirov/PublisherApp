@@ -291,6 +291,11 @@
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
    NSInteger selfIndex = [self.navigationController.viewControllers indexOfObject:self.pagingController];
+   if (selfIndex <= 1) {
+      [self.navigationController setNavigationBarHidden:NO animated:YES];
+      [[UIApplication sharedApplication] setStatusBarHidden:NO];
+      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+   }
    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:selfIndex - 1] animated:YES];
 }
 

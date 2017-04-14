@@ -86,10 +86,16 @@
       [self.sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
          
       } success:^(NSURLSessionDataTask *task, id responseObject){
-         DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:[self.class postClass] andConfiguration:[self.class parserConfiguration]];
-         Post *post = [parser parseDictionary:responseObject];
-         
-         [subscriber sendNext:post];
+         //Check if content exists
+         NSHTTPURLResponse* response = (NSHTTPURLResponse*)task.response;
+         if (response.statusCode == 204) {
+            [subscriber sendError:nil];
+         } else {
+            DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:[self.class postClass] andConfiguration:[self.class parserConfiguration]];
+            Post *post = [parser parseDictionary:responseObject];
+            
+            [subscriber sendNext:post];
+         }
          [subscriber sendCompleted];
       } failure:^(NSURLSessionDataTask *task, NSError *error) {
          [subscriber sendError:error];

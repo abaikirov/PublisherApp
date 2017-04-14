@@ -16,6 +16,7 @@
 #import "ReaderSettings.h"
 #import "CoreContext.h"
 #import "Post.h"
+@import SafariServices;
 
 #import "UIView+Toast.h"
 
@@ -134,7 +135,7 @@
 
 #pragma mark -
 #pragma mark - View controller
-@interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate>
+@interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate, SFSafariViewControllerDelegate>
 
 @property(nonatomic) MUOPostContentViewModel *viewModel;
 
@@ -273,10 +274,24 @@
    if (self.post) {
       [self displayHTML:_post.html];
    } else {
-      [[self.viewModel loadPost] subscribeError:^(NSError *error) {
-         [self.navigationController.view makeToast:@"Failed to load post" duration:1.0 position:CSToastPositionBottom];
+      @weakify(self);
+      [[[self.viewModel loadPost] deliverOnMainThread] subscribeError:^(NSError *error) {
+         @strongify(self);
+         [self performSelector:@selector(showSafariVC) withObject:nil afterDelay:0.5];
+         //;
       }];
    }
+}
+
+- (void) showSafariVC {
+   SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.postSlug]];
+   safari.delegate = self;
+   [self.parentViewController presentViewController:safari animated:YES completion:nil];
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+   NSInteger selfIndex = [self.navigationController.viewControllers indexOfObject:self.pagingController];
+   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:selfIndex - 1] animated:YES];
 }
 
 - (void) showOfflinePost {

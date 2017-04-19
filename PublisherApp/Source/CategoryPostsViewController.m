@@ -37,6 +37,7 @@
    self.viewModel = [CategoryPostsViewModel new];
    [self setupTableView];
    [self update];
+   
    self.navigationItem.title = self.filteredCategory.title;
 }
 

@@ -96,8 +96,8 @@
          }
       }
       [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-      [self.navigationController setNavigationBarHidden:NO animated:YES];
       [[UIApplication sharedApplication] setStatusBarHidden:NO];
+      [self.navigationController setNavigationBarHidden:NO animated:YES];
    }
    self.shouldHideStatusBar = NO;
 }

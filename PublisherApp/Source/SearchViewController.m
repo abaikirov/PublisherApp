@@ -11,8 +11,12 @@
 #import "CategoriesRequestsManager.h"
 #import "Post.h"
 #import "CategoryPostsViewController.h"
+
 @import ReactiveCocoa;
 @import UIColor_HexString;
+
+#define screen_width [UIScreen mainScreen].bounds.size.width
+#define screen_height [UIScreen mainScreen].bounds.size.height
 
 @interface SearchViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -47,7 +51,7 @@
 }
 
 - (void) initTableView {
-   self.tableView = [[UITableView alloc] initWithFrame:self.view.frame];
+   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height)];
    [self.view addSubview:self.tableView];
    
    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CategoryCell"];
@@ -58,7 +62,14 @@
 }
 
 - (void) cancelButtonPressed {
-   [self dismissViewControllerAnimated:YES completion:nil];
+   UIView* selfCopy = [self.navigationController.view snapshotViewAfterScreenUpdates:NO];
+   [[UIApplication sharedApplication].keyWindow addSubview:selfCopy];
+   [self dismissViewControllerAnimated:NO completion:nil];
+   [UIView animateWithDuration:0.3 animations:^{
+      selfCopy.frame = CGRectMake(-screen_width, 0, screen_width, screen_height);
+   } completion:^(BOOL finished) {
+      [selfCopy removeFromSuperview];
+   }];
 }
 
 #pragma mark - Table view
@@ -124,6 +135,10 @@
    } error:^(NSError *error) {
       
    }];
+}
+
+- (void)dealloc {
+   
 }
 
 @end

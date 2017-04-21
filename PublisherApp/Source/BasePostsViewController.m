@@ -25,6 +25,7 @@
 #define screen_width [UIScreen mainScreen].bounds.size.width
 #define screen_height [UIScreen mainScreen].bounds.size.height
 
+
 @interface BasePostsViewController ()
 
 @end
@@ -88,8 +89,16 @@
 - (void) showSearch {
    SearchViewController* searchController = [SearchViewController new];
    MUONavigationController* navCtrl = [[MUONavigationController alloc] initWithRootViewController:searchController];
-   [self presentViewController:navCtrl animated:YES completion:nil];
+   
+   navCtrl.view.frame = CGRectMake(-screen_width, 0, screen_width, screen_height);
+   [[UIApplication sharedApplication].keyWindow addSubview:navCtrl.view];
+   [UIView animateWithDuration:0.3 animations:^{
+      navCtrl.view.frame = CGRectMake(0, 0, screen_width, screen_height);
+   } completion:^(BOOL finished) {
+      [self presentViewController:navCtrl animated:NO completion:nil];
+   }];
 }
+
 
 #pragma mark - Calculations
 - (void) calculateInitialCellCache {

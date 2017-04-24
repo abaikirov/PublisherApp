@@ -65,7 +65,7 @@
    UIView* selfCopy = [self.navigationController.view snapshotViewAfterScreenUpdates:NO];
    [[UIApplication sharedApplication].keyWindow addSubview:selfCopy];
    [self dismissViewControllerAnimated:NO completion:nil];
-   [UIView animateWithDuration:0.3 animations:^{
+   [UIView animateWithDuration:0.23 animations:^{
       selfCopy.frame = CGRectMake(-screen_width, 0, screen_width, screen_height);
    } completion:^(BOOL finished) {
       [selfCopy removeFromSuperview];

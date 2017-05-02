@@ -82,7 +82,7 @@
       }*/
       
       NSString* postEncodedURL = [ID stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-      NSString* url = [NSString stringWithFormat:@"posts/?url=%@", postEncodedURL];
+      NSString* url = [NSString stringWithFormat:@"posts/?url=%@/", postEncodedURL];
       [self.sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
          
       } success:^(NSURLSessionDataTask *task, id responseObject){

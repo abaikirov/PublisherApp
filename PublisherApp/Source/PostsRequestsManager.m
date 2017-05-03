@@ -77,12 +77,11 @@
    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
       @strongify(self);
       NSDictionary* parameters = nil;
-      /*if ([MUOUserSession sharedSession].remoteCSS) {
-         parameters = @{@"without_css" : @"true"};
-      }*/
-      
       NSString* postEncodedURL = [ID stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-      NSString* url = [NSString stringWithFormat:@"posts/?url=%@/", postEncodedURL];
+      NSMutableString* url = [NSMutableString stringWithFormat:@"posts/?url=%@", postEncodedURL];
+      if (![ID hasSuffix:@"/"]) {
+         [url appendString:@"%2F"];
+      }
       [self.sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
          
       } success:^(NSURLSessionDataTask *task, id responseObject){

@@ -11,6 +11,7 @@
 @import DCKeyValueObjectMapping;
 @import SDWebImage;
 #import "MUOSavedPost.h"
+#import "ArticleBlock.h"
 
 @implementation FeaturedImage
 
@@ -65,8 +66,10 @@
 
 +(DCParserConfiguration *)parserConfiguration {
    DCParserConfiguration *config = [DCParserConfiguration configuration];
+   DCArrayMapping* blocksMapper = [DCArrayMapping mapperForClassElements:[ArticleBlock class] forAttribute:@"blocks" onClass:[Post class]];
    DCArrayMapping *mapper = [DCArrayMapping mapperForClassElements:[PostCategory class] forAttribute:@"categories" onClass:[Post class]];
    config.datePattern = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+   [config addArrayMapper:blocksMapper];
    [config addArrayMapper:mapper];
    return config;
 }

@@ -10,6 +10,7 @@
 #import "MUOPagingPostsController.h"
 #import "ReaderSettings.h"
 #import "CoreContext.h"
+#import "BlocksContentController.h"
 
 @interface MUOPagingPostsController ()<UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
@@ -102,19 +103,21 @@
    self.shouldHideStatusBar = NO;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+   shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
    return YES;
 }
 
-- (void)setViewControllerToDisplay:(MUOPostContentViewController *)viewControllerToDisplay {
+- (void)setViewControllerToDisplay:(UIViewController<PagingControllerPresentable> *)viewControllerToDisplay {
    _viewControllerToDisplay = viewControllerToDisplay;
    viewControllerToDisplay.parentNavigationItem = self.navigationItem;
    viewControllerToDisplay.pagingController = self;
 }
 
 #pragma mark - Paging controller data source
--(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-   NSUInteger index = ((MUOPostContentViewController*) viewController).pageIndex;
+-(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+     viewControllerBeforeViewController:(UIViewController<PagingControllerPresentable> *)viewController {
+   NSUInteger index = viewController.pageIndex;
    if (index == 0 || index == NSNotFound) {
       return nil;
    }
@@ -122,8 +125,9 @@
    return [self viewControllerAtIndex:index];
 }
 
--(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-   NSUInteger index = ((MUOPostContentViewController*) viewController).pageIndex;
+-(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerAfterViewController:(UIViewController<PagingControllerPresentable> *)viewController {
+   NSUInteger index = viewController.pageIndex;
    if (index == self.posts.count - 1 || index == NSNotFound) {
       return nil;
    }
@@ -132,7 +136,17 @@
    return [self viewControllerAtIndex:index];
 }
 
+#pragma mark - Webview posts data source
 - (UIViewController *) viewControllerAtIndex:(NSInteger) index {
+   if (self.displayBlocks) {
+      return [self blocksContentControllerAtIndex:index];
+   } else {
+      return [self postContentControllerAtIndex:index];
+   }
+}
+
+#pragma mark - Web view controller
+- (UIViewController *) postContentControllerAtIndex:(NSInteger) index {
    MUOPostContentViewController* postVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PostContentController"];
    postVC.pageIndex = index;
    postVC.isOffline = NO;
@@ -141,6 +155,14 @@
    postVC.pagingController = self;
    return postVC;
 }
+
+- (UIViewController*) blocksContentControllerAtIndex:(NSInteger) index {
+   BlocksContentController* blocksVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BlocksVC"];
+   blocksVC.pageIndex = index;
+   blocksVC.post = self.posts[index];
+   return blocksVC;
+}
+
 
 #pragma mark - Top view
 - (IBAction)backButtonPressed:(id)sender {

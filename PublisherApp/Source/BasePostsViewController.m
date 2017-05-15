@@ -210,6 +210,7 @@
    Post *post = self.posts[indexPath.row];
 
    MUOPagingPostsController* postVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PagingController"];
+   postVC.displayBlocks = YES;
    postVC.posts = self.posts;
    postVC.postToDisplay = post;
    

@@ -8,6 +8,8 @@
 
 #import "Post.h"
 
+@class MUOPagingPostsController;
+
 @protocol TopBarDelegate <NSObject>
 
 - (void) fontSizeButtonPressed;
@@ -16,15 +18,30 @@
 
 @end
 
-@class MUOPostContentViewController;
+
+@protocol PagingControllerPresentable <NSObject>
+
+@property (nonatomic, weak) UINavigationItem* parentNavigationItem;
+@property (nonatomic, weak) MUOPagingPostsController* pagingController;
+@property (nonatomic) NSInteger pageIndex;
+
+@end
+
+
 @interface MUOPagingPostsController : UIViewController
 
 @property (weak, nonatomic) UIPageViewController *pageViewController;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-@property (nonatomic, strong) MUOPostContentViewController* viewControllerToDisplay;
+@property (nonatomic) BOOL displayBlocks;
+
+//Used to present single view controller using top and bottom bookmark controls
+@property (nonatomic, strong) UIViewController<PagingControllerPresentable>* viewControllerToDisplay;
+
+//Used to display view controllers in a row
 @property (nonatomic, strong) Post* postToDisplay;
 @property (nonatomic, strong) NSArray* posts;
+
 @property (nonatomic) int currentFontSize;
 @property (nonatomic, weak) id<TopBarDelegate> topBarDelegate;
 

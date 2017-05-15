@@ -9,23 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "MUOPagingPostsController.h"
 
-@class ost;
+@class Post;
 @class PostContentBottomView;
 @class MUOSavedPost;
-@interface MUOPostContentViewController : UIViewController <UIWebViewDelegate>
+
+
+@interface MUOPostContentViewController : UIViewController <UIWebViewDelegate, PagingControllerPresentable>
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
+@property (nonatomic, strong) Post* post;
 @property (strong, nonatomic) NSNumber *postID;
 @property (strong, nonatomic) NSString* postSlug;
-
-@property (nonatomic, strong) Post* post;
-
 @property (nonatomic) BOOL isOffline;
-
-@property (nonatomic, weak) UINavigationItem* parentNavigationItem;
-
-@property (nonatomic) NSInteger pageIndex;
-
-@property (nonatomic, weak) MUOPagingPostsController* pagingController;
 
 @end

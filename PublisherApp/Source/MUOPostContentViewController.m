@@ -147,9 +147,14 @@
 @property (nonatomic) BOOL finishedLoading;
 @property (nonatomic) PostScrollListener* scrollListener;
 
+
 @end
 
 @implementation MUOPostContentViewController
+//PagingControllerRepresentable
+@synthesize parentNavigationItem;
+@synthesize pagingController;
+@synthesize pageIndex;
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
    return UIStatusBarStyleLightContent;

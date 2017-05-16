@@ -26,3 +26,16 @@
 }
 
 @end
+
+#pragma mark - Article text cell
+@implementation ArticleTextCell
+
++(NSString *)reuseIdentifier {
+   return NSStringFromClass(self);
+}
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   self.textBlockLabel.text = block.content;
+}
+
+@end

@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock];
+   return @[kTextBlock, kImageBlock];
 }
 
 #pragma mark - Initialization
@@ -63,7 +63,10 @@
 - (Class)cellClassForBlock:(ArticleBlock *)block {
    Class cellClass = [UITableViewCell class];
    if ([block.type isEqualToString:kTextBlock]) {
-      cellClass = [ArticleTextCell class];
+      cellClass = [TextBlockCell class];
+   }
+   if ([block.type isEqualToString:kImageBlock]) {
+      cellClass = [ImageBlockCell class];
    }
    return cellClass;
 }

@@ -517,7 +517,7 @@
                                             <outlet property="postTitle" destination="BT1-ev-X4C" id="8he-Ax-yNX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTextCell" rowHeight="40" id="Fls-j5-iH1" customClass="ArticleTextCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextBlockCell" rowHeight="40" id="Fls-j5-iH1" customClass="TextBlockCell">
                                         <rect key="frame" x="0.0" y="399" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fls-j5-iH1" id="KJF-9x-tt7">
@@ -540,6 +540,28 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="textBlockLabel" destination="74v-Lx-XZB" id="7P2-Lk-ynb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageBlockCell" rowHeight="87" id="nGk-62-o8m" customClass="ImageBlockCell">
+                                        <rect key="frame" x="0.0" y="439" width="375" height="87"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGk-62-o8m" id="du6-5p-rPN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-yV-2rc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ocN-yV-2rc" firstAttribute="top" secondItem="du6-5p-rPN" secondAttribute="top" id="85g-8F-jFP"/>
+                                                <constraint firstAttribute="trailing" secondItem="ocN-yV-2rc" secondAttribute="trailing" id="JOc-oq-qao"/>
+                                                <constraint firstItem="ocN-yV-2rc" firstAttribute="leading" secondItem="du6-5p-rPN" secondAttribute="leading" id="RBb-CD-34z"/>
+                                                <constraint firstAttribute="bottom" secondItem="ocN-yV-2rc" secondAttribute="bottom" id="xBU-Nv-1Pu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentImage" destination="ocN-yV-2rc" id="290-ra-rda"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

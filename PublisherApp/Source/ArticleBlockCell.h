@@ -26,7 +26,10 @@
 - (void) fillWithPost:(Post*) post;
 @end
 
-@interface ArticleTextCell : UITableViewCell<ArticleBlockCell>
+@interface TextBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UILabel *textBlockLabel;
 @end
 
+@interface ImageBlockCell : UITableViewCell<ArticleBlockCell>
+@property (weak, nonatomic) IBOutlet UIImageView *contentImage;
+@end

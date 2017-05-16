@@ -27,8 +27,8 @@
 
 @end
 
-#pragma mark - Article text cell
-@implementation ArticleTextCell
+#pragma mark - Text cell
+@implementation TextBlockCell
 
 +(NSString *)reuseIdentifier {
    return NSStringFromClass(self);
@@ -36,6 +36,18 @@
 
 - (void)fillWithBlock:(ArticleBlock *)block {
    self.textBlockLabel.text = block.content;
+}
+@end
+
+#pragma mark - Image cell
+@implementation ImageBlockCell
++(NSString *)reuseIdentifier {
+   return NSStringFromClass(self);
+}
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   NSString* imageURL = block.properties[@"url"];
+   [self.contentImage sd_setImageWithURL:[NSURL URLWithString:imageURL]];
 }
 
 @end

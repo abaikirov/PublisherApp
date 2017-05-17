@@ -42,6 +42,6 @@ s.dependency 'TTTAttributedLabel'
 s.source_files = "PublisherApp/Source/*"
 
 # 9
-s.resources = "PublisherApp/Assets/*.{png,jpeg,jpg,storyboard,xib, ttf}"
+s.resources = "PublisherApp/Assets/*.{png,jpeg,jpg,storyboard,xib,ttf}"
 
 end

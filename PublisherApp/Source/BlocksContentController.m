@@ -29,6 +29,7 @@
    self.blocksTableView.delegate = self;
    self.blocksTableView.estimatedRowHeight = 200.0;
    self.blocksTableView.rowHeight = UITableViewAutomaticDimension;
+   self.blocksTableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
    [self setupDataProvider];
 }
 

@@ -33,7 +33,7 @@
       NSLog(@"family:'%@'",fontfamilyname);
       for(NSString *fontName in [UIFont fontNamesForFamilyName:fontfamilyname])
       {
-         if ([fontName containsString:@"Source Sans"]) {
+         if ([fontName containsString:@"sans"]) {
             
          }
       }

@@ -42,7 +42,6 @@
 
 - (void)fillWithBlock:(ArticleBlock *)block {
    self.textContentLabel.text = [block prerenderedText];
-   //self.textBlockLabel.text = block.content;
 }
 @end
 

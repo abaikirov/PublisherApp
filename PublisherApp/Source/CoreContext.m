@@ -9,7 +9,9 @@
 #import "CoreContext.h"
 #import "MUOExternalLinksHandler.h"
 #import "ReaderSettings.h"
+#import "UIFont+Additions.h"
 @import AFNetworking;
+
 
 @implementation CoreContext
 
@@ -40,6 +42,11 @@
 
 - (void)appDidFinishLaunching {
    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+   
+   [UIFont registerNewFont:@"SourceSansProRegular"];
+   [UIFont registerNewFont:@"SourceSansProBold"];
+   [UIFont registerNewFont:@"SourceSansPro-Italic"];
+   [UIFont registerNewFont:@"SourceSansPro-BoldItalic"];
 }
 
 @end

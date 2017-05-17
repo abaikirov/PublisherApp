@@ -7,6 +7,8 @@
 //
 
 #import "ArticleBlock.h"
+@import UIColor_HexString;
+@import ReactiveCocoa;
 
 @interface ArticleBlock()
 
@@ -27,44 +29,41 @@
    return 0;
 }
 
+#pragma mark - Text rendering for displaying html
 - (NSAttributedString *)prerenderedText {
-   for(NSString *fontfamilyname in [UIFont familyNames])
-   {
-      NSLog(@"family:'%@'",fontfamilyname);
-      for(NSString *fontName in [UIFont fontNamesForFamilyName:fontfamilyname])
-      {
-         if ([fontName containsString:@"sans"]) {
-            
-         }
-      }
-   }
    if (!self.renderedText) {
-      NSMutableAttributedString *attrib = [[NSMutableAttributedString alloc]initWithData:[self.content dataUsingEncoding:NSUTF8StringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
-      [attrib beginEditing];
-      [attrib enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, attrib.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+      NSMutableAttributedString *htmlString = [[NSMutableAttributedString alloc]initWithData:[self.content dataUsingEncoding:NSUTF8StringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+      NSRange allStringRange = NSMakeRange(0, htmlString.length);
+      [htmlString beginEditing];
+      [htmlString enumerateAttribute:NSFontAttributeName inRange:allStringRange options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
          if (value) {
             UIFont *oldFont = (UIFont *)value;
-            NSLog(@"%@",oldFont.fontName);
-            UIFont* newFont = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+            UIFont* regularFont = [UIFont fontWithName:@"SourceSansPro-Regular" size:19];
+            UIFont* boldFont = [UIFont fontWithName:@"SourceSansPro-Bold" size:19];
             
-            [attrib removeAttribute:NSFontAttributeName range:range];
+            [htmlString removeAttribute:NSFontAttributeName range:range];
             //replace your font with new
-            if ([oldFont.fontName isEqualToString:@"TimesNewRomanPSMT"])
-               [attrib addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:range];
-            else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldMT"])
-               [attrib addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:range];
-            else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-ItalicMT"])
-               [attrib addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:16] range:range];
-            else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldItalicMT"]) {
-               UIFont *boldItalicFont = [UIFont fontWithDescriptor:[[[UIFont systemFontOfSize:16] fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold | UIFontDescriptorTraitItalic] size:16];
-               [attrib addAttribute:NSFontAttributeName value:boldItalicFont range:range];
+            if ([oldFont.fontName isEqualToString:@"TimesNewRomanPSMT"]) {
+               [htmlString addAttribute:NSFontAttributeName value:regularFont range:range];
+            } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldMT"]) {
+               [htmlString addAttribute:NSFontAttributeName value:boldFont range:range];
+            } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-ItalicMT"]) {
+               UIFont* italic = [UIFont fontWithName:@"SourceSansPro-It" size:19];
+               [htmlString addAttribute:NSFontAttributeName value:italic range:range];
+            } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldItalicMT"]) {
+               UIFont* boldItalic = [UIFont fontWithName:@"SourceSansPro-BoldIt" size:19];
+               [htmlString addAttribute:NSFontAttributeName value:boldItalic range:range];
+            } else {
+               [htmlString addAttribute:NSFontAttributeName value:regularFont range:range];
             }
-            else
-               [attrib addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:range];
          }
       }];
-      [attrib endEditing];
-      self.renderedText = attrib;
+      [htmlString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"212121"] range:allStringRange];
+      NSMutableParagraphStyle* paragraphStyle = [NSMutableParagraphStyle new];
+      [paragraphStyle setLineSpacing:3];
+      [htmlString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:allStringRange];
+      [htmlString endEditing];
+      self.renderedText = htmlString;
    }
    return self.renderedText;
 }

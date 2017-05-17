@@ -30,6 +30,7 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - TTTAttributedLabel (2.0.0)
   - UIColor-HexString (1.1.0)
 
 DEPENDENCIES:
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - Realm
   - RegExCategories (~> 1.0)
   - SDWebImage (~> 3.8.1)
+  - TTTAttributedLabel
   - UIColor-HexString (~> 1.1.0)
 
 SPEC CHECKSUMS:
@@ -50,8 +52,9 @@ SPEC CHECKSUMS:
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UIColor-HexString: f8a5612bd6772fed8db58ee594b42a0b2831750e
 
-PODFILE CHECKSUM: c38d3474105d3c8cc9a6613c191bd726fdfa9eaa
+PODFILE CHECKSUM: faa211b3bd1dedcbd12d353d082bca5bcef79ba8
 
 COCOAPODS: 1.1.1

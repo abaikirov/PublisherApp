@@ -10,6 +10,7 @@
 #import "Post.h"
 @import SDWebImage;
 @import DateTools;
+@import UIColor_HexString;
 
 #pragma mark - Article header cell
 @implementation ArticleHeaderCell
@@ -34,8 +35,14 @@
    return NSStringFromClass(self);
 }
 
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   self.textContentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
+}
+
 - (void)fillWithBlock:(ArticleBlock *)block {
-   self.textBlockLabel.text = block.content;
+   self.textContentLabel.text = [block prerenderedText];
+   //self.textBlockLabel.text = block.content;
 }
 @end
 

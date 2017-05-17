@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8BBA240FD17A5F85F855A2C343DBF1CE'
-               BlueprintName = 'UIColor-HexString'
+               BlueprintIdentifier = '9E5577A467E59F707643D7CAB7CC52D2'
+               BlueprintName = 'TTTAttributedLabel'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'UIColor-HexString.framework'>
+               BuildableName = 'TTTAttributedLabel.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

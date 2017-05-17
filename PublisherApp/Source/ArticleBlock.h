@@ -11,12 +11,18 @@
 static NSString* kTextBlock = @"text";
 static NSString* kImageBlock = @"image";
 
-@interface ArticleBlock : NSObject
+@protocol ArticleBlockExtensions <NSObject>
+@optional
+- (CGFloat) blockHeight; //Used for images
+- (NSAttributedString*) prerenderedText;
+@end
+
+
+@interface ArticleBlock : NSObject<ArticleBlockExtensions>
 
 @property (nonatomic, strong) NSString* type;
 @property (nonatomic, strong) NSDictionary* properties;
 @property (nonatomic, strong) NSString* content;
 
-- (CGFloat) blockHeight;  //Used for images
 
 @end

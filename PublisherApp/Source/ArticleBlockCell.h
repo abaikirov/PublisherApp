@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ArticleBlock.h"
+@import TTTAttributedLabel;
 
 
 @class Post;
@@ -27,7 +28,8 @@
 @end
 
 @interface TextBlockCell : UITableViewCell<ArticleBlockCell>
-@property (weak, nonatomic) IBOutlet UILabel *textBlockLabel;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *textContentLabel;
+
 @end
 
 @interface ImageBlockCell : UITableViewCell<ArticleBlockCell>

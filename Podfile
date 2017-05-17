@@ -10,6 +10,7 @@ pod 'SDWebImage', '~> 3.8.1'
 pod 'UIColor-HexString', '~> 1.1.0'
 pod 'RegExCategories', '~> 1.0'
 pod 'Realm'
+pod 'TTTAttributedLabel'
 end
 
 target 'PublisherApp' do

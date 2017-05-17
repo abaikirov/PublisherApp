@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
 s.name         = "PublisherApp"
-s.version      = "0.1.16"
+s.version      = "0.1.17"
 s.ios.deployment_target = '8.2'
 s.summary      = "Feed for wordpess"
 
@@ -36,11 +36,12 @@ s.dependency 'SDWebImage', '~> 3.8.1'
 s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
 s.dependency 'Realm'
+s.dependency 'TTTAttributedLabel'
 
 # 8
 s.source_files = "PublisherApp/Source/*"
 
 # 9
-s.resources = "PublisherApp/Assets/*.{png,jpeg,jpg,storyboard,xib}"
+s.resources = "PublisherApp/Assets/*.{png,jpeg,jpg,storyboard,xib, ttf}"
 
 end

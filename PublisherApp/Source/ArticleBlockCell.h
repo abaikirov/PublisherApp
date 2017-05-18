@@ -29,9 +29,17 @@
 
 @interface TextBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *textContentLabel;
+@end
 
+@interface HeaderBlockCell : UITableViewCell<ArticleBlockCell>
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end
 
 @interface ImageBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UIImageView *contentImage;
+@end
+
+@interface ListBlockCell : UITableViewCell<ArticleBlockCell>
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "ArticleBlockCell.h"
 #import "Post.h"
+#import "UIFont+Additions.h"
 @import SDWebImage;
 @import DateTools;
 @import UIColor_HexString;
@@ -30,14 +31,14 @@
 
 #pragma mark - Text cell
 @implementation TextBlockCell
-
-+(NSString *)reuseIdentifier {
-   return NSStringFromClass(self);
-}
++(NSString *)reuseIdentifier { return NSStringFromClass(self); }
 
 - (void)awakeFromNib {
    [super awakeFromNib];
+   self.layer.shouldRasterize = YES;
+   self.layer.rasterizationScale = [UIScreen mainScreen].scale;
    self.textContentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
+   self.textContentLabel.lineSpacing = 3.0;
 }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
@@ -45,11 +46,42 @@
 }
 @end
 
+
+#pragma mark - Header
+@implementation HeaderBlockCell
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   self.contentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
+   self.contentLabel.lineSpacing = 3.0;
+}
+
++(NSString *)reuseIdentifier { return NSStringFromClass(self); }
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   self.contentLabel.text = [block prerenderedText];
+}
+@end
+
+
+#pragma mark - List
+@implementation ListBlockCell
++(NSString *)reuseIdentifier { return NSStringFromClass(self); }
+
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   self.contentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
+   self.contentLabel.lineSpacing = 3.0;
+}
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   self.contentLabel.text = [block prerenderedText];
+}
+
+@end
+
 #pragma mark - Image cell
 @implementation ImageBlockCell
-+(NSString *)reuseIdentifier {
-   return NSStringFromClass(self);
-}
++(NSString *)reuseIdentifier { return NSStringFromClass(self); }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
    NSString* imageURL = block.properties[@"url"];

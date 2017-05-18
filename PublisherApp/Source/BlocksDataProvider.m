@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock, kImageBlock];
+   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock];
 }
 
 #pragma mark - Initialization
@@ -67,6 +67,12 @@
    }
    if ([block.type isEqualToString:kImageBlock]) {
       cellClass = [ImageBlockCell class];
+   }
+   if ([block.type isEqualToString:kHeaderBlock]) {
+      cellClass = [HeaderBlockCell class];
+   }
+   if ([block.type isEqualToString:kListBlock]) {
+      cellClass = [ListBlockCell class];
    }
    return cellClass;
 }

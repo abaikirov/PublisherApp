@@ -12,4 +12,10 @@
 
 + (void) registerNewFont:(NSString*) fontName;
 
+//Source sans font
++ (UIFont*) sourceSansRegular:(CGFloat) fontSize;
++ (UIFont*) sourceSansItalic:(CGFloat) fontSize;
++ (UIFont*) sourceSansBold:(CGFloat) fontSize;
++ (UIFont*) sourceSansBoldItalic:(CGFloat) fontSize;
+
 @end

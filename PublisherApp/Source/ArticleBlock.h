@@ -10,6 +10,8 @@
 
 static NSString* kTextBlock = @"text";
 static NSString* kImageBlock = @"image";
+static NSString* kHeaderBlock = @"title";
+static NSString* kListBlock = @"list";
 
 @protocol ArticleBlockExtensions <NSObject>
 @optional

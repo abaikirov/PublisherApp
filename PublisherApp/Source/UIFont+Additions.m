@@ -24,4 +24,20 @@
    CGFontRelease(newFont);
 }
 
++ (UIFont *)sourceSansRegular:(CGFloat)fontSize {
+   return [self fontWithName:@"SourceSansPro-Regular" size:fontSize];
+}
+
++ (UIFont *)sourceSansItalic:(CGFloat)fontSize {
+   return [self fontWithName:@"SourceSansPro-It" size:fontSize];
+}
+
++ (UIFont *)sourceSansBold:(CGFloat)fontSize {
+   return [self fontWithName:@"SourceSansPro-Bold" size:fontSize];
+}
+
++ (UIFont *)sourceSansBoldItalic:(CGFloat)fontSize {
+   return [self fontWithName:@"SourceSansPro-BoldIt" size:fontSize];
+}
+
 @end

@@ -12,4 +12,8 @@
 
 -(NSString*) substringBetweenString:(NSString*) firstString andString:(NSString*) secondString;
 
+//Blocks
+- (BOOL) containsTag;
+- (NSAttributedString*) htmlStringWithFontSize:(CGFloat) fontSize;
+
 @end

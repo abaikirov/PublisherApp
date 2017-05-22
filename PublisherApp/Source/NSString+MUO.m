@@ -7,6 +7,8 @@
 //
 
 #import "NSString+MUO.h"
+#import "UIFont+Additions.h"
+@import UIColor_HexString;
 
 @implementation NSString (MUO)
 
@@ -23,6 +25,44 @@
     NSRange substringRange = NSMakeRange(r1.location + r1.length, r2.location - r1.location - r1.length);
     NSString* result = [self substringWithRange:substringRange];
     return result;
+}
+
+
+- (BOOL)containsTag {
+   if ([self containsString:@"<"]) {
+      if ([self containsString:@"</"] || [self containsString:@"/>"] || [self containsString:@">"]) {
+         return YES;
+      }
+   }
+   return NO;
+}
+
+- (NSAttributedString *)htmlStringWithFontSize:(CGFloat)fontSize {
+   NSMutableAttributedString *htmlString = [[NSMutableAttributedString alloc]initWithData:[self dataUsingEncoding:NSUTF8StringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+   NSRange allStringRange = NSMakeRange(0, htmlString.length);
+   [htmlString beginEditing];
+   [htmlString enumerateAttribute:NSFontAttributeName inRange:allStringRange options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+      if (value) {
+         UIFont *oldFont = (UIFont *)value;
+         
+         [htmlString removeAttribute:NSFontAttributeName range:range];
+         //replace your font with new
+         if ([oldFont.fontName isEqualToString:@"TimesNewRomanPSMT"]) {
+            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansRegular:fontSize] range:range];
+         } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldMT"]) {
+            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansBold:fontSize] range:range];
+         } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-ItalicMT"]) {
+            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansItalic:fontSize] range:range];
+         } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldItalicMT"]) {
+            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansBoldItalic:fontSize] range:range];
+         } else {
+            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansRegular:fontSize] range:range];
+         }
+      }
+   }];
+   [htmlString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"212121"] range:allStringRange];
+   [htmlString endEditing];
+   return htmlString;
 }
 
 @end

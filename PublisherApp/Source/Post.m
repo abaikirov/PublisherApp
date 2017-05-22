@@ -12,6 +12,7 @@
 @import SDWebImage;
 #import "MUOSavedPost.h"
 #import "ArticleBlock.h"
+#import "ReaderSettings.h"
 
 @implementation FeaturedImage
 @end
@@ -155,13 +156,24 @@
       [self.renderQueue cancelAllOperations];
    }
    //High priority blocks
-   NSMutableArray* renderedIndexes = [NSMutableArray arrayWithArray:visibleIndexes];
-   if ([renderedIndexes.firstObject integerValue] != 0) {
-      [renderedIndexes insertObject:@([visibleIndexes.firstObject integerValue] - 1) atIndex:0];
+   NSMutableArray* renderedIndexes = [NSMutableArray new];
+   if (visibleIndexes) {
+      renderedIndexes = [NSMutableArray arrayWithArray:visibleIndexes];
+      int indexesToAppend = 2;
+      for (int i = 0; i < indexesToAppend; i++) {
+         if ([renderedIndexes.firstObject integerValue] != 0) {
+            [renderedIndexes insertObject:@([renderedIndexes.firstObject integerValue] - 1) atIndex:0];
+         }
+         if ([renderedIndexes.lastObject integerValue] != self.blocks.count - 1) {
+            [renderedIndexes addObject:@([renderedIndexes.lastObject integerValue] + 1)];
+         }
+      }
+   } else {
+      for (int i = 0; i < self.blocks.count - 1; i++) {
+         [renderedIndexes addObject:@(i)];
+      }
    }
-   if ([renderedIndexes.lastObject integerValue] != self.blocks.count - 1) {
-      [renderedIndexes addObject:@([visibleIndexes.lastObject integerValue])];
-   }
+   
    for (NSNumber* index in renderedIndexes) {
       ArticleBlock* block = self.blocks[index.integerValue];
       NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
@@ -179,14 +191,15 @@
    //Low priority blocks
    for (ArticleBlock* block in self.blocks) {
       NSInteger blockIndex = [self.blocks indexOfObject:block];
-      if ([renderedIndexes containsObject:[NSNumber numberWithInt:blockIndex]]) continue;
+      if ([renderedIndexes containsObject:[NSNumber numberWithInt:blockIndex]] && visibleIndexes != nil) {
+         continue;
+      }
       NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
          [block prerenderText];
       }];
       [self.renderQueue addOperation:renderOperation];
    }
 }
-
 
 
 @end

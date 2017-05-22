@@ -9,6 +9,7 @@
 #import "ArticleBlock.h"
 #import "UIFont+Additions.h"
 #import "ReaderSettings.h"
+#import "NSString+MUO.h"
 @import UIColor_HexString;
 @import ReactiveCocoa;
 
@@ -68,33 +69,15 @@
    if ([self.type isEqualToString:kHeaderBlock]) {
       regularFont = [UIFont sourceSansBold:normalFontSize];
    }
-   NSMutableAttributedString *htmlString = [[NSMutableAttributedString alloc]initWithData:[string dataUsingEncoding:NSUTF8StringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
-   NSRange allStringRange = NSMakeRange(0, htmlString.length);
-   [htmlString beginEditing];
-   [htmlString enumerateAttribute:NSFontAttributeName inRange:allStringRange options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
-      if (value) {
-         UIFont *oldFont = (UIFont *)value;
-         
-         [htmlString removeAttribute:NSFontAttributeName range:range];
-         //replace your font with new
-         if ([oldFont.fontName isEqualToString:@"TimesNewRomanPSMT"]) {
-            [htmlString addAttribute:NSFontAttributeName value:regularFont range:range];
-         } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldMT"]) {
-            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansBold:normalFontSize] range:range];
-         } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-ItalicMT"]) {
-            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansItalic:normalFontSize] range:range];
-         } else if([oldFont.fontName isEqualToString:@"TimesNewRomanPS-BoldItalicMT"]) {
-            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansBoldItalic:normalFontSize] range:range];
-         } else {
-            [htmlString addAttribute:NSFontAttributeName value:[UIFont sourceSansRegular:normalFontSize] range:range];
-         }
-      }
-   }];
-   [htmlString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"212121"] range:allStringRange];
-   [htmlString endEditing];
-   return htmlString;
+   
+   if (![string containsTag]) {
+      NSDictionary* attributes = @{NSFontAttributeName:regularFont, NSForegroundColorAttributeName:[UIColor colorWithHexString:@"212121"]};
+      NSAttributedString* result = [[NSAttributedString alloc] initWithString:string attributes:attributes];
+      return result;
+   } else {
+      return [string htmlStringWithFontSize:normalFontSize];
+   }
 }
-
 
 #pragma mark - Content
 - (NSAttributedString*) listBlockContent {
@@ -103,17 +86,14 @@
    NSString* bulletType = @"- ";
    NSMutableAttributedString* result = [NSMutableAttributedString new];
    for (NSString* item in items) {
-      NSMutableAttributedString* attrItem = [[NSMutableAttributedString alloc] initWithAttributedString:[self htmlStringFromString:item]];
-      [attrItem appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
       if (ordered == YES) {
-         bulletType = [NSString stringWithFormat:@"%lu. ", [items indexOfObject:item] + 1];
+         bulletType = [NSString stringWithFormat:@"%u. ", [items indexOfObject:item] + 1];
       }
+      NSString* listItem = [NSString stringWithFormat:@"%@%@", bulletType, item];
+      NSMutableAttributedString* attrItem = [[NSMutableAttributedString alloc] initWithAttributedString:[self htmlStringFromString:listItem]];
       NSDictionary* attributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"],
-                                   NSFontAttributeName : [UIFont sourceSansBold:19]};
-      NSAttributedString* bullet = [[NSAttributedString alloc] initWithString:bulletType
-                                                                   attributes:attributes];
-      [attrItem insertAttributedString:bullet atIndex:0];
-      [result appendAttributedString:attrItem];
+                                   NSFontAttributeName : [UIFont sourceSansBold:[self baseFontSize]]};
+      [attrItem addAttributes:attributes range:NSMakeRange(0, 2)];
    }
    return result;
 }
@@ -121,31 +101,25 @@
 #pragma mark - Font values
 - (CGFloat) baseFontSize {         //Depending on settings
    CGFloat fontSize = 19;
-   if ([self.type isEqualToString:kTextBlock]) {
+   if ([self.type isEqualToString:kTextBlock] || [self.type isEqualToString:kListBlock]) {
       return [self textBlockFontSize];
    }
    if ([self.type isEqualToString:kHeaderBlock]) {
-      fontSize = 22;
+      return [self headerBlockSize];
    }
    return fontSize;
 }
 
 - (CGFloat) textBlockFontSize {
-   switch ([ReaderSettings sharedSettings].preferredFontSize) {
-      case ExtraSmall:
-         return 16;
-      case Small:
-         return 18;
-      case Base:
-         return 19;
-      case Large:
-         return 20;
-      case ExtraLarge:
-         return 24;
-         
-      default:
-         return 19;
-   }
+   NSArray* fontSizes = @[@(16), @(18), @(19), @(20), @(24)];
+   FontSize currentSize = [ReaderSettings sharedSettings].preferredFontSize;
+   return [fontSizes[currentSize + 2] integerValue];
+}
+
+- (CGFloat) headerBlockSize {
+   NSArray* fontSizes = @[@(19), @(21), @(22), @(23), @(25)];
+   FontSize currentSize = [ReaderSettings sharedSettings].preferredFontSize;
+   return [fontSizes[currentSize + 2] integerValue];
 }
 
 @end

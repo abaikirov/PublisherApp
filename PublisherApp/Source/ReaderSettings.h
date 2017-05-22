@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+   ExtraSmall = - 2,
+   Small = -1,
+   Base = 0,
+   Large = 1,
+   ExtraLarge = 2
+} FontSize;
+
 @interface ReaderSettings : NSObject
 
 + (instancetype) sharedSettings;

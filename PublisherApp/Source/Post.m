@@ -14,23 +14,18 @@
 #import "ArticleBlock.h"
 
 @implementation FeaturedImage
-
 @end
 
 
 @implementation PostCategory
-
-
 @end
 
 @interface Post()
-
 @property (nonatomic, strong) NSMutableDictionary* localURLs;
-
+@property (nonatomic) NSOperationQueue* renderQueue;
 @end
 
 @implementation Post
-
 -(instancetype)init {
    self = [super init];
    if (self) {
@@ -132,6 +127,57 @@
 
 -(void)clearLocalURLs {
    [self.localURLs removeAllObjects];
+}
+
+
+#pragma mark - Blocks
+- (NSArray *)imagesFromBlocks {
+   NSMutableArray* images = [NSMutableArray new];
+   [images addObject:[self.featuredImage.featured absoluteString]];
+   for (ArticleBlock* block in self.blocks) {
+      if ([block.type isEqualToString:kImageBlock]) {
+         [images addObject:block.properties[@"url"]];
+      }
+   }
+   return images;
+}
+
+- (NSOperationQueue *)renderQueue {
+   if (!_renderQueue) {
+      _renderQueue = [NSOperationQueue new];
+      _renderQueue.maxConcurrentOperationCount = 1;
+   }
+   return _renderQueue;
+}
+
+- (void)prerenderBlocksWithIndexes:(NSArray *)visibleIndexes updateBlock:(void (^)())updateBlock {
+   if (self.renderQueue) {
+      [self.renderQueue cancelAllOperations];
+   }
+   //High priority blocks
+   for (NSNumber* index in visibleIndexes) {
+      ArticleBlock* block = self.blocks[index.integerValue];
+      NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
+         [block prerenderText];
+      }];
+      if (index == [visibleIndexes lastObject] && updateBlock) {
+         renderOperation.completionBlock = ^{
+            updateBlock();
+         };
+      }
+      renderOperation.queuePriority = NSOperationQueuePriorityHigh;
+      [self.renderQueue addOperation:renderOperation];
+   }
+   
+   //Low priority blocks
+   for (ArticleBlock* block in self.blocks) {
+      NSInteger blockIndex = [self.blocks indexOfObject:block];
+      if ([visibleIndexes containsObject:[NSNumber numberWithInt:blockIndex]]) continue;
+      NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
+         [block prerenderText];
+      }];
+      [self.renderQueue addOperation:renderOperation];
+   }
 }
 
 

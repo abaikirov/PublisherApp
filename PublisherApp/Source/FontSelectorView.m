@@ -8,9 +8,6 @@
 
 #import "FontSelectorView.h"
 
-#define screen_width [UIScreen mainScreen].bounds.size.width
-#define screen_height [UIScreen mainScreen].bounds.size.height
-
 static const CGFloat topOffset = 50;
 
 @interface FontSelectorView()

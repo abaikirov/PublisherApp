@@ -30,15 +30,29 @@
 @end
 
 #pragma mark - Text cell
-@implementation TextBlockCell
-+(NSString *)reuseIdentifier { return NSStringFromClass(self); }
+@implementation TextDisplayingCell
++ (NSString *)reuseIdentifier {
+   return NSStringFromClass(self);
+}
 
+- (void) setupAttributedLabel:(TTTAttributedLabel*) label {
+   label.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
+   label.lineSpacing = 4.0;
+   label.delegate = self;
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+   if ([self.linkDelegate respondsToSelector:@selector(linkTapped:)]) {
+      [self.linkDelegate linkTapped:url];
+   }
+}
+
+@end
+
+@implementation TextBlockCell
 - (void)awakeFromNib {
    [super awakeFromNib];
-   self.layer.shouldRasterize = YES;
-   self.layer.rasterizationScale = [UIScreen mainScreen].scale;
-   self.textContentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
-   self.textContentLabel.lineSpacing = 3.0;
+   [self setupAttributedLabel:self.textContentLabel];
 }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
@@ -51,26 +65,20 @@
 @implementation HeaderBlockCell
 - (void)awakeFromNib {
    [super awakeFromNib];
-   self.contentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
-   self.contentLabel.lineSpacing = 3.0;
+   [self setupAttributedLabel:self.contentLabel];
 }
 
-+(NSString *)reuseIdentifier { return NSStringFromClass(self); }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
    self.contentLabel.text = [block prerenderedText];
 }
 @end
 
-
 #pragma mark - List
 @implementation ListBlockCell
-+(NSString *)reuseIdentifier { return NSStringFromClass(self); }
-
 - (void)awakeFromNib {
    [super awakeFromNib];
-   self.contentLabel.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
-   self.contentLabel.lineSpacing = 3.0;
+   [self setupAttributedLabel:self.contentLabel];
 }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
@@ -84,8 +92,7 @@
 +(NSString *)reuseIdentifier { return NSStringFromClass(self); }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
-   NSString* imageURL = block.properties[@"url"];
-   [self.contentImage sd_setImageWithURL:[NSURL URLWithString:imageURL]];
+   [self.contentImage sd_setImageWithURL:[NSURL URLWithString:[block image]]];
 }
 
 @end

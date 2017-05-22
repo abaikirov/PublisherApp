@@ -15,8 +15,11 @@ static NSString* kListBlock = @"list";
 
 @protocol ArticleBlockExtensions <NSObject>
 @optional
+@property (nonatomic, readonly) NSAttributedString* prerenderedText;
 - (CGFloat) blockHeight; //Used for images
-- (NSAttributedString*) prerenderedText;
+- (BOOL) canDisplayLink;
+- (void) prerenderText;
+- (NSString*) image;
 @end
 
 
@@ -25,6 +28,5 @@ static NSString* kListBlock = @"list";
 @property (nonatomic, strong) NSString* type;
 @property (nonatomic, strong) NSDictionary* properties;
 @property (nonatomic, strong) NSString* content;
-
 
 @end

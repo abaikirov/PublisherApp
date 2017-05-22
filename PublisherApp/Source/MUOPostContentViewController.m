@@ -394,38 +394,15 @@
 }
 
 - (void)fontSizeValueDidChanged:(NSInteger)newFontSize {
-   if (newFontSize > self.currentFontSize) {
-      [self increaseFontSize];
-   } else {
-      [self decreaseFontSize];
-   }
+   [ReaderSettings sharedSettings].preferredFontSize = newFontSize;
+   [self applyFont];
 }
 
 - (void) applyFont {
-   if (self.currentFontSize != self.pagingController.currentFontSize && self.pagingController) {
-      self.currentFontSize = self.pagingController.currentFontSize;
-   }
+   self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
    NSString* fontSize = [NSString stringWithFormat:@"setFontSize(%d)", self.currentFontSize];
    [self.webView stringByEvaluatingJavaScriptFromString:fontSize];
 }
--(void)setCurrentFontSize:(int) currentFontSize {
-   if (currentFontSize > 2) currentFontSize = 2;
-   if (currentFontSize < -2) currentFontSize = -2;
-   _currentFontSize = currentFontSize;
-   [self.pagingController setCurrentFontSize:_currentFontSize];
-   [ReaderSettings sharedSettings].preferredFontSize = _currentFontSize;
-}
-
--(void) increaseFontSize {
-   self.currentFontSize++;
-   [self applyFont];
-}
-
--(void) decreaseFontSize {
-   self.currentFontSize--;
-   [self applyFont];
-}
-
 
 
 #pragma mark - UIWebView
@@ -435,9 +412,8 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-      if ([[CoreContext sharedContext].linksHandler canHandleWebviewRequest:request forViewController:self withPost:self.post]) {
-         return NO;
-      }
+      [[CoreContext sharedContext].linksHandler handleURL:request.URL fromViewController:self withPost:self.post];
+      return NO;
    }
    return YES;
 }

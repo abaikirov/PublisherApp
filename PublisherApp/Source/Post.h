@@ -45,6 +45,8 @@
 
 //Blocks
 @property (nonatomic, strong) NSArray<ArticleBlock*>* blocks;
+- (void) prerenderBlocksWithIndexes:(NSArray*) visibleIndexes updateBlock:(void(^)()) updateBlock;
+- (NSArray*) imagesFromBlocks;
 
 //Parsing
 + (DCParserConfiguration *)parserConfiguration;

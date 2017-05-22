@@ -6,9 +6,11 @@
 //  Copyright © 2017 MakeUseOf. All rights reserved.
 //
 
-#import "ExternalLinksHandler.h"
+@import Foundation;
+#import "Post.h"
 
-@interface MUOExternalLinksHandler : ExternalLinksHandler
+@interface MUOExternalLinksHandler : NSObject
 
+- (void) handleURL:(NSURL*) url fromViewController:(UIViewController*) vc withPost:(Post*) post;
 
 @end

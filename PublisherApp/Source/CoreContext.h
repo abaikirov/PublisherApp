@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ExternalLinksHandler.h"
+#import "MUOExternalLinksHandler.h"
 #import "ShareHelper.h"
 #import "LikesManager.h"
 #import "MUOSavesManager.h"
@@ -16,7 +16,7 @@
 @interface CoreContext : NSObject
 
 @property (nonatomic, strong) LikesManager* likesManager;
-@property (nonatomic, strong) ExternalLinksHandler* linksHandler;
+@property (nonatomic, strong) MUOExternalLinksHandler* linksHandler;
 @property (nonatomic, strong) ShareHelper* shareHelper;
 @property (nonatomic, strong) MUOSavesManager* savesManager;
 @property (nonatomic, strong) NavigationRouter* navigationRouter;
@@ -27,6 +27,8 @@
    
 @property (nonatomic) BOOL bottomBarEnabled;
 @property (nonatomic) BOOL bookmarksEnabled;
+
+@property (nonatomic) BOOL useBlocks;
 
 + (instancetype) sharedContext;
 

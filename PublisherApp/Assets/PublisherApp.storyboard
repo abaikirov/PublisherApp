@@ -366,7 +366,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics">
                         <color key="tintColor" red="0.8862745098" green="0.1450980392" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </simulatedTabBarMetrics>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="DHS-jN-yfm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="DHS-jN-yfm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -469,7 +469,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleHeaderCell" rowHeight="371" id="98f-Mp-hMr" customClass="ArticleHeaderCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleHeaderCell" rowHeight="371" id="98f-Mp-hMr" customClass="ArticleHeaderCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="371"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="98f-Mp-hMr" id="tVz-iU-I1x">
@@ -525,7 +525,7 @@
                                             <outlet property="postTitle" destination="BT1-ev-X4C" id="8he-Ax-yNX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderBlockCell" rowHeight="37" id="Zpr-rO-zvh" customClass="HeaderBlockCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderBlockCell" rowHeight="37" id="Zpr-rO-zvh" customClass="HeaderBlockCell">
                                         <rect key="frame" x="0.0" y="399" width="375" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zpr-rO-zvh" id="mGc-mL-IZm">
@@ -550,7 +550,7 @@
                                             <outlet property="contentLabel" destination="2KW-Us-7BB" id="lAW-1S-TXE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextBlockCell" rowHeight="33" id="Fls-j5-iH1" customClass="TextBlockCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextBlockCell" rowHeight="33" id="Fls-j5-iH1" customClass="TextBlockCell">
                                         <rect key="frame" x="0.0" y="436" width="375" height="33"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fls-j5-iH1" id="KJF-9x-tt7">
@@ -575,7 +575,7 @@
                                             <outlet property="textContentLabel" destination="aQ0-l9-uf2" id="kdB-Yq-wQZ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListBlockCell" rowHeight="33" id="oYE-YI-jrc" customClass="ListBlockCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListBlockCell" rowHeight="33" id="oYE-YI-jrc" customClass="ListBlockCell">
                                         <rect key="frame" x="0.0" y="469" width="375" height="33"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oYE-YI-jrc" id="5bp-xV-yjD">
@@ -600,7 +600,7 @@
                                             <outlet property="contentLabel" destination="NCX-xt-TgA" id="CIS-uR-aKM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageBlockCell" rowHeight="87" id="nGk-62-o8m" customClass="ImageBlockCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageBlockCell" rowHeight="87" id="nGk-62-o8m" customClass="ImageBlockCell">
                                         <rect key="frame" x="0.0" y="502" width="375" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGk-62-o8m" id="du6-5p-rPN">

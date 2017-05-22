@@ -33,8 +33,6 @@
 @property (weak, nonatomic) UIPageViewController *pageViewController;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-@property (nonatomic) BOOL displayBlocks;
-
 //Used to present single view controller using top and bottom bookmark controls
 @property (nonatomic, strong) UIViewController<PagingControllerPresentable>* viewControllerToDisplay;
 
@@ -42,7 +40,7 @@
 @property (nonatomic, strong) Post* postToDisplay;
 @property (nonatomic, strong) NSArray* posts;
 
-@property (nonatomic) int currentFontSize;
+//@property (nonatomic) int currentFontSize;
 @property (nonatomic, weak) id<TopBarDelegate> topBarDelegate;
 
 - (void) hideBottomView:(BOOL) hide;

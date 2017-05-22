@@ -14,7 +14,9 @@
 @interface NavigationRouter : NSObject
 
 - (void) showSavesControllerFromNavigationController:(UINavigationController*) presenter;
-- (void) showPagingControllerWithVC:(MUOPostContentViewController*) vc fromNavigationController:(UINavigationController *) navCtrl;
+- (void) showPagingControllerWithVC:(UIViewController*) vc fromNavigationController:(UINavigationController *) navCtrl;
 - (void) showPost:(Post*) post fromNavigationController:(UINavigationController*) presenter isOffline:(BOOL) isOffline;
+
+- (void) showLocalGallery:(BOOL) isLocal withImages:(NSArray*) images presentingImage:(NSString*) image fromVC:(UIViewController*) vc;
 
 @end

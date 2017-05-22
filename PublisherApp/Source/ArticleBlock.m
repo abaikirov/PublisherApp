@@ -8,12 +8,14 @@
 
 #import "ArticleBlock.h"
 #import "UIFont+Additions.h"
+#import "ReaderSettings.h"
 @import UIColor_HexString;
 @import ReactiveCocoa;
 
 @interface ArticleBlock()
 
-@property (nonatomic, strong) NSAttributedString* renderedText;
+@property (nonatomic, strong) NSAttributedString* prerenderedText;
+@property (nonatomic) FontSize appliedFontSize;
 
 @end
 
@@ -30,20 +32,38 @@
    return 0;
 }
 
+- (BOOL) canDisplayLink {
+   if ([self.type isEqualToString:kTextBlock] || [self.type isEqualToString:kListBlock] || [self.type isEqualToString:kHeaderBlock]) {
+      return YES;
+   }
+   return NO;
+}
+
+- (NSString *)image {
+   return self.properties[@"url"];
+}
+
 #pragma mark - Text rendering for displaying html
 - (NSAttributedString *)prerenderedText {
-   if (!self.renderedText) {
-      if ([self.type isEqualToString:kListBlock]) {
-         self.renderedText = [self listBlockContent];
-      } else {
-         self.renderedText = [self htmlStringFromString:self.content];
-      }
+   if (!_prerenderedText) {
+      [self prerenderText];
    }
-   return self.renderedText;
+   return _prerenderedText;
+}
+
+- (void) prerenderText {
+   if (!_prerenderedText || (self.appliedFontSize != [ReaderSettings sharedSettings].preferredFontSize)) {
+      if ([self.type isEqualToString:kListBlock]) {
+         _prerenderedText = [self listBlockContent];
+      } else {
+         _prerenderedText = [self htmlStringFromString:self.content];
+      }
+      self.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
+   }
 }
 
 - (NSAttributedString*) htmlStringFromString:(NSString*) string {
-   CGFloat normalFontSize = [self fontSize];
+   CGFloat normalFontSize = [self baseFontSize];
    UIFont* regularFont = [UIFont sourceSansRegular:normalFontSize];
    if ([self.type isEqualToString:kHeaderBlock]) {
       regularFont = [UIFont sourceSansBold:normalFontSize];
@@ -86,7 +106,7 @@
       NSMutableAttributedString* attrItem = [[NSMutableAttributedString alloc] initWithAttributedString:[self htmlStringFromString:item]];
       [attrItem appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
       if (ordered == YES) {
-         bulletType = [NSString stringWithFormat:@"%d. ", [items indexOfObject:item] + 1];
+         bulletType = [NSString stringWithFormat:@"%lu. ", [items indexOfObject:item] + 1];
       }
       NSDictionary* attributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"],
                                    NSFontAttributeName : [UIFont sourceSansBold:19]};
@@ -99,15 +119,33 @@
 }
 
 #pragma mark - Font values
-- (CGFloat) fontSize {
+- (CGFloat) baseFontSize {         //Depending on settings
    CGFloat fontSize = 19;
    if ([self.type isEqualToString:kTextBlock]) {
-      fontSize = 19;
+      return [self textBlockFontSize];
    }
    if ([self.type isEqualToString:kHeaderBlock]) {
       fontSize = 22;
    }
    return fontSize;
+}
+
+- (CGFloat) textBlockFontSize {
+   switch ([ReaderSettings sharedSettings].preferredFontSize) {
+      case ExtraSmall:
+         return 16;
+      case Small:
+         return 18;
+      case Base:
+         return 19;
+      case Large:
+         return 20;
+      case ExtraLarge:
+         return 24;
+         
+      default:
+         return 19;
+   }
 }
 
 @end

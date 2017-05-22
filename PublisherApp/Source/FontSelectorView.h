@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define screen_width [UIScreen mainScreen].bounds.size.width
+#define screen_height [UIScreen mainScreen].bounds.size.height
+
 @protocol FontSelectorViewDelegate <NSObject>
 
 - (void) fontSizeValueDidChanged:(NSInteger) newFontSize;

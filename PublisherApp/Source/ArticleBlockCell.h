@@ -10,9 +10,16 @@
 #import "ArticleBlock.h"
 @import TTTAttributedLabel;
 
-
 @class Post;
+
 #pragma mark - Base block cell
+
+@protocol LinkTapDelegate <NSObject>
+@optional
+- (void) linkTapped:(NSURL*) url;
+@end
+
+
 @protocol ArticleBlockCell<NSObject>
 +(NSString*) reuseIdentifier;
 @optional
@@ -24,22 +31,27 @@
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 - (void) fillWithPost:(Post*) post;
 @end
 
-@interface TextBlockCell : UITableViewCell<ArticleBlockCell>
+#pragma mark - Text blocks
+@interface TextDisplayingCell : UITableViewCell<ArticleBlockCell, TTTAttributedLabelDelegate>
+@property (nonatomic, weak) id<LinkTapDelegate> linkDelegate;
+@end
+
+@interface TextBlockCell : TextDisplayingCell
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *textContentLabel;
 @end
 
-@interface HeaderBlockCell : UITableViewCell<ArticleBlockCell>
+@interface HeaderBlockCell : TextDisplayingCell
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
+@end
+
+@interface ListBlockCell : TextDisplayingCell
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end
 
 @interface ImageBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UIImageView *contentImage;
-@end
-
-@interface ListBlockCell : UITableViewCell<ArticleBlockCell>
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
-
 @end

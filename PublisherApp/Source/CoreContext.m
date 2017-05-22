@@ -7,7 +7,6 @@
 //
 
 #import "CoreContext.h"
-#import "MUOExternalLinksHandler.h"
 #import "ReaderSettings.h"
 #import "UIFont+Additions.h"
 @import AFNetworking;
@@ -32,6 +31,7 @@
       context.cdnPath = @"http://cdn.makeuseof.com";
       context.bottomBarEnabled = YES;
       context.bookmarksEnabled = YES;
+      context.useBlocks = NO;
    });
    return context;
 }

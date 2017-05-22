@@ -13,18 +13,15 @@
 #import "BlocksContentController.h"
 
 @interface MUOPagingPostsController ()<UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
-@property BOOL bottomViewHidden;
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
-@property BOOL topViewHidden;
-@property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
-
-@property BOOL shouldHideStatusBar;
-
 @property (weak, nonatomic) id<UIGestureRecognizerDelegate> popGestureDelegate;
-   @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookmarkButtonWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookmarkButtonWidth;
+@property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
+
+@property BOOL bottomViewHidden;
+@property BOOL topViewHidden;
+@property BOOL shouldHideStatusBar;
 
 @end
 
@@ -53,7 +50,7 @@
    self.bottomViewHidden = NO;
    self.topViewHidden = NO;
    self.pageViewController = self.childViewControllers[0];
-   self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
+   //self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
    
    if (self.viewControllerToDisplay) {
       [self.pageViewController setViewControllers:@[self.viewControllerToDisplay] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -138,7 +135,7 @@
 
 #pragma mark - Webview posts data source
 - (UIViewController *) viewControllerAtIndex:(NSInteger) index {
-   if (self.displayBlocks) {
+   if ([CoreContext sharedContext].useBlocks) {
       return [self blocksContentControllerAtIndex:index];
    } else {
       return [self postContentControllerAtIndex:index];
@@ -148,21 +145,23 @@
 #pragma mark - Web view controller
 - (UIViewController *) postContentControllerAtIndex:(NSInteger) index {
    MUOPostContentViewController* postVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PostContentController"];
-   postVC.pageIndex = index;
    postVC.isOffline = NO;
    postVC.post = self.posts[index];
-   postVC.parentNavigationItem = self.navigationItem;
-   postVC.pagingController = self;
-   return postVC;
+   return [self applyPagination:postVC page:index];
 }
 
 - (UIViewController*) blocksContentControllerAtIndex:(NSInteger) index {
    BlocksContentController* blocksVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BlocksVC"];
-   blocksVC.pageIndex = index;
    blocksVC.post = self.posts[index];
-   return blocksVC;
+   return [self applyPagination:blocksVC page:index];
 }
 
+- (UIViewController*) applyPagination:(UIViewController<PagingControllerPresentable> *)vc page:(NSInteger) page {
+   vc.pageIndex = page;
+   vc.parentNavigationItem = self.navigationItem;
+   vc.pagingController = self;
+   return vc;
+}
 
 #pragma mark - Top view
 - (IBAction)backButtonPressed:(id)sender {

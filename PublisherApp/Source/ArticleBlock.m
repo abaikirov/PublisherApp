@@ -8,7 +8,6 @@
 
 #import "ArticleBlock.h"
 #import "UIFont+Additions.h"
-#import "ReaderSettings.h"
 #import "NSString+MUO.h"
 @import UIColor_HexString;
 @import ReactiveCocoa;
@@ -16,7 +15,6 @@
 @interface ArticleBlock()
 
 @property (nonatomic, strong) NSAttributedString* prerenderedText;
-@property (nonatomic) FontSize appliedFontSize;
 
 @end
 
@@ -59,7 +57,6 @@
       } else {
          _prerenderedText = [self htmlStringFromString:self.content];
       }
-      self.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
    }
 }
 

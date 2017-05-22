@@ -176,11 +176,10 @@
    
    for (NSNumber* index in renderedIndexes) {
       ArticleBlock* block = self.blocks[index.integerValue];
-      NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
-         [block prerenderText];
-      }];
+      NSOperation* renderOperation = [self renderOperationForBlock:block];
       if (index == [renderedIndexes lastObject] && updateBlock) {
          renderOperation.completionBlock = ^{
+            block.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
             updateBlock();
          };
       }
@@ -194,12 +193,18 @@
       if ([renderedIndexes containsObject:[NSNumber numberWithInt:blockIndex]] && visibleIndexes != nil) {
          continue;
       }
-      NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
-         [block prerenderText];
-      }];
-      [self.renderQueue addOperation:renderOperation];
+      [self.renderQueue addOperation:[self renderOperationForBlock:block]];
    }
 }
 
+- (NSOperation *) renderOperationForBlock:(ArticleBlock*) block {
+   NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
+      [block prerenderText];
+   }];
+   renderOperation.completionBlock = ^{
+      block.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
+   };
+   return renderOperation;
+}
 
 @end

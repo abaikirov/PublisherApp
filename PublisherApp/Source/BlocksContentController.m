@@ -12,11 +12,13 @@
 #import "CoreContext.h"
 #import "FontSelectorView.h"
 #import "ReaderSettings.h"
+#import "PostScrollListener.h"
 
-@interface BlocksContentController ()<UITableViewDataSource, UITableViewDelegate, LinkTapDelegate, TopBarDelegate, FontSelectorViewDelegate>
+@interface BlocksContentController ()<UITableViewDataSource, UITableViewDelegate, LinkTapDelegate, TopBarDelegate, FontSelectorViewDelegate, ScrollListenerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *blocksTableView;
 @property (nonatomic, strong) BlocksDataProvider* blocksProvider;
+@property (nonatomic) PostScrollListener* scrollListener;
 @property (nonatomic) int currentFontSize;
 
 @end
@@ -48,12 +50,20 @@
    self.blocksTableView.estimatedRowHeight = 200.0;
    self.blocksTableView.rowHeight = UITableViewAutomaticDimension;
    self.blocksTableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+   self.scrollListener = [PostScrollListener new];
    [self setupDataProvider];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
    [super viewDidAppear:animated];
    self.pagingController.topBarDelegate = self;
+   self.scrollListener.delegate = self;
+   [self.scrollListener followScrollView:self.blocksTableView delay:60.0f];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+   [super viewWillDisappear:animated];
+   [self.scrollListener stopFollowingScrollView];
 }
 
 #pragma mark - Blocks Provider
@@ -113,6 +123,17 @@
    }
 }
 
+
+#pragma mark - Scrolling
+- (void)scrolledTop {
+   [self.pagingController hideBottomView:NO];
+   [self.pagingController animateTopView:NO];
+}
+
+- (void)scrolledBottom {
+   [self.pagingController hideBottomView:YES];
+   [self.pagingController animateTopView:YES];
+}
 
 #pragma mark - Font size
 - (void)fontSizeButtonPressed {

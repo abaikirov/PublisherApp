@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReaderSettings.h"
 
 static NSString* kTextBlock = @"text";
 static NSString* kImageBlock = @"image";
@@ -25,6 +26,7 @@ static NSString* kListBlock = @"list";
 
 @interface ArticleBlock : NSObject<ArticleBlockExtensions>
 
+@property (nonatomic) FontSize appliedFontSize;
 
 @property (nonatomic, strong) NSString* type;
 @property (nonatomic, strong) NSDictionary* properties;

@@ -28,9 +28,9 @@
 
 @interface ArticleHeaderCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UIImageView *featuredImage;
-@property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *postTitle;
 
 - (void) fillWithPost:(Post*) post;
 @end

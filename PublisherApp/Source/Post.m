@@ -155,12 +155,19 @@
       [self.renderQueue cancelAllOperations];
    }
    //High priority blocks
-   for (NSNumber* index in visibleIndexes) {
+   NSMutableArray* renderedIndexes = [NSMutableArray arrayWithArray:visibleIndexes];
+   if ([renderedIndexes.firstObject integerValue] != 0) {
+      [renderedIndexes insertObject:@([visibleIndexes.firstObject integerValue] - 1) atIndex:0];
+   }
+   if ([renderedIndexes.lastObject integerValue] != self.blocks.count - 1) {
+      [renderedIndexes addObject:@([visibleIndexes.lastObject integerValue])];
+   }
+   for (NSNumber* index in renderedIndexes) {
       ArticleBlock* block = self.blocks[index.integerValue];
       NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
          [block prerenderText];
       }];
-      if (index == [visibleIndexes lastObject] && updateBlock) {
+      if (index == [renderedIndexes lastObject] && updateBlock) {
          renderOperation.completionBlock = ^{
             updateBlock();
          };
@@ -172,7 +179,7 @@
    //Low priority blocks
    for (ArticleBlock* block in self.blocks) {
       NSInteger blockIndex = [self.blocks indexOfObject:block];
-      if ([visibleIndexes containsObject:[NSNumber numberWithInt:blockIndex]]) continue;
+      if ([renderedIndexes containsObject:[NSNumber numberWithInt:blockIndex]]) continue;
       NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
          [block prerenderText];
       }];

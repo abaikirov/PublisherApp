@@ -25,6 +25,7 @@ static NSString* kListBlock = @"list";
 
 @interface ArticleBlock : NSObject<ArticleBlockExtensions>
 
+
 @property (nonatomic, strong) NSString* type;
 @property (nonatomic, strong) NSDictionary* properties;
 @property (nonatomic, strong) NSString* content;

@@ -110,7 +110,7 @@
 #pragma mark - Font values
 - (CGFloat) baseFontSize {         //Depending on settings
    CGFloat fontSize = 19;
-   if ([self.type isEqualToString:kTextBlock] || [self.type isEqualToString:kListBlock]) {
+   if ([self.type isEqualToString:kTextBlock] || [self.type isEqualToString:kListBlock] || [self.type isEqualToString:kQuoteBlock]) {
       return [self textBlockFontSize];
    }
    if ([self.type isEqualToString:kHeaderBlock]) {

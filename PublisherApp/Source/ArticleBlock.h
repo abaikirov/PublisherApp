@@ -15,6 +15,7 @@ static NSString* kHeaderBlock = @"title";
 static NSString* kListBlock = @"list";
 static NSString* kYoutubeBlock = @"youtube";
 static NSString* kCodeBlock = @"code";
+static NSString* kQuoteBlock = @"quote";
 
 @protocol ArticleBlockExtensions <NSObject>
 @optional

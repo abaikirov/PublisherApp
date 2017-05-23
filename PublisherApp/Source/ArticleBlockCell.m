@@ -78,6 +78,19 @@
 @end
 
 
+#pragma mark - Quote
+@implementation QuoteBlockCell
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   [self setupAttributedLabel:self.contentLabel];
+}
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   self.contentLabel.text = [block prerenderedText];
+}
+
+@end
+
 #pragma mark - Header
 @implementation HeaderBlockCell
 - (void)awakeFromNib {

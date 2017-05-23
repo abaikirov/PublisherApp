@@ -45,6 +45,11 @@
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *textContentLabel;
 @end
 
+@interface QuoteBlockCell : TextDisplayingCell
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
+
+@end
+
 @interface HeaderBlockCell : TextDisplayingCell
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end

@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock];
+   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock, kQuoteBlock];
 }
 
 #pragma mark - Initialization
@@ -61,8 +61,10 @@
 }
 
 - (Class)cellClassForBlock:(ArticleBlock *)block {
-   NSDictionary* classes = @{ kTextBlock : [TextBlockCell class], kImageBlock : [ImageBlockCell class], kHeaderBlock : [HeaderBlockCell class],
-                              kListBlock : [ListBlockCell class], kYoutubeBlock : [YoutubeBlockCell class], kCodeBlock : [CodeBlockCell class]};
+   NSDictionary* classes = @{ kTextBlock : [TextBlockCell class], kImageBlock : [ImageBlockCell class],
+                              kHeaderBlock : [HeaderBlockCell class], kListBlock : [ListBlockCell class],
+                              kYoutubeBlock : [YoutubeBlockCell class], kCodeBlock : [CodeBlockCell class] ,
+                              kQuoteBlock : [QuoteBlockCell class]};
    return classes[block.type];
 }
 

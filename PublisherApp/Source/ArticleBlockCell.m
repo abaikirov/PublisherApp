@@ -52,6 +52,11 @@
    return NSStringFromClass(self);
 }
 
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   [self setupAttributedLabel:self.textContentLabel];
+}
+
 - (void) setupAttributedLabel:(TTTAttributedLabel*) label {
    label.linkAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"], NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)};
    label.lineSpacing = 8.0;
@@ -64,62 +69,31 @@
    }
 }
 
-@end
-
-@implementation TextBlockCell
-- (void)awakeFromNib {
-   [super awakeFromNib];
-   [self setupAttributedLabel:self.textContentLabel];
-}
-
 - (void)fillWithBlock:(ArticleBlock *)block {
    self.textContentLabel.text = [block prerenderedText];
 }
 @end
 
+@implementation TextBlockCell
+@end
 
 #pragma mark - Quote
 @implementation QuoteBlockCell
-- (void)awakeFromNib {
-   [super awakeFromNib];
-   [self setupAttributedLabel:self.contentLabel];
-}
-
-- (void)fillWithBlock:(ArticleBlock *)block {
-   self.contentLabel.text = [block prerenderedText];
-}
-
 @end
 
 #pragma mark - Header
 @implementation HeaderBlockCell
-- (void)awakeFromNib {
-   [super awakeFromNib];
-   [self setupAttributedLabel:self.contentLabel];
-}
-
-
-- (void)fillWithBlock:(ArticleBlock *)block {
-   self.contentLabel.text = [block prerenderedText];
-}
 @end
 
 #pragma mark - List
 @implementation ListBlockCell
-- (void)awakeFromNib {
-   [super awakeFromNib];
-   [self setupAttributedLabel:self.contentLabel];
-}
-
-- (void)fillWithBlock:(ArticleBlock *)block {
-   self.contentLabel.text = [block prerenderedText];
-}
-
 @end
-
 
 #pragma mark - Code
 @implementation CodeBlockCell
++ (NSString *)reuseIdentifier {
+   return NSStringFromClass(self);
+}
 
 - (void)fillWithBlock:(ArticleBlock *)block {
    NSArray* sizes = @[@(12), @(14), @(15), @(16), @(18)];
@@ -149,6 +123,10 @@
 - (void)awakeFromNib {
    [super awakeFromNib];
    self.playerView.delegate = self;
+}
+
+- (UIColor *)playerViewPreferredWebViewBackgroundColor:(YTPlayerView *)playerView {
+   return [UIColor blackColor];
 }
 
 - (void)fillWithBlock:(ArticleBlock *)block {

@@ -38,29 +38,25 @@
 
 #pragma mark - Text blocks
 @interface TextDisplayingCell : UITableViewCell<ArticleBlockCell, TTTAttributedLabelDelegate>
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *textContentLabel;
 @property (nonatomic, weak) id<LinkTapDelegate> linkDelegate;
 @end
 
 @interface TextBlockCell : TextDisplayingCell
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *textContentLabel;
 @end
 
 @interface QuoteBlockCell : TextDisplayingCell
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 
 @end
 
 @interface HeaderBlockCell : TextDisplayingCell
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end
 
 @interface ListBlockCell : TextDisplayingCell
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end
 
-@interface CodeBlockCell : TextDisplayingCell
+@interface CodeBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-
 @end
 
 #pragma mark - Image block

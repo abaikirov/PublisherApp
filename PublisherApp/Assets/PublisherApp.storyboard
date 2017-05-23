@@ -366,7 +366,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics">
                         <color key="tintColor" red="0.8862745098" green="0.1450980392" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </simulatedTabBarMetrics>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="DHS-jN-yfm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="DHS-jN-yfm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -547,7 +547,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentLabel" destination="2KW-Us-7BB" id="lAW-1S-TXE"/>
+                                            <outlet property="textContentLabel" destination="2KW-Us-7BB" id="oxd-d4-yQ5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuoteBlockCell" rowHeight="37" id="5XQ-aL-OEv" customClass="QuoteBlockCell">
@@ -582,7 +582,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentLabel" destination="Uee-Ny-MnF" id="yCc-YN-w7T"/>
+                                            <outlet property="textContentLabel" destination="Uee-Ny-MnF" id="euD-K4-GFw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextBlockCell" rowHeight="33" id="Fls-j5-iH1" customClass="TextBlockCell">
@@ -607,7 +607,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="textContentLabel" destination="aQ0-l9-uf2" id="kdB-Yq-wQZ"/>
+                                            <outlet property="textContentLabel" destination="aQ0-l9-uf2" id="OWR-yb-dDR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListBlockCell" rowHeight="33" id="oYE-YI-jrc" customClass="ListBlockCell">
@@ -632,7 +632,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentLabel" destination="NCX-xt-TgA" id="CIS-uR-aKM"/>
+                                            <outlet property="textContentLabel" destination="NCX-xt-TgA" id="rdP-Lq-0z8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageBlockCell" rowHeight="87" id="nGk-62-o8m" customClass="ImageBlockCell">
@@ -691,7 +691,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentLabel" destination="AtS-JV-jxr" id="Ra0-MV-FbY"/>
+                                            <outlet property="contentLabel" destination="AtS-JV-jxr" id="EJr-XS-5ze"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -126,12 +126,27 @@
 @end
 
 #pragma mark - Youtube cell
+@interface YoutubeBlockCell()<YTPlayerViewDelegate>
+@property (nonatomic) BOOL playerReady;
+@end
+
 @implementation YoutubeBlockCell
 +(NSString *)reuseIdentifier { return NSStringFromClass(self); }
 
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   self.playerView.delegate = self;
+}
+
 - (void)fillWithBlock:(ArticleBlock *)block {
-   NSDictionary* playerVars = @{ @"controls" : @(2), @"showinfo" : @(0), @"playsinline" : @(1), @"rel" : @(0)};
-   [self.playerView loadWithVideoId:@"P14O3Ob_B7Q" playerVars:playerVars];
+   if (!self.playerReady) {
+      NSDictionary* playerVars = @{ @"controls" : @(2), @"showinfo" : @(0), @"playsinline" : @(1), @"rel" : @(0)};
+      [self.playerView loadWithVideoId:block.properties[@"id"] playerVars:playerVars];
+   }
+}
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
+   self.playerReady = YES;
 }
 
 @end

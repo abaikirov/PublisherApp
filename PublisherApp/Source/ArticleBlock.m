@@ -20,6 +20,7 @@
 
 @implementation ArticleBlock
 
+#pragma mark - Optional methods
 - (CGFloat) blockHeight {
    if ([self.type isEqualToString:kImageBlock]) {
       CGFloat imageHeight = [self.properties[@"height"] floatValue];
@@ -40,6 +41,10 @@
 
 - (NSString *)image {
    return self.properties[@"url"];
+}
+
+- (NSString *)youtubeID {
+   return self.properties[@"id"];
 }
 
 #pragma mark - Text rendering for displaying html

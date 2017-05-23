@@ -143,6 +143,16 @@
    return images;
 }
 
+- (NSArray *)youtubeBlocksIDs {
+   NSMutableArray* ids = [NSMutableArray new];
+   for (ArticleBlock* block in self.blocks) {
+      if ([block.type isEqualToString:kYoutubeBlock]) {
+         [ids addObject:[block youtubeID]];
+      }
+   }
+   return ids;
+}
+
 - (NSOperationQueue *)renderQueue {
    if (!_renderQueue) {
       _renderQueue = [NSOperationQueue new];

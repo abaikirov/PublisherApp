@@ -47,6 +47,7 @@
 @property (nonatomic, strong) NSArray<ArticleBlock*>* blocks;
 - (void) prerenderBlocksWithIndexes:(NSArray*) visibleIndexes updateBlock:(void(^)()) updateBlock;
 - (NSArray*) imagesFromBlocks;
+- (NSArray*) youtubeBlocksIDs;
 
 //Parsing
 + (DCParserConfiguration *)parserConfiguration;

@@ -23,6 +23,7 @@ static NSString* kCodeBlock = @"code";
 - (BOOL) canDisplayLink;
 - (void) prerenderText;
 - (NSString*) image;
+- (NSString*) youtubeID;
 @end
 
 

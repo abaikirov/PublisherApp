@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kYoutubeBlock, kCodeBlock];
+   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock];
 }
 
 #pragma mark - Initialization

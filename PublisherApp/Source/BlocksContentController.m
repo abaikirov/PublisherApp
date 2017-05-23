@@ -49,8 +49,7 @@
    self.blocksTableView.estimatedRowHeight = 200.0;
    self.blocksTableView.rowHeight = UITableViewAutomaticDimension;
    self.blocksTableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
-   NSBundle* bundle = [NSBundle bundleForClass:[self class]];
-   [self.blocksTableView registerNib:[UINib nibWithNibName:@"YoutubeBlockCell" bundle:bundle] forHeaderFooterViewReuseIdentifier:@"YoutubeBlockCell"];
+   [self setupYoutubeCells];
    self.scrollListener = [PostScrollListener new];
    [self setupDataProvider];
 }
@@ -69,6 +68,15 @@
 }
 
 #pragma mark - Blocks Provider
+- (void) setupYoutubeCells {
+   NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+   UINib* nib = [UINib nibWithNibName:@"YoutubeBlockCell" bundle:bundle];
+   NSArray* youtubeIDs = [self.post youtubeBlocksIDs];
+   for (NSString* ID in youtubeIDs) {
+      [self.blocksTableView registerNib:nib forCellReuseIdentifier:ID];
+   }
+}
+
 - (void) setupDataProvider {
    self.blocksProvider = [[BlocksDataProvider alloc] initWithTableView:self.blocksTableView blocks:self.post.blocks];
 }
@@ -91,6 +99,9 @@
    ArticleBlock* blockToDisplay = [self.blocksProvider blockForIndexPath:indexPath];
    Class<ArticleBlockCell> cellClass = [self.blocksProvider cellClassForBlock:blockToDisplay];
    UITableViewCell<ArticleBlockCell>* cell = [tableView dequeueReusableCellWithIdentifier:[cellClass reuseIdentifier]];
+   if ([blockToDisplay.type isEqualToString:kYoutubeBlock]) { 
+      cell = [tableView dequeueReusableCellWithIdentifier:[blockToDisplay youtubeID]];
+   }
    [cell fillWithBlock:blockToDisplay];
    
    if ([blockToDisplay canDisplayLink]) {

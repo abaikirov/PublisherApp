@@ -37,6 +37,7 @@ s.dependency 'UIColor-HexString', '~> 1.1.0'
 s.dependency 'RegExCategories', '~> 1.0'
 s.dependency 'Realm'
 s.dependency 'TTTAttributedLabel'
+s.dependency 'youtube-ios-player-helper', '~> 0.1.4'
 
 # 8
 s.source_files = "PublisherApp/Source/*"

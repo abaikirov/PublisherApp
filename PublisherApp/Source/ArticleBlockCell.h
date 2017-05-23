@@ -52,6 +52,12 @@
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end
 
+#pragma mark - Image block
 @interface ImageBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UIImageView *contentImage;
+@end
+
+
+#pragma mark - Video blocks
+@interface YoutubeBlockCell : UITableViewCell<ArticleBlockCell>
 @end

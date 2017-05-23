@@ -16,7 +16,7 @@
 
 @end
 
-@interface PostScrollListener : NSObject
+@interface PostScrollListener : NSObject<UIScrollViewDelegate>
 
 - (void) followScrollView:(UIScrollView*) scrollView delay:(double)delay;
 - (void) stopFollowingScrollView;

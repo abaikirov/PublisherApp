@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock];
+   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kYoutubeBlock, kCodeBlock];
 }
 
 #pragma mark - Initialization
@@ -61,20 +61,9 @@
 }
 
 - (Class)cellClassForBlock:(ArticleBlock *)block {
-   Class cellClass = [UITableViewCell class];
-   if ([block.type isEqualToString:kTextBlock]) {
-      cellClass = [TextBlockCell class];
-   }
-   if ([block.type isEqualToString:kImageBlock]) {
-      cellClass = [ImageBlockCell class];
-   }
-   if ([block.type isEqualToString:kHeaderBlock]) {
-      cellClass = [HeaderBlockCell class];
-   }
-   if ([block.type isEqualToString:kListBlock]) {
-      cellClass = [ListBlockCell class];
-   }
-   return cellClass;
+   NSDictionary* classes = @{ kTextBlock : [TextBlockCell class], kImageBlock : [ImageBlockCell class], kHeaderBlock : [HeaderBlockCell class],
+                              kListBlock : [ListBlockCell class], kYoutubeBlock : [YoutubeBlockCell class], kCodeBlock : [CodeBlockCell class]};
+   return classes[block.type];
 }
 
 @end

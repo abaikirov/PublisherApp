@@ -46,10 +46,11 @@
 - (void)viewDidLoad {
    [super viewDidLoad];
    self.blocksTableView.dataSource = self;
-   self.blocksTableView.delegate = self;
    self.blocksTableView.estimatedRowHeight = 200.0;
    self.blocksTableView.rowHeight = UITableViewAutomaticDimension;
    self.blocksTableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+   NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+   [self.blocksTableView registerNib:[UINib nibWithNibName:@"YoutubeBlockCell" bundle:bundle] forHeaderFooterViewReuseIdentifier:@"YoutubeBlockCell"];
    self.scrollListener = [PostScrollListener new];
    [self setupDataProvider];
 }
@@ -59,6 +60,7 @@
    self.pagingController.topBarDelegate = self;
    self.scrollListener.delegate = self;
    [self.scrollListener followScrollView:self.blocksTableView delay:60.0f];
+   self.blocksTableView.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -123,6 +125,15 @@
    }
 }
 
+
+#pragma mark - Scroll view
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+   [self.scrollListener scrollViewWillBeginDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+   [self.scrollListener scrollViewDidScroll:scrollView];
+}
 
 #pragma mark - Scrolling
 - (void)scrolledTop {

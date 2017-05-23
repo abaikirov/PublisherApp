@@ -622,6 +622,43 @@
                                             <outlet property="contentImage" destination="ocN-yV-2rc" id="290-ra-rda"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CodeBlockCell" rowHeight="53" id="whw-Dd-OeX" customClass="CodeBlockCell">
+                                        <rect key="frame" x="0.0" y="597" width="375" height="53"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="whw-Dd-OeX" id="Z2M-p2-91X">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-WJ-zrW">
+                                                    <rect key="frame" x="0.0" y="4" width="375" height="45"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtS-JV-jxr">
+                                                            <rect key="frame" x="16" y="6" width="343" height="33"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.94901960784313721" green="0.93333333333333335" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="AtS-JV-jxr" secondAttribute="trailing" constant="16" id="DrY-Xg-gJ6"/>
+                                                        <constraint firstItem="AtS-JV-jxr" firstAttribute="leading" secondItem="zZm-WJ-zrW" secondAttribute="leading" constant="16" id="LXi-mf-QQr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="AtS-JV-jxr" secondAttribute="bottom" constant="6" id="tGr-T5-c56"/>
+                                                        <constraint firstItem="AtS-JV-jxr" firstAttribute="top" secondItem="zZm-WJ-zrW" secondAttribute="top" constant="6" id="yKL-OO-dHF"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="zZm-WJ-zrW" secondAttribute="bottom" constant="4" id="8Bh-pB-obX"/>
+                                                <constraint firstItem="zZm-WJ-zrW" firstAttribute="top" secondItem="Z2M-p2-91X" secondAttribute="top" constant="4" id="Z6X-1F-5xM"/>
+                                                <constraint firstAttribute="trailing" secondItem="zZm-WJ-zrW" secondAttribute="trailing" id="c8m-kU-0vX"/>
+                                                <constraint firstItem="zZm-WJ-zrW" firstAttribute="leading" secondItem="Z2M-p2-91X" secondAttribute="leading" id="tab-fO-Fkh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="AtS-JV-jxr" id="Ra0-MV-FbY"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>

@@ -179,7 +179,6 @@
       NSOperation* renderOperation = [self renderOperationForBlock:block];
       if (index == [renderedIndexes lastObject] && updateBlock) {
          renderOperation.completionBlock = ^{
-            block.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
             updateBlock();
          };
       }
@@ -190,10 +189,10 @@
    //Low priority blocks
    for (ArticleBlock* block in self.blocks) {
       NSInteger blockIndex = [self.blocks indexOfObject:block];
-      if ([renderedIndexes containsObject:[NSNumber numberWithInt:blockIndex]] && visibleIndexes != nil) {
-         continue;
+      if ([renderedIndexes containsObject:[NSNumber numberWithInt:blockIndex]]) continue;
+      if (visibleIndexes != nil) {
+         [self.renderQueue addOperation:[self renderOperationForBlock:block]];
       }
-      [self.renderQueue addOperation:[self renderOperationForBlock:block]];
    }
 }
 
@@ -201,9 +200,6 @@
    NSBlockOperation* renderOperation = [NSBlockOperation blockOperationWithBlock:^{
       [block prerenderText];
    }];
-   renderOperation.completionBlock = ^{
-      block.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
-   };
    return renderOperation;
 }
 

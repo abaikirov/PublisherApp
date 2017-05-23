@@ -104,12 +104,34 @@
 
 @end
 
+
+#pragma mark - Code
+@implementation CodeBlockCell
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   NSArray* sizes = @[@(12), @(14), @(15), @(16), @(18)];
+   FontSize fontSize = [ReaderSettings sharedSettings].preferredFontSize;
+   self.contentLabel.text = block.content;
+   self.contentLabel.font = [UIFont fontWithName:self.contentLabel.font.fontName size:[sizes[fontSize + 2] integerValue]];
+}
+@end
+
 #pragma mark - Image cell
 @implementation ImageBlockCell
 +(NSString *)reuseIdentifier { return NSStringFromClass(self); }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
    [self.contentImage sd_setImageWithURL:[NSURL URLWithString:[block image]]];
+}
+@end
+
+#pragma mark - Youtube cell
+@implementation YoutubeBlockCell
++(NSString *)reuseIdentifier { return NSStringFromClass(self); }
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   NSDictionary* playerVars = @{ @"controls" : @(2), @"showinfo" : @(0), @"playsinline" : @(1), @"rel" : @(0)};
+   [self.playerView loadWithVideoId:@"P14O3Ob_B7Q" playerVars:playerVars];
 }
 
 @end

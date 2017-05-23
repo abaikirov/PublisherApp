@@ -52,12 +52,19 @@
 
 - (void) prerenderText {
    if (!_prerenderedText || (self.appliedFontSize != [ReaderSettings sharedSettings].preferredFontSize)) {
-      if ([self.type isEqualToString:kListBlock]) {
-         _prerenderedText = [self listBlockContent];
-      } else {
-         _prerenderedText = [self htmlStringFromString:self.content];
-      }
+      _prerenderedText = [self renderedTextDependingOnBlockType];
    }
+}
+
+- (NSAttributedString*) renderedTextDependingOnBlockType {
+   NSAttributedString* result = [NSAttributedString new];
+   if ([self.type isEqualToString:kListBlock]) {
+      result = [self listBlockContent];
+   } else {
+      result = [self htmlStringFromString:self.content];
+   }
+   self.appliedFontSize = [ReaderSettings sharedSettings].preferredFontSize;
+   return result;
 }
 
 - (NSAttributedString*) htmlStringFromString:(NSString*) string {

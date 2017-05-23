@@ -9,7 +9,7 @@
 #import "PostScrollListener.h"
 @import UIKit;
 
-@interface PostScrollListener() <UIScrollViewDelegate>
+@interface PostScrollListener() 
 
 @property (nonatomic) CGFloat delay;
 @property (nonatomic) CGFloat initialOffset;
@@ -54,5 +54,6 @@
       }
    }
 }
+
 
 @end

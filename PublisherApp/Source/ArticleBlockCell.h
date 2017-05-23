@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ArticleBlock.h"
 @import TTTAttributedLabel;
+@import youtube_ios_player_helper;
 
 @class Post;
 
@@ -52,6 +53,11 @@
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
 @end
 
+@interface CodeBlockCell : TextDisplayingCell
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+@end
+
 #pragma mark - Image block
 @interface ImageBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet UIImageView *contentImage;
@@ -60,4 +66,5 @@
 
 #pragma mark - Video blocks
 @interface YoutubeBlockCell : UITableViewCell<ArticleBlockCell>
+@property (weak, nonatomic) IBOutlet YTPlayerView *playerView;
 @end

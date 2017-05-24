@@ -16,12 +16,14 @@ static NSString* kListBlock = @"list";
 static NSString* kYoutubeBlock = @"youtube";
 static NSString* kCodeBlock = @"code";
 static NSString* kQuoteBlock = @"quote";
+static NSString* kTwitterBlock = @"twitter";
 
 @protocol ArticleBlockExtensions <NSObject>
 @optional
 @property (nonatomic, readonly) NSAttributedString* prerenderedText;
 - (CGFloat) blockHeight; //Used for images
 - (BOOL) canDisplayLink;
+- (BOOL) displaysWebContent;
 - (void) prerenderText;
 - (NSString*) image;
 - (NSString*) youtubeID;

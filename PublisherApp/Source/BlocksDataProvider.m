@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock, kQuoteBlock];
+   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock, kQuoteBlock, kTwitterBlock];
 }
 
 #pragma mark - Initialization
@@ -53,6 +53,9 @@
    if ([block.type isEqualToString:kImageBlock]) {
       return [block blockHeight];
    }
+   if ([block.type isEqualToString:kTwitterBlock]) {
+      return [UIScreen mainScreen].bounds.size.width * 0.6;
+   }
    return UITableViewAutomaticDimension;
 }
 
@@ -64,7 +67,7 @@
    NSDictionary* classes = @{ kTextBlock : [TextBlockCell class], kImageBlock : [ImageBlockCell class],
                               kHeaderBlock : [HeaderBlockCell class], kListBlock : [ListBlockCell class],
                               kYoutubeBlock : [YoutubeBlockCell class], kCodeBlock : [CodeBlockCell class] ,
-                              kQuoteBlock : [QuoteBlockCell class]};
+                              kQuoteBlock : [QuoteBlockCell class], kTwitterBlock : [WebBlockCell class]};
    return classes[block.type];
 }
 

@@ -65,6 +65,16 @@
 @end
 
 
+#pragma mark - Webview block
+@interface BlockWebView : UIWebView
+@property (nonatomic) BOOL isLoaded;
+@property (nonatomic) NSInteger numberOfLoads;
+@end
+
+@interface WebBlockCell : UITableViewCell<ArticleBlockCell>
+@property (weak, nonatomic) IBOutlet BlockWebView *webView;
+@end
+
 #pragma mark - Video blocks
 @interface YoutubeBlockCell : UITableViewCell<ArticleBlockCell>
 @property (weak, nonatomic) IBOutlet YTPlayerView *playerView;

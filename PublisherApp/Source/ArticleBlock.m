@@ -33,7 +33,16 @@
 }
 
 - (BOOL) canDisplayLink {
-   if ([self.type isEqualToString:kTextBlock] || [self.type isEqualToString:kListBlock] || [self.type isEqualToString:kHeaderBlock]) {
+   NSArray* linkContainers = @[kTextBlock, kListBlock, kHeaderBlock, kQuoteBlock];
+   if ([linkContainers containsObject:self.type]) {
+      return YES;
+   }
+   return NO;
+}
+
+- (BOOL)displaysWebContent {
+   NSArray* webBlocks = @[kTwitterBlock];
+   if ([webBlocks containsObject:self.type]) {
       return YES;
    }
    return NO;

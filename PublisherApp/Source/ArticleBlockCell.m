@@ -139,5 +139,27 @@
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
    self.playerReady = YES;
 }
+@end
+
+#pragma mark - Web view
+@implementation BlockWebView
+@end
+
+@implementation WebBlockCell
++ (NSString *)reuseIdentifier {
+   return NSStringFromClass(self);
+}
+
+- (void)awakeFromNib {
+   [super awakeFromNib];
+   self.webView.scrollView.scrollEnabled = NO;
+}
+
+- (void)fillWithBlock:(ArticleBlock *)block {
+   if (!self.webView.isLoaded) {
+      [self.webView loadHTMLString:block.content baseURL:[NSURL URLWithString:@"https://twitter.com"]];
+   }
+}
 
 @end
+

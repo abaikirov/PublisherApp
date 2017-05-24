@@ -14,12 +14,13 @@
 #import "ReaderSettings.h"
 #import "PostScrollListener.h"
 
-@interface BlocksContentController ()<UITableViewDataSource, UITableViewDelegate, LinkTapDelegate, TopBarDelegate, FontSelectorViewDelegate, ScrollListenerDelegate>
+@interface BlocksContentController ()<UITableViewDataSource, UITableViewDelegate, LinkTapDelegate, TopBarDelegate, FontSelectorViewDelegate, ScrollListenerDelegate, UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *blocksTableView;
 @property (nonatomic, strong) BlocksDataProvider* blocksProvider;
 @property (nonatomic) PostScrollListener* scrollListener;
 @property (nonatomic) int currentFontSize;
+@property (nonatomic) NSMutableDictionary* webContentHeights;
 
 @end
 
@@ -50,6 +51,7 @@
    self.blocksTableView.rowHeight = UITableViewAutomaticDimension;
    self.blocksTableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
    [self setupYoutubeCells];
+   [self setupWebCells];
    self.scrollListener = [PostScrollListener new];
    [self setupDataProvider];
 }
@@ -74,6 +76,18 @@
    NSArray* youtubeIDs = [self.post youtubeBlocksIDs];
    for (NSString* ID in youtubeIDs) {
       [self.blocksTableView registerNib:nib forCellReuseIdentifier:ID];
+   }
+}
+
+- (void) setupWebCells {
+   self.webContentHeights = [NSMutableDictionary new];
+   NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+   UINib* nib = [UINib nibWithNibName:@"WebBlockCell" bundle:bundle];
+   for (ArticleBlock* block in self.post.blocks) {
+      if ([block displaysWebContent]) {
+         NSString* reuseID = [NSString stringWithFormat:@"webblock_%d", [self.post.blocks indexOfObject:block]];
+         [self.blocksTableView registerNib:nib forCellReuseIdentifier:reuseID];
+      }
    }
 }
 
@@ -102,6 +116,12 @@
    if ([blockToDisplay.type isEqualToString:kYoutubeBlock]) { 
       cell = [tableView dequeueReusableCellWithIdentifier:[blockToDisplay youtubeID]];
    }
+   if ([blockToDisplay displaysWebContent]) {
+      NSString* reuseID = [NSString stringWithFormat:@"webblock_%d",[self.post.blocks indexOfObject:blockToDisplay]];
+      cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
+      [(WebBlockCell*)cell webView].delegate = self;
+      [(WebBlockCell*)cell webView].tag = indexPath.row;
+   }
    [cell fillWithBlock:blockToDisplay];
    
    if ([blockToDisplay canDisplayLink]) {
@@ -116,7 +136,30 @@
       return UITableViewAutomaticDimension;
    }
    ArticleBlock* blockToDisplay = [self.blocksProvider blockForIndexPath:indexPath];
+   if ([blockToDisplay displaysWebContent]) {
+      if(self.webContentHeights[@(indexPath.row)] != nil) {
+         return [self.webContentHeights[@(indexPath.row)] floatValue];
+      }
+   }
    return [self.blocksProvider heightForBlock:blockToDisplay];
+}
+
+- (void)webViewDidFinishLoad:(BlockWebView *)webView {
+   webView.isLoaded = YES;
+   webView.numberOfLoads++;
+   NSIndexPath* indexPath = [NSIndexPath indexPathForRow:webView.tag inSection:0];
+   ArticleBlock* blockToDisplay = [self.blocksProvider blockForIndexPath:indexPath];
+   NSInteger numberOfLoadsToUpdate = 1;
+   if ([blockToDisplay.type isEqualToString:kTwitterBlock]) numberOfLoadsToUpdate = 3;
+   if (webView.numberOfLoads == numberOfLoadsToUpdate) {
+      self.webContentHeights[@(webView.tag)] = @(webView.scrollView.contentSize.height);
+      if ([[self.blocksTableView indexPathsForVisibleRows] containsObject:indexPath]) {
+         [self.blocksTableView setContentOffset:self.blocksTableView.contentOffset animated:NO];
+         [self.blocksTableView beginUpdates];
+         [self.blocksTableView endUpdates];
+      }
+   }
+   
 }
 
 

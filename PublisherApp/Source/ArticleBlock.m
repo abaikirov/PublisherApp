@@ -41,7 +41,7 @@
 }
 
 - (BOOL)displaysWebContent {
-   NSArray* webBlocks = @[kTwitterBlock];
+   NSArray* webBlocks = @[kTwitterBlock, kVimeoBlock];
    if ([webBlocks containsObject:self.type]) {
       return YES;
    }

@@ -34,7 +34,7 @@
             <connections>
                 <outlet property="webView" destination="oPH-xZ-e8L" id="BXl-Hg-nhQ"/>
             </connections>
-            <point key="canvasLocation" x="-166.5" y="-25.5"/>
+            <point key="canvasLocation" x="-256" y="-15"/>
         </tableViewCell>
     </objects>
 </document>

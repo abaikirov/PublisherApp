@@ -156,10 +156,19 @@
 }
 
 - (void)fillWithBlock:(ArticleBlock *)block {
+   NSString* baseURL = @"";
+   if ([block.type isEqualToString:kTwitterBlock]) {
+      baseURL = @"https://twitter.com";
+   }
+   if ([block.type isEqualToString:kVimeoBlock]) {
+      baseURL = @"https://vimeo.com/";
+   }
    if (!self.webView.isLoaded) {
-      [self.webView loadHTMLString:block.content baseURL:[NSURL URLWithString:@"https://twitter.com"]];
+      [self.webView loadHTMLString:block.content baseURL:[NSURL URLWithString:baseURL]];
    }
 }
+
+
 
 @end
 

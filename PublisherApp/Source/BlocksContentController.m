@@ -85,7 +85,7 @@
    UINib* nib = [UINib nibWithNibName:@"WebBlockCell" bundle:bundle];
    for (ArticleBlock* block in self.post.blocks) {
       if ([block displaysWebContent]) {
-         NSString* reuseID = [NSString stringWithFormat:@"webblock_%d", [self.post.blocks indexOfObject:block]];
+         NSString* reuseID = [NSString stringWithFormat:@"%@_%d", block.type, [self.post.blocks indexOfObject:block]];
          [self.blocksTableView registerNib:nib forCellReuseIdentifier:reuseID];
       }
    }
@@ -117,10 +117,10 @@
       cell = [tableView dequeueReusableCellWithIdentifier:[blockToDisplay youtubeID]];
    }
    if ([blockToDisplay displaysWebContent]) {
-      NSString* reuseID = [NSString stringWithFormat:@"webblock_%d",[self.post.blocks indexOfObject:blockToDisplay]];
+      NSString* reuseID = [NSString stringWithFormat:@"%@_%d", blockToDisplay.type,[self.post.blocks indexOfObject:blockToDisplay]];
       cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-      [(WebBlockCell*)cell webView].delegate = self;
       [(WebBlockCell*)cell webView].tag = indexPath.row;
+      [(WebBlockCell*)cell webView].delegate = self;
    }
    [cell fillWithBlock:blockToDisplay];
    

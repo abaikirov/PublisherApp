@@ -17,6 +17,7 @@ static NSString* kYoutubeBlock = @"youtube";
 static NSString* kCodeBlock = @"code";
 static NSString* kQuoteBlock = @"quote";
 static NSString* kTwitterBlock = @"twitter";
+static NSString* kVimeoBlock = @"vimeo";
 
 @protocol ArticleBlockExtensions <NSObject>
 @optional

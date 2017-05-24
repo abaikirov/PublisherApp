@@ -98,13 +98,13 @@
       if (ordered == YES) {
          bulletType = [NSString stringWithFormat:@"%u. ", [items indexOfObject:item] + 1];
       }
-      NSString* listItem = [NSString stringWithFormat:@"%@%@\n", bulletType, item];
-      NSMutableAttributedString* attrItem = [[NSMutableAttributedString alloc] initWithAttributedString:[self htmlStringFromString:listItem]];
-      
+      NSString* newItem = [NSString stringWithFormat:@"%@%@", bulletType, item];
+      NSMutableAttributedString* html = [[NSMutableAttributedString alloc] initWithAttributedString:[self htmlStringFromString:newItem]];
+      [html appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
       NSDictionary* attributes = @{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"e22524"],
                                    NSFontAttributeName : [UIFont sourceSansBold:[self baseFontSize]]};
-      [attrItem addAttributes:attributes range:NSMakeRange(0, 2)];
-      [result appendAttributedString:attrItem];
+      [html addAttributes:attributes range:NSMakeRange(0, 2)];
+      [result appendAttributedString:html];
    }
    return result;
 }

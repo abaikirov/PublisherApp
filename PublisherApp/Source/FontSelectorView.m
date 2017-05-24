@@ -9,6 +9,7 @@
 #import "FontSelectorView.h"
 
 static const CGFloat topOffset = 50;
+static const float sliderStep = 100.0f;
 
 @interface FontSelectorView()
 
@@ -55,22 +56,31 @@ static const CGFloat topOffset = 50;
    [self addSubview:sliderBackgroundView];
    
    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(50, 5, screen_width-100, 30)];
-   self.slider.minimumValue = -2;
-   self.slider.maximumValue = 2;
+   self.slider.minimumValue = -200;
+   self.slider.maximumValue = 200;
+   self.slider.continuous = YES;
    self.slider.minimumTrackTintColor = [UIColor whiteColor];
    self.slider.maximumTrackTintColor = [UIColor whiteColor];
-   [self.slider setThumbImage:[UIImage imageNamed:@"Knob"] forState:UIControlStateNormal];
+   NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+   [self.slider setThumbImage:[UIImage imageNamed:@"Knob" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
    [sliderBackgroundView addSubview:self.slider];
    
    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-   [self.slider setValue:self.fontSize animated:false];
+   [self.slider setValue:self.fontSize * sliderStep animated:false];
 }
 
 - (void) sliderValueChanged:(UISlider *) slider {
-   NSInteger newValue = slider.value;
-   if (newValue != self.fontSize) {
-      self.fontSize = newValue;
-      [self.delegate fontSizeValueDidChanged:newValue];
+   float step = 10.0;
+   float value = roundf(slider.value / step) * step;
+   [slider setValue:value animated:YES];
+   
+   NSArray* fontRanges = @[@(-200), @(-100), @(0), @(100), @(200)];
+   if ([fontRanges containsObject:[NSNumber numberWithFloat:slider.value]]) {
+      NSInteger newFontSize = slider.value / 100;
+      if(newFontSize != self.fontSize) {
+         self.fontSize = newFontSize;
+         [self.delegate fontSizeValueDidChanged:newFontSize];
+      }
    }
 }
 

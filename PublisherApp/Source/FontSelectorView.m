@@ -74,7 +74,7 @@ static const float sliderStep = 100.0f;
    float value = roundf(slider.value / step) * step;
    [slider setValue:value animated:YES];
    
-   NSArray* fontRanges = @[@(-200), @(-100), @(0), @(100), @(200)];
+   NSArray* fontRanges = @[@(-200), @(-190), @(-110), @(-100), @(-90), @(-10), @(0), @(10), @(90), @(100), @(110), @(190), @(200)];
    if ([fontRanges containsObject:[NSNumber numberWithFloat:slider.value]]) {
       NSInteger newFontSize = slider.value / 100;
       if(newFontSize != self.fontSize) {

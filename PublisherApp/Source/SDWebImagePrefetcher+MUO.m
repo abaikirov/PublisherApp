@@ -25,12 +25,16 @@
             imageURL = post.featuredImage.middle;
          }
       }
-      if ([[SDWebImageManager sharedManager] cachedImageExistsForURL:imageURL]) {
+      if (![[SDWebImageManager sharedManager] cachedImageExistsForURL:imageURL]) {
          [urls addObject:imageURL];
       }
    }
    
-   [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:urls];
+   [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:urls progress:^(NSUInteger noOfFinishedUrls, NSUInteger noOfTotalUrls) {
+      
+   } completed:^(NSUInteger noOfFinishedUrls, NSUInteger noOfSkippedUrls) {
+      NSLog(@"PREFETCH COMPLETED");
+   }];
 }
 
 @end

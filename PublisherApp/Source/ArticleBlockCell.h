@@ -27,8 +27,15 @@
 - (void) fillWithBlock:(ArticleBlock*) block;
 @end
 
+
+#pragma mark - Header
+@interface FeaturedImageView : UIImageView
+- (void) fillWithPost:(Post*) post;
+@end
+
 @interface ArticleHeaderCell : UITableViewCell<ArticleBlockCell>
-@property (weak, nonatomic) IBOutlet UIImageView *featuredImage;
+@property (weak, nonatomic) IBOutlet FeaturedImageView *featuredImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;

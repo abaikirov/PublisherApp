@@ -18,7 +18,7 @@
 
 @implementation BlocksDataProvider
 - (NSArray*) availableBlocksType {
-   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock, kQuoteBlock, kTwitterBlock, kVimeoBlock];
+   return @[kTextBlock, kImageBlock, kHeaderBlock, kListBlock, kCodeBlock, kYoutubeBlock, kQuoteBlock, kTwitterBlock, kVimeoBlock, kHtmlBlock];
 }
 
 #pragma mark - Initialization
@@ -68,7 +68,7 @@
                               kHeaderBlock : [HeaderBlockCell class], kListBlock : [ListBlockCell class],
                               kYoutubeBlock : [YoutubeBlockCell class], kCodeBlock : [CodeBlockCell class] ,
                               kQuoteBlock : [QuoteBlockCell class], kTwitterBlock : [WebBlockCell class],
-                              kVimeoBlock : [WebBlockCell class]};
+                              kVimeoBlock : [WebBlockCell class], kHtmlBlock : [WebBlockCell class]};
    return classes[block.type];
 }
 

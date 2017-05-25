@@ -14,6 +14,18 @@
 @import DateTools;
 @import UIColor_HexString;
 
+#pragma mark - Featured image view
+@implementation FeaturedImageView
+- (void)fillWithPost:(Post *)post {
+   if ([[SDWebImageManager sharedManager] cachedImageExistsForURL:post.featuredImage.featured]) {
+      [self sd_setImageWithURL:post.featuredImage.featured];
+   } else {
+      [self sd_setImageWithURL:post.featuredImage.featured placeholderImage:[[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:[post.featuredImage.middle absoluteString]]];
+   }
+}
+
+@end;
+
 #pragma mark - Article header cell
 @implementation ArticleHeaderCell
 
@@ -34,7 +46,7 @@
 }
 
 -(void)fillWithPost:(Post *)post {
-   [self.featuredImage sd_setImageWithURL:post.featuredImage.featured];
+   [self.featuredImage fillWithPost:post];
    self.postTitle.text = post.postTitle;
    self.authorLabel.text = [NSString stringWithFormat:@"by %@", post.author];
    self.dateLabel.text = [post.postDate timeAgoSinceNow];

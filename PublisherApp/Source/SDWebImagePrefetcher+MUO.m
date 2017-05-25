@@ -26,6 +26,7 @@
          }
       }
       [urls addObject:imageURL];
+      //Downloading with manager, because SDWebImagePrefetcher not working :)
       [[SDWebImageManager sharedManager] loadImageWithURL:imageURL options:SDWebImageHighPriority progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
          [[SDWebImageManager sharedManager] saveImageToCache:image forURL:imageURL];
       }];

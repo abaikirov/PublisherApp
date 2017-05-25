@@ -103,26 +103,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-   return 30;
+   return 0.01;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-   UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
-   headerView.backgroundColor = [UIColor whiteColor];
-   
-   CALayer* bottomBorder = [CALayer layer];
-   [bottomBorder setFrame:CGRectMake(0, 29.5, [UIScreen mainScreen].bounds.size.width, 0.5)];
-   [bottomBorder setBackgroundColor:self.tableView.separatorColor.CGColor];
-   [headerView.layer addSublayer:bottomBorder];
-   
-   UILabel* headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 6, 200, 20)];
-   headerLabel.text = @"BROWSE CATEGORIES";
-   headerLabel.font = [UIFont systemFontOfSize:13 weight:UIFontWeightMedium];
-   headerLabel.textColor = [UIColor colorWithHexString:@"8C8C8C"];
-   [headerView addSubview:headerLabel];
-   return headerView;
+   return [[UIView alloc] initWithFrame:CGRectZero];
 }
-
 
 
 #pragma mark - Server interaction

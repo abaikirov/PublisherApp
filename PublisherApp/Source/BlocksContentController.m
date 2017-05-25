@@ -56,6 +56,13 @@
    [self setupDataProvider];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+   [super viewWillAppear:animated];
+   if (self.currentFontSize != [ReaderSettings sharedSettings].preferredFontSize) {
+      [self applyFont];
+   }
+}
+
 - (void)viewDidAppear:(BOOL)animated {
    [super viewDidAppear:animated];
    self.pagingController.topBarDelegate = self;

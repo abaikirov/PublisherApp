@@ -155,15 +155,11 @@ const int kDismissOffset = 120;
 
 -(void) displayRemoteImages {
    for (int i = 0; i < _imageURLs.count; i++) {
-      [self.downloader downloadImageWithURL:[NSURL URLWithString:_imageURLs[i]]
-                                    options:SDWebImageDownloaderUseNSURLCache
-                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                      
-                                   } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                         [self.scrollingImageViews[i] setImage:image];
-                                      });
-                                   }];
+      [self.downloader downloadImageWithURL:[NSURL URLWithString:_imageURLs[i]] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.scrollingImageViews[i] setImage:image];
+         });
+      }];
    }
 }
 

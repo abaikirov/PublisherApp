@@ -25,16 +25,11 @@
             imageURL = post.featuredImage.middle;
          }
       }
-      if (![[SDWebImageManager sharedManager] cachedImageExistsForURL:imageURL]) {
-         [urls addObject:imageURL];
-      }
+      [urls addObject:imageURL];
+      [[SDWebImageManager sharedManager] loadImageWithURL:imageURL options:SDWebImageHighPriority progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+         [[SDWebImageManager sharedManager] saveImageToCache:image forURL:imageURL];
+      }];
    }
-   
-   [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:urls progress:^(NSUInteger noOfFinishedUrls, NSUInteger noOfTotalUrls) {
-      
-   } completed:^(NSUInteger noOfFinishedUrls, NSUInteger noOfSkippedUrls) {
-      NSLog(@"PREFETCH COMPLETED");
-   }];
 }
 
 @end

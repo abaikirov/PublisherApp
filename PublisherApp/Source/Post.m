@@ -84,11 +84,13 @@
    
    post.ID = [self.ID integerValue];
    post.title = self.postTitle;
-   if ([[SDWebImageManager sharedManager] cachedImageExistsForURL:self.featuredImage.middle] && !isBookmarked) {
-      post.imageUrl = [self.featuredImage.featured absoluteString];
-   } else {
-      post.imageUrl = [self.featuredImage.middle absoluteString];
-   }
+   [[SDWebImageManager sharedManager] cachedImageExistsForURL:self.featuredImage.middle completion:^(BOOL isInCache) {
+      if (isInCache && !isBookmarked) {
+         post.imageUrl = [self.featuredImage.featured absoluteString];
+      } else {
+         post.imageUrl = [self.featuredImage.middle absoluteString];
+      }
+   }];
    post.primaryCategory = [[self.categories firstObject] title];
    post.postURL = self.url;
    post.content = self.html;

@@ -72,7 +72,7 @@
    self.dateLabel.text = post.relativeDateString;
    
    //Setting image
-   @weakify(self);
+   /*@weakify(self);
    [self.postImageView sd_setImageWithURL:post.featuredImage.featured completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
       @strongify(self);
       self.postImageView.image = image;
@@ -84,7 +84,7 @@
       } else {
          self.postImageView.alpha = 1.0;
       }
-   }];
+   }];*/
    
    //Likes
    if ([[CoreContext sharedContext].likesManager postIsLiked:post]) {

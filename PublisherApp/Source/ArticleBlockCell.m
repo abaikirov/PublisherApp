@@ -17,11 +17,8 @@
 #pragma mark - Featured image view
 @implementation FeaturedImageView
 - (void)fillWithPost:(Post *)post {
-   if ([[SDWebImageManager sharedManager] cachedImageExistsForURL:post.featuredImage.featured]) {
-      [self sd_setImageWithURL:post.featuredImage.featured];
-   } else {
-      [self sd_setImageWithURL:post.featuredImage.featured placeholderImage:[[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:[post.featuredImage.middle absoluteString]]];
-   }
+   UIImage* cachedImage = [[SDWebImageManager sharedManager].imageCache imageFromCacheForKey:[post.featuredImage.middle absoluteString]];
+   [self sd_setImageWithURL:post.featuredImage.featured placeholderImage:cachedImage];
 }
 
 @end;

@@ -14,7 +14,6 @@
 
 @interface FeaturedImage : NSObject
 @property (nonatomic) NSURL *featured;
-@property (nonatomic) NSURL *thumb;
 @property (nonatomic) NSURL *middle;
 @end
 

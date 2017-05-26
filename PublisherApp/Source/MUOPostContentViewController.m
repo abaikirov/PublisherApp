@@ -16,6 +16,7 @@
 #import "ReaderSettings.h"
 #import "CoreContext.h"
 #import "Post.h"
+#import "ArticleBlockCell.h"
 @import SafariServices;
 
 #import "UIView+Toast.h"
@@ -29,40 +30,30 @@
 @interface BottomButton : UIButton
 
 @end
-
 @implementation BottomButton
-
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
    BOOL inside = [super pointInside: point withEvent: event];
-   
    if (inside && !self.isHighlighted && event.type == UIEventTypeTouches) {
       self.highlighted = YES;
    }
-   
    return inside;
 }
-
 @end
 
 
 #pragma mark -
 #pragma mark - Bottom view
 @protocol BottomViewDelegate <NSObject>
-
 - (void) didPressedButtonAtIndex:(int) index;
-
 @end
 
 @interface PostContentBottomView : UIView
-
 @property (nonatomic, weak) id<BottomViewDelegate> delegate;
 @property (nonatomic, strong) BottomButton* likeBtn;
-
 @end
 
 
 @implementation PostContentBottomView
-
 - (instancetype)initWithFrame:(CGRect)frame {
    self = [super initWithFrame:frame];
    if (self) {
@@ -137,17 +128,13 @@
 #pragma mark - View controller
 @interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate, SFSafariViewControllerDelegate>
 
-@property(nonatomic) MUOPostContentViewModel *viewModel;
-
+@property (weak, nonatomic) IBOutlet FeaturedImageView *featuredImage;
 @property (nonatomic, strong) MUOHtmlEditor* htmlEditor;
-
-//@property (nonatomic, strong) CustomIOSAlertView* alertView;
+@property(nonatomic) MUOPostContentViewModel *viewModel;
+@property (nonatomic) PostScrollListener* scrollListener;
 
 @property (nonatomic) int currentFontSize;
 @property (nonatomic) BOOL finishedLoading;
-@property (nonatomic) PostScrollListener* scrollListener;
-
-
 @end
 
 @implementation MUOPostContentViewController
@@ -172,13 +159,7 @@
    return self;
 }
 
--(void)dealloc {
-   NSLog(@"DEALLOC:%@", self.post.postTitle);
-   self.webView.delegate = nil;
-}
-
 #pragma mark - View lifecycle
-
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations {
    return UIInterfaceOrientationMaskPortrait;
 }
@@ -192,15 +173,11 @@
    self.webView.scrollView.bounces = NO;
    self.webView.delegate = self;
    self.webView.allowsInlineMediaPlayback = YES;
+   self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal - 0.00001;
+   self.webView.scrollView.contentInset = UIEdgeInsetsMake(screen_width * 0.8, 0, 0, 0);
    
    self.scrollListener = [PostScrollListener new];
-   
-   
-   if (!self.parentNavigationItem) {
-      self.parentNavigationItem = self.navigationItem;
-   }
-   
-   self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal - 0.00001;
+   [self.featuredImage fillWithPost:self.post];
    
    if (!self.finishedLoading) {
       [self fillContent];
@@ -213,6 +190,7 @@
    if (![CoreContext sharedContext].bottomBarEnabled) {
       [(PostContentBottomView*)self.pagingController.bottomView removeFromSuperview];
    }
+   
    [self setNeedsStatusBarAppearanceUpdate];
 }
 
@@ -283,25 +261,8 @@
       [[[self.viewModel loadPost] deliverOnMainThread] subscribeError:^(NSError *error) {
          @strongify(self);
          [self performSelector:@selector(showSafariVC) withObject:nil afterDelay:0.5];
-         //;
       }];
    }
-}
-
-- (void) showSafariVC {
-   SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.postSlug]];
-   safari.delegate = self;
-   [self.parentViewController presentViewController:safari animated:YES completion:nil];
-}
-
-- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
-   NSInteger selfIndex = [self.navigationController.viewControllers indexOfObject:self.pagingController];
-   if (selfIndex <= 1) {
-      [self.navigationController setNavigationBarHidden:NO animated:YES];
-      [[UIApplication sharedApplication] setStatusBarHidden:NO];
-      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-   }
-   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:selfIndex - 1] animated:YES];
 }
 
 - (void) showOfflinePost {
@@ -324,8 +285,8 @@
    _postID = post.ID;
    _post.html = [[MUOHtmlEditor editor] setBodyFontSize:_currentFontSize forHTML:_post.html];
    //_post.html = [[MUOHtmlEditor editor] addCSS:[MUOUserSession sharedSession].remoteCSS toHTML:post.html];
-   
-   [self updateBookmarkStatus];
+   NSString* css = @".article__body{margin-top:0 !important;} article.article > a {display: none;}";
+   _post.html = [[MUOHtmlEditor editor] addCSS:css toHTML:post.html];
 }
 
 
@@ -349,13 +310,15 @@
 }
 
 
-#pragma mark - Actions
+#pragma mark - Sharing
 - (void)shareButtonPressed:(UIButton*) sender {
    if(self.post != nil) {
       [[CoreContext sharedContext].shareHelper sharePostWithURL:[NSURL URLWithString:self.post.url] title:self.post.postTitle presentingViewController:self fromView:sender];
    }
 }
 
+
+#pragma mark - Bookmarks
 - (void) updateBookmarkStatus {
    if (!self.post) {
       return;
@@ -404,6 +367,22 @@
    [self.webView stringByEvaluatingJavaScriptFromString:fontSize];
 }
 
+#pragma mark - Safari
+- (void) showSafariVC {
+   SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.postSlug]];
+   safari.delegate = self;
+   [self.parentViewController presentViewController:safari animated:YES completion:nil];
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+   NSInteger selfIndex = [self.navigationController.viewControllers indexOfObject:self.pagingController];
+   if (selfIndex <= 1) {
+      [self.navigationController setNavigationBarHidden:NO animated:YES];
+      [[UIApplication sharedApplication] setStatusBarHidden:NO];
+      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+   }
+   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:selfIndex - 1] animated:YES];
+}
 
 #pragma mark - UIWebView
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -423,5 +402,11 @@
    [self displayHTML:self.post.html];
 }
 
+
+#pragma mark - Dealloc
+-(void)dealloc {
+   NSLog(@"DEALLOC:%@", self.post.postTitle);
+   self.webView.delegate = nil;
+}
 
 @end

@@ -84,13 +84,7 @@
    
    post.ID = [self.ID integerValue];
    post.title = self.postTitle;
-   [[SDWebImageManager sharedManager] cachedImageExistsForURL:self.featuredImage.middle completion:^(BOOL isInCache) {
-      if (isInCache && !isBookmarked) {
-         post.imageUrl = [self.featuredImage.featured absoluteString];
-      } else {
-         post.imageUrl = [self.featuredImage.middle absoluteString];
-      }
-   }];
+   post.imageUrl = [self.featuredImage.middle absoluteString];
    post.primaryCategory = [[self.categories firstObject] title];
    post.postURL = self.url;
    post.content = self.html;
@@ -110,7 +104,6 @@
    self.likesCount = [NSNumber numberWithInteger:post.likesCount];
    self.postTitle = post.title;
    self.featuredImage = [FeaturedImage new];
-   self.featuredImage.thumb = [NSURL URLWithString:post.imageUrl];
    self.featuredImage.middle = [NSURL URLWithString:post.imageUrl];
    self.html = post.content;
    self.postDate = post.date;

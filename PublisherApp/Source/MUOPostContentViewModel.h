@@ -15,10 +15,8 @@
 @property (strong, nonatomic) NSNumber *postId;
 @property (strong, nonatomic) NSString* postSlug;
 @property (strong, nonatomic) Post *post;
-@property (strong, nonatomic) NSString *title;
 
 - (RACSignal *) loadPost;
-
-- (void) loadSavedPost;
+- (RACSignal *) loadSavedPost;
 
 @end

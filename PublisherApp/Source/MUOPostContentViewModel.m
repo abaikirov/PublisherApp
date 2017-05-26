@@ -14,49 +14,45 @@
 #import "CoreContext.h"
 
 @interface MUOPostContentViewModel ()
-
 @property (nonatomic, strong) PostsRequestsManager* postsManager;
-
-
 @end
 
 @implementation MUOPostContentViewModel
 
 - (instancetype)init{
-    self = [super init];
-    if(self)
-    {
-        self.postsManager = [PostsRequestsManager new];
-    }
-    return self;
+   self = [super init];
+   if(self) {
+      self.postsManager = [PostsRequestsManager new];
+   }
+   return self;
 }
 
 - (RACSignal *)loadPost {
-    @weakify(self);
-    NSString* fetchIdentifier = _postId ? [_postId stringValue] : _postSlug;
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        @strongify(self);
-        [[self.postsManager fetchPostByID:fetchIdentifier] subscribeNext:^(Post *post) {
-            
-            @strongify(self);
-            self.post = post;
-            self.title = post.postTitle;
-            [subscriber sendCompleted];
-        } error:^(NSError *error) {
-            [subscriber sendError:error];
-        }];
-        return nil;
-    }];
+   @weakify(self);
+   NSString* fetchIdentifier = _postId ? [_postId stringValue] : _postSlug;
+   return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+      @strongify(self);
+      [[self.postsManager fetchPostByID:fetchIdentifier] subscribeNext:^(Post *post) {
+         [subscriber sendNext:post];
+         [subscriber sendCompleted];
+      } error:^(NSError *error) {
+         [subscriber sendError:error];
+      }];
+      return nil;
+   }];
 }
 
-- (void)loadSavedPost {
-    MUOSavedPost* savedPost = [[CoreContext sharedContext].savesManager savedPostWithID:[_postId integerValue]];
-    if (savedPost != nil) {
-        Post* postToDisplay = [Post new];
-        [postToDisplay fillWithSavedPost:savedPost];
-       
-        self.post = postToDisplay;
-    }
+- (RACSignal *) loadSavedPost {
+   return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+      MUOSavedPost* savedPost = [[CoreContext sharedContext].savesManager savedPostWithID:[_postId integerValue]];
+      if (savedPost != nil) {
+         Post* postToDisplay = [Post new];
+         [postToDisplay fillWithSavedPost:savedPost];
+         [subscriber sendNext:postToDisplay];
+         [subscriber sendCompleted];
+      }
+      return nil;
+   }];
 }
 
 @end

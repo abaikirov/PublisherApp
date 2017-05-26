@@ -177,7 +177,6 @@
    self.webView.scrollView.contentInset = UIEdgeInsetsMake(screen_width * 0.8, 0, 0, 0);
    
    self.scrollListener = [PostScrollListener new];
-   [self.featuredImage fillWithPost:self.post];
    
    if (!self.finishedLoading) {
       [self fillContent];
@@ -211,7 +210,7 @@
     [self.scrollListener stopFollowingScrollView];
 }
 
-#pragma mark - Navigation
+#pragma mark - Scrolling
 - (void)scrolledTop {
    [self.pagingController hideBottomView:NO];
    [self.pagingController animateTopView:NO];
@@ -224,62 +223,6 @@
 
 
 #pragma mark - Content
--(void) fillContent {
-   if (self.post && _isOffline) {                                              //Displaying bookmarked post
-      _post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:_post.html];
-      [self displayHTML:_post.html];
-      return;
-   }
-   
-   self.viewModel = [MUOPostContentViewModel new];
-   if (self.postID) self.viewModel.postId = self.postID;
-   if (self.postSlug) self.viewModel.postSlug = self.postSlug;
-
-   if (CONNECTION_AVAILABLE) { //If there is internet connection, display post if available, else fetch post
-      [self showPost];
-   } else {                                                       //If there is no internet connection, try to display offline post
-      [self showOfflinePost];
-   }
-   
-   @weakify(self);
-   [[RACObserve(self.viewModel, post) ignore:nil] subscribeNext:^(Post* post){
-      @strongify(self);
-      self.post = post;
-      if (!CONNECTION_AVAILABLE) {
-         post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:post.html];
-      }
-      [self displayHTML:post.html];
-   }];
-}
-
-- (void) showPost {
-   _isOffline = NO;
-   if (self.post) {
-      [self displayHTML:_post.html];
-   } else {
-      @weakify(self);
-      [[[self.viewModel loadPost] deliverOnMainThread] subscribeError:^(NSError *error) {
-         @strongify(self);
-         [self performSelector:@selector(showSafariVC) withObject:nil afterDelay:0.5];
-      }];
-   }
-}
-
-- (void) showOfflinePost {
-   _isOffline = YES;
-   NSString* html = self.post.html;
-   [self displayHTML:html];
-   [self.viewModel loadSavedPost];
-}
-
-- (void) displayHTML:(NSString *) html {
-   if (_isOffline) {
-      [_webView loadHTMLString:html baseURL:[NSURL URLWithString:nil]];
-   } else {
-      [_webView loadHTMLString:html baseURL:[NSURL URLWithString:[CoreContext sharedContext].siteURL]];
-   }
-}
-
 -(void)setPost:(Post *)post {
    _post = post;
    _postID = post.ID;
@@ -287,6 +230,61 @@
    //_post.html = [[MUOHtmlEditor editor] addCSS:[MUOUserSession sharedSession].remoteCSS toHTML:post.html];
    NSString* css = @".article__body{margin-top:0 !important;} article.article > a {display: none;}";
    _post.html = [[MUOHtmlEditor editor] addCSS:css toHTML:post.html];
+}
+
+-(void) fillContent {
+   if (self.post && self.isOffline) { //Displaying bookmarked post
+      self.post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:self.post.html];
+      [self displayPost];
+      return;
+   }
+   
+   self.viewModel = [MUOPostContentViewModel new];
+   self.viewModel.postId = self.postID;
+   self.viewModel.postSlug = self.postSlug;
+
+   if (CONNECTION_AVAILABLE) { //If there is internet connection, display post if available, else fetch post
+      [self showPost];
+   } else { //If there is no internet connection, try to display offline post
+      [self showOfflinePost];
+   }
+}
+
+- (void) showPost {
+   self.isOffline = NO;
+   if (self.post) {
+      [self displayPost];
+   } else {
+      @weakify(self);
+      [[[self.viewModel loadPost] deliverOnMainThread] subscribeNext:^(Post* post) {
+         @strongify(self);
+         self.post = post;
+         [self displayPost];
+      } error:^(NSError *error) {
+         @strongify(self);
+         [self performSelector:@selector(showSafariVC) withObject:nil afterDelay:0.5];
+      }];
+   }
+}
+
+- (void) showOfflinePost {
+   self.isOffline = YES;
+   @weakify(self);
+   [[[self.viewModel loadSavedPost] deliverOnMainThread] subscribeNext:^(Post* post) {
+      @strongify(self);
+      self.post = post;
+      self.post.html = [self.htmlEditor replaceLocalURLsWithNewLibraryPath:self.post.html];
+      [self displayPost];
+   }];
+}
+
+- (void) displayPost {
+   [self.featuredImage fillWithPost:self.post];
+   if (self.isOffline) {
+      [_webView loadHTMLString:self.post.html baseURL:[NSURL URLWithString:nil]];
+   } else {
+      [_webView loadHTMLString:self.post.html baseURL:[NSURL URLWithString:[CoreContext sharedContext].siteURL]];
+   }
 }
 
 
@@ -395,11 +393,6 @@
       return NO;
    }
    return YES;
-}
-
-- (void) refreshWebView {
-   self.post.html = [[MUOHtmlEditor editor] setBodyFontSize:self.currentFontSize forHTML:self.post.html];
-   [self displayHTML:self.post.html];
 }
 
 

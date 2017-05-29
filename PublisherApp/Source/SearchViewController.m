@@ -11,6 +11,7 @@
 #import "CategoriesRequestsManager.h"
 #import "Post.h"
 #import "CategoryPostsViewController.h"
+#import "NSString+MUO.h"
 
 @import ReactiveCocoa;
 @import UIColor_HexString;
@@ -41,7 +42,9 @@
    [super viewDidLoad];
    
    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"")
+   
+   
+   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[@"Cancel" muoLocalized]
                                                                              style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)];
    self.requestsManager = [CategoriesRequestsManager new];
    self.automaticallyAdjustsScrollViewInsets = YES;

@@ -8,6 +8,7 @@
 
 #import "NSString+MUO.h"
 #import "UIFont+Additions.h"
+#import "NSBundle+PublisherApp.h"
 @import UIColor_HexString;
 
 @implementation NSString (MUO)
@@ -63,6 +64,10 @@
    [htmlString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"212121"] range:allStringRange];
    [htmlString endEditing];
    return htmlString;
+}
+
+- (NSString *)muoLocalized {
+   return [[NSBundle publisherBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
 }
 
 @end

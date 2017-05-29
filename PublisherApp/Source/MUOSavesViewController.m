@@ -14,6 +14,7 @@
 #import "MUOSavedPost.h"
 #import "PostTableViewCell.h"
 #import "CoreContext.h"
+#import "NSString+MUO.h"
 
 @interface MUOSavesViewController ()
 
@@ -42,7 +43,7 @@
 - (void)viewDidLoad {
    [super viewDidLoad];
    self.navigationItem.title = [CoreContext sharedContext].savesTitle;
-   self.title = [CoreContext sharedContext].savesTitle;
+   self.title = [[CoreContext sharedContext].savesTitle muoLocalized];
    self.viewModel = [SavesViewModel new];
    self.savesTableView.dataSource = self;
    self.savesTableView.delegate = self;

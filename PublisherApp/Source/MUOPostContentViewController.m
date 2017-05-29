@@ -18,6 +18,7 @@
 #import "Post.h"
 #import "ArticleBlockCell.h"
 @import SafariServices;
+#import "NSString+MUO.h"
 
 #import "UIView+Toast.h"
 
@@ -334,9 +335,9 @@
       @strongify(self);
       [self updateBookmarkStatus];
       if ([saved boolValue]) {
-         [self.navigationController.view makeToast:@"Bookmark saved" duration:1.0 position:CSToastPositionBottom];
+         [self.navigationController.view makeToast:[@"Bookmark saved" muoLocalized] duration:1.0 position:CSToastPositionBottom];
       } else {
-         [self.navigationController.view makeToast:@"Bookmark removed" duration:1.0 position:CSToastPositionBottom];
+         [self.navigationController.view makeToast:[@"Bookmark removed" muoLocalized] duration:1.0 position:CSToastPositionBottom];
       }
    }];
 }

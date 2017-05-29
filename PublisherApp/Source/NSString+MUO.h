@@ -15,5 +15,6 @@
 //Blocks
 - (BOOL) containsTag;
 - (NSAttributedString*) htmlStringWithFontSize:(CGFloat) fontSize;
+- (NSString*) muoLocalized;
 
 @end

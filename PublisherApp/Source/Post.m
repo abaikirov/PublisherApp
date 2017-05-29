@@ -13,6 +13,7 @@
 #import "MUOSavedPost.h"
 #import "ArticleBlock.h"
 #import "ReaderSettings.h"
+#import "NSString+MUO.h"
 
 @implementation FeaturedImage
 @end
@@ -35,11 +36,6 @@
    return self;
 }
 
--(void)setPostDate:(NSDate *)postDate {
-   _postDate = postDate;
-   _relativeDateString = [_postDate shortTimeAgoSinceNow];
-}
-
 - (void)setValue:(id)value forKey:(NSString *)key {
    [super setValue:value forKey:key];
    if ([key isEqualToString:@"_postDate"]) {
@@ -51,6 +47,14 @@
 }
 
 
+#pragma mark - Date
+-(void)setPostDate:(NSDate *)postDate {
+   _postDate = postDate;
+   _relativeDateString = [_postDate shortTimeAgoSinceNow];
+}
+
+
+#pragma mark - Likes
 - (void)setLikesCount:(NSNumber *)likesCount {
    _likesCount = likesCount;
    if (_likesCount == 0) {
@@ -60,6 +64,7 @@
    }
 }
 
+#pragma mark - Configuration
 +(DCParserConfiguration *)parserConfiguration {
    DCParserConfiguration *config = [DCParserConfiguration configuration];
    DCArrayMapping* blocksMapper = [DCArrayMapping mapperForClassElements:[ArticleBlock class] forAttribute:@"blocks" onClass:[Post class]];

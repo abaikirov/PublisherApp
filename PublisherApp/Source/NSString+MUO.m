@@ -67,7 +67,7 @@
 }
 
 - (NSString *)muoLocalized {
-   return [[NSBundle publisherBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
+   return NSLocalizedStringFromTableInBundle(self, @"Localizable", [NSBundle publisherBundle], @"");
 }
 
 @end

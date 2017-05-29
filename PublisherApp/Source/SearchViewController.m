@@ -41,7 +41,7 @@
    [super viewDidLoad];
    
    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"")
                                                                              style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)];
    self.requestsManager = [CategoriesRequestsManager new];
    self.automaticallyAdjustsScrollViewInsets = YES;

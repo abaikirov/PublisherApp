@@ -70,4 +70,24 @@
    return NSLocalizedStringFromTableInBundle(self, @"Localizable", [NSBundle publisherBundle], @"");
 }
 
+- (NSString*) localizedShortDate {
+   if ([[[[NSBundle mainBundle] preferredLocalizations] firstObject] isEqualToString:@"ru"]) {
+      NSCharacterSet *numberCharset = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+      NSScanner *theScanner = [NSScanner scannerWithString:self];
+      while (![theScanner isAtEnd]) {
+         // Eat non-digits and negative sign
+         [theScanner scanUpToCharactersFromSet:numberCharset
+                                    intoString:NULL];
+         int dateValue;
+         if ([theScanner scanInt:&dateValue]) {
+            NSString* dateName = [self substringFromIndex:self.length - 1];
+            NSString* date = [NSString stringWithFormat:@"%d%@", dateValue, [dateName muoLocalized]];
+            return date;
+         }
+      }
+      
+   }
+   return self;
+}
+
 @end

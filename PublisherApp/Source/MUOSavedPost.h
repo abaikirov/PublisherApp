@@ -23,7 +23,6 @@
 @property BOOL isBookmarked;
 @property BOOL isOfflineSaved;
 
-- (NSString*) relativeStringFromDate;
 - (NSString*) postDate;
 
 @end

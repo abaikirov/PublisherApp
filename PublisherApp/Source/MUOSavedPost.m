@@ -16,11 +16,6 @@
     return [NSString stringWithFormat:@"ID"];
 }
 
-- (NSString *)relativeStringFromDate
-{
-    return [self.date shortTimeAgoSinceNow];
-}
-
 - (NSString *)postDate {
    return [self.date formattedDateWithFormat:@"MMMM dd, YYYY"];
 }

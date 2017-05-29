@@ -39,7 +39,7 @@
 - (void)setValue:(id)value forKey:(NSString *)key {
    [super setValue:value forKey:key];
    if ([key isEqualToString:@"_postDate"]) {
-      self.relativeDateString = [self.postDate shortTimeAgoSinceNow];
+      self.relativeDateString = [[self.postDate shortTimeAgoSinceNow] localizedShortDate];
    }
    if ([key isEqualToString:@"_likesCount"]) {
       self.likesString = [NSString stringWithFormat:@"%ld", (long)self.likesCount.integerValue];
@@ -50,7 +50,7 @@
 #pragma mark - Date
 -(void)setPostDate:(NSDate *)postDate {
    _postDate = postDate;
-   _relativeDateString = [_postDate shortTimeAgoSinceNow];
+   _relativeDateString = [[_postDate shortTimeAgoSinceNow] localizedShortDate];
 }
 
 

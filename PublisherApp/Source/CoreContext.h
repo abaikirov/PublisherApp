@@ -13,13 +13,19 @@
 #import "MUOSavesManager.h"
 #import "NavigationRouter.h"
 
+@protocol GroupsOpenerDelegate <NSObject>
+- (BOOL) canOpenGroupLink:(NSString*) link;
+@end
+
 @interface CoreContext : NSObject
++ (instancetype) sharedContext;
 
 @property (nonatomic, strong) LikesManager* likesManager;
 @property (nonatomic, strong) MUOExternalLinksHandler* linksHandler;
 @property (nonatomic, strong) ShareHelper* shareHelper;
 @property (nonatomic, strong) MUOSavesManager* savesManager;
 @property (nonatomic, strong) NavigationRouter* navigationRouter;
+@property (nonatomic, strong) id<GroupsOpenerDelegate> groupOpener;
 
 @property (nonatomic, strong) NSString* siteURL;
 @property (nonatomic, strong) NSString* cdnPath;
@@ -29,8 +35,6 @@
 @property (nonatomic) BOOL bookmarksEnabled;
 
 @property (nonatomic) BOOL useBlocks;
-
-+ (instancetype) sharedContext;
 
 - (void) shouldOpenLinksInApp:(BOOL) inApp;
 - (void) appDidFinishLaunching;

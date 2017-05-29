@@ -15,6 +15,8 @@
 //Blocks
 - (BOOL) containsTag;
 - (NSAttributedString*) htmlStringWithFontSize:(CGFloat) fontSize;
+
 - (NSString*) muoLocalized;
+- (NSString*) localizedShortDate;
 
 @end

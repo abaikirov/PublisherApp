@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		158941357C33807F379C5E53 /* Pods_PublisherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581121547B8A67E80DDD7EF2 /* Pods_PublisherApp.framework */; };
 		5A79807D1E68803700E684ED /* PublisherApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A79807C1E68803700E684ED /* PublisherApp.h */; };
+		5A850ADC1EDC0C9C00552EA6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A850ADA1EDC0C9C00552EA6 /* Localizable.strings */; };
 		5AC92A7C1E8519DA00879CBF /* LargePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */; };
 		5AC92A7E1E8519DA00879CBF /* SmallPostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */; };
 		5AC92AB71E8519F300879CBF /* bookmark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AC92A7F1E8519F200879CBF /* bookmark-active.png */; };
@@ -148,6 +149,8 @@
 		5A797F391E6841F900E684ED /* PublisherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PublisherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A797F3D1E6841F900E684ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A79807C1E68803700E684ED /* PublisherApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PublisherApp.h; path = Source/PublisherApp.h; sourceTree = "<group>"; };
+		5A850ADB1EDC0C9C00552EA6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A850ADD1EDC0CB600552EA6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LargePostCollectionViewCell.xib; sourceTree = "<group>"; };
 		5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallPostCollectionViewCell.xib; sourceTree = "<group>"; };
 		5AC92A7F1E8519F200879CBF /* bookmark-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark-active.png"; sourceTree = "<group>"; };
@@ -405,6 +408,7 @@
 				5AC92A791E8519DA00879CBF /* LargePostCollectionViewCell.xib */,
 				5AC92A7B1E8519DA00879CBF /* SmallPostCollectionViewCell.xib */,
 				5AD94D361E8B9C810013E725 /* PublisherApp.storyboard */,
+				5A850ADA1EDC0C9C00552EA6 /* Localizable.strings */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -652,6 +656,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = 5A797F2F1E6841F900E684ED;
 			productRefGroup = 5A797F3A1E6841F900E684ED /* Products */;
@@ -699,6 +704,7 @@
 				5AC92AEA1E8519F300879CBF /* twitter@2x.png in Resources */,
 				5AC92AC21E8519F300879CBF /* Knob@3x.png in Resources */,
 				5AC92AE01E8519F300879CBF /* post_multiply@3x.png in Resources */,
+				5A850ADC1EDC0C9C00552EA6 /* Localizable.strings in Resources */,
 				5AD94D371E8B9C810013E725 /* PublisherApp.storyboard in Resources */,
 				5AC92ACC1E8519F300879CBF /* Like.png in Resources */,
 				5AC92AEC1E8519F300879CBF /* whats-app.png in Resources */,
@@ -812,11 +818,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		5A850ADA1EDC0C9C00552EA6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A850ADB1EDC0C9C00552EA6 /* en */,
+				5A850ADD1EDC0CB600552EA6 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		5A797F3F1E6841F900E684ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -868,6 +887,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

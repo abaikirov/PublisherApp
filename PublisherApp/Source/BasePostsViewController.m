@@ -87,7 +87,7 @@
 }
 
 - (void) showSearch {
-   /*SearchViewController* searchController = [SearchViewController new];
+   SearchViewController* searchController = [SearchViewController new];
    MUONavigationController* navCtrl = [[MUONavigationController alloc] initWithRootViewController:searchController];
    
    navCtrl.view.frame = CGRectMake(-screen_width, 0, screen_width, screen_height);
@@ -96,9 +96,8 @@
       navCtrl.view.frame = CGRectMake(0, 0, screen_width, screen_height);
    } completion:^(BOOL finished) {
       [self presentViewController:navCtrl animated:NO completion:nil];
-   }];*/
-   [[CoreContext sharedContext].navigationRouter showSavesControllerFromNavigationController:self.navigationController];
-   
+   }];
+   //[[CoreContext sharedContext].navigationRouter showSavesControllerFromNavigationController:self.navigationController];
 }
 
 

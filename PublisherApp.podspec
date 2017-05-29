@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
 s.name         = "PublisherApp"
 s.module_name  = 'PublisherApp'
-s.version      = "0.2.1"
+s.version      = "0.2.3"
 s.ios.deployment_target = '8.2'
 s.summary      = "Feed for wordpess"
 
@@ -45,6 +45,6 @@ s.source_files = "PublisherApp/Source/*"
 
 # 9
 s.resources = ["PublisherApp/Assets/*.{png,jpeg,jpg,storyboard,xib,ttf}",
-               "PublisherApp/Assets/**"]
+               "PublisherApp/Assets/**/*.strings"]
 
 end

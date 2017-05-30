@@ -27,5 +27,6 @@
 - (NSString*) replaceLocalURLsWithNewLibraryPath:(NSString *) htmlString;
 - (NSString *) replaceImagesWithPlaceholder:(NSString *) htmlString;
 - (NSString *) addCSS:(NSString*) css toHTML:(NSString *) htmlString;
+- (NSString *) removeFeaturedImageBlockFromHTML:(NSString*) htmlString;
 
 @end

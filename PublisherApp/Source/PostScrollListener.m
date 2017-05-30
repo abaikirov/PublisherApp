@@ -37,6 +37,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+   NSLog(@"SCROLL OFFSET: %f", scrollView.contentOffset.y);
    CGFloat yOffset = scrollView.contentOffset.y;
    if (yOffset == 0.0) {
       [self.delegate scrolledTop];

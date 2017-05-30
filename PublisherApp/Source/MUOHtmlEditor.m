@@ -145,6 +145,17 @@ NSString* bracesPattern = @"\"(.*?)\"";
    return htmlString;
 }
 
+- (NSString *)removeFeaturedImageBlockFromHTML:(NSString *)htmlString {
+   NSString* blockBegin = @"<!-- featured_image_block -->";
+   NSString* blockEnd = @"<!-- featured_image_block_end -->";
+   NSString* featuredImageBlock = [htmlString substringBetweenString:blockBegin andString:blockEnd];
+   if (featuredImageBlock == nil) return htmlString;
+   NSString* resultHtml = [htmlString stringByReplacingOccurrencesOfString:featuredImageBlock withString:@""];
+   resultHtml = [resultHtml stringByReplacingOccurrencesOfString:blockBegin withString:@""];
+   resultHtml = [resultHtml stringByReplacingOccurrencesOfString:blockEnd withString:@""];
+   return resultHtml;
+}
+
 #pragma mark - Modifying
 -(NSString*) editHTMLString:(NSString*) htmlString {
    NSString* styleString = [htmlString substringBetweenString:@"<style type=\"text/css\">" andString:@"</style>"];

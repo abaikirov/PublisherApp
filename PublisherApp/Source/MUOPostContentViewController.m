@@ -19,8 +19,8 @@
 #import "ArticleBlockCell.h"
 @import SafariServices;
 #import "NSString+MUO.h"
-
 #import "UIView+Toast.h"
+#import "UIFont+Additions.h"
 
 #define screen_width [UIScreen mainScreen].bounds.size.width
 #define screen_height [UIScreen mainScreen].bounds.size.height
@@ -127,7 +127,7 @@
 
 #pragma mark -
 #pragma mark - View controller
-@interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate, SFSafariViewControllerDelegate>
+@interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate, SFSafariViewControllerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet FeaturedImageView *featuredImage;
 @property (nonatomic, strong) MUOHtmlEditor* htmlEditor;
@@ -136,6 +136,7 @@
 
 @property (nonatomic) int currentFontSize;
 @property (nonatomic) BOOL finishedLoading;
+@property (nonatomic) BOOL commentsPresented;
 @end
 
 @implementation MUOPostContentViewController
@@ -175,7 +176,7 @@
    self.webView.delegate = self;
    self.webView.allowsInlineMediaPlayback = YES;
    self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal - 0.00001;
-   self.webView.scrollView.contentInset = UIEdgeInsetsMake(screen_width * 0.8, 0, 0, 0);
+   self.webView.scrollView.contentInset = UIEdgeInsetsMake(screen_width * 0.8, 0, 50, 0);
    
    self.scrollListener = [PostScrollListener new];
    
@@ -198,7 +199,7 @@
    [super viewDidAppear:animated];
    self.scrollListener.delegate = self;
    [self.scrollListener followScrollView:self.webView.scrollView delay:60.0f];
-   
+   self.webView.scrollView.delegate = self;
    [(PostContentBottomView*)self.pagingController.bottomView setDelegate:self];
    [self updateBookmarkStatus];
    [self.pagingController hideBottomView:NO];
@@ -212,6 +213,17 @@
 }
 
 #pragma mark - Scrolling
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+   [self.scrollListener scrollViewWillBeginDragging:scrollView];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+   [self.scrollListener scrollViewDidScroll:scrollView];
+   if (scrollView.contentOffset.y > 1000) {
+      [self showComments];
+   }
+}
+
 - (void)scrolledTop {
    [self.pagingController hideBottomView:NO];
    [self.pagingController animateTopView:NO];
@@ -227,10 +239,11 @@
 -(void)setPost:(Post *)post {
    _post = post;
    _postID = post.ID;
-   _post.html = [[MUOHtmlEditor editor] setBodyFontSize:_currentFontSize forHTML:_post.html];
+   _post.html = [[MUOHtmlEditor editor] setBodyFontSize:_currentFontSize forHTML:post.html];
    //_post.html = [[MUOHtmlEditor editor] addCSS:[MUOUserSession sharedSession].remoteCSS toHTML:post.html];
-   NSString* css = @".article__body{margin-top:0 !important;} article.article > a {display: none;}";
-   _post.html = [[MUOHtmlEditor editor] addCSS:css toHTML:post.html];
+   NSString* css = @".article__body{margin-top:0 !important;}";
+   _post.html = [[MUOHtmlEditor editor] addCSS:css toHTML:_post.html];
+   _post.html = [[MUOHtmlEditor editor] removeFeaturedImageBlockFromHTML:_post.html];
 }
 
 -(void) fillContent {
@@ -364,6 +377,27 @@
    self.currentFontSize = [ReaderSettings sharedSettings].preferredFontSize;
    NSString* fontSize = [NSString stringWithFormat:@"setFontSize(%d)", self.currentFontSize];
    [self.webView stringByEvaluatingJavaScriptFromString:fontSize];
+}
+
+
+#pragma mark - Comments
+- (void) showComments {
+   if (!self.commentsPresented){
+      CGFloat scrollHeight = [[self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
+      UIButton* commentsBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, scrollHeight - 60, screen_width, 50)];
+      [commentsBtn setTitle:@"LEAVE COMMENT" forState:UIControlStateNormal];
+      [commentsBtn.titleLabel setFont:[UIFont sourceSansBold:17]];
+      [commentsBtn setTitleColor:[UIColor colorWithHexString:@"e22524"] forState:UIControlStateNormal];
+      [commentsBtn addTarget:self action:@selector(commentButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+      [self.webView.scrollView addSubview:commentsBtn];
+      self.commentsPresented = YES;
+   };
+}
+
+- (void) commentButtonPressed {
+   if ([[CoreContext sharedContext].groupOpener respondsToSelector:@selector(openGroupForPost:)]) {
+      [[CoreContext sharedContext].groupOpener openGroupForPost:self.post.ID];
+   }
 }
 
 #pragma mark - Safari

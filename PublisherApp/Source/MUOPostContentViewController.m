@@ -119,6 +119,7 @@
    if ([self.delegate respondsToSelector:@selector(didPressedButtonAtIndex:)]) {
       [self.delegate didPressedButtonAtIndex:(int) btn.tag];
    }
+   if (btn.tag == 0) [self animateLikeButton];
 }
 
 @end
@@ -219,7 +220,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
    [self.scrollListener scrollViewDidScroll:scrollView];
-   if (scrollView.contentOffset.y > 1000) {
+   if (scrollView.contentOffset.y > 1500) {
       [self showComments];
    }
 }
@@ -318,7 +319,6 @@
 
 - (void) likePost {
    [[CoreContext sharedContext].likesManager likePost:self.post];
-   [(PostContentBottomView*)self.pagingController.bottomView animateLikeButton];
 }
 
 

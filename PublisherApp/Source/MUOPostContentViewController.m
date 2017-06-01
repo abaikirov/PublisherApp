@@ -124,8 +124,6 @@
 
 @end
 
-
-
 #pragma mark -
 #pragma mark - View controller
 @interface MUOPostContentViewController ()<UIGestureRecognizerDelegate, BottomViewDelegate, FontSelectorViewDelegate, TopBarDelegate, ScrollListenerDelegate, SFSafariViewControllerDelegate, UIScrollViewDelegate>
@@ -294,14 +292,13 @@
 }
 
 - (void) displayPost {
-   [self.featuredImage fillWithPost:self.post];
+   [self fillFeaturedImage];
    if (self.isOffline) {
       [_webView loadHTMLString:self.post.html baseURL:[NSURL URLWithString:nil]];
    } else {
       [_webView loadHTMLString:self.post.html baseURL:[NSURL URLWithString:[CoreContext sharedContext].siteURL]];
    }
 }
-
 
 
 #pragma mark - Bottom view 
@@ -400,6 +397,25 @@
    }
 }
 
+#pragma mark - Featured image
+- (void) fillFeaturedImage {
+   [self.featuredImage fillWithPost:self.post];
+   UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredImageTap:)];
+   tapGesture.delegate = self;
+   tapGesture.numberOfTapsRequired = 1;
+   [self.webView addGestureRecognizer:tapGesture];
+}
+
+- (void) featuredImageTap:(UITapGestureRecognizer*) recognizer {
+   if (self.webView.scrollView.contentOffset.y < 0) {
+      CGPoint tapLocation = [recognizer locationInView:self.webView];
+      if (CGRectContainsPoint(self.featuredImage.frame, tapLocation)) {
+         [[CoreContext sharedContext].linksHandler handleURL:self.post.featuredImage.featured fromViewController:self withPost:self.post];
+      }
+   }
+}
+
+
 #pragma mark - Safari
 - (void) showSafariVC {
    SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.postSlug]];
@@ -418,6 +434,10 @@
 }
 
 #pragma mark - UIWebView
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+   return true;
+}
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
    self.finishedLoading = YES;
 }

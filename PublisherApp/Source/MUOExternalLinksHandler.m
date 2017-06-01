@@ -33,7 +33,10 @@
       UIViewController<PagingControllerPresentable>* postVC = [self contentControllerWithPostURL:urlString fromVC:vc];
       [[CoreContext sharedContext].navigationRouter showPagingControllerWithVC:postVC fromNavigationController:vc.navigationController];
    }else if ([urlString hasPrefix:[CoreContext sharedContext].cdnPath]) {
-      NSArray* images = [self.htmlEditor getImagesFromHTML:post.html];
+      NSMutableArray* images = [[self.htmlEditor getImagesFromHTML:post.html] mutableCopy];
+      if (![images containsObject:urlString]) {
+         [images insertObject:urlString atIndex:0];
+      }
       [[CoreContext sharedContext].navigationRouter showLocalGallery:NO withImages:images
                                                      presentingImage:urlString fromVC:vc.parentViewController];
    } else if ([urlString hasPrefix:@"file:///"]) {

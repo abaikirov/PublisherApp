@@ -11,21 +11,36 @@
 #import "MUOSavedPost.h"
 #import "Post.h"
 #import "BookmarksRequestManager.h"
+@import ReactiveCocoa;
 
 @interface SavesViewModel ()
-
 @property (nonatomic, strong) BookmarksRequestManager* bookmarksManager;
-
 @end
 
 @implementation SavesViewModel
 
--(void) fetchAndSyncSaves{
-    [self loadSavesFromCache];
-    
-    /*if ([MUOUserSession sharedSession].authToken) {
-        [self synchronizeSaves];
-    }*/
+- (BookmarksRequestManager *)bookmarksManager {
+   if (!_bookmarksManager) {
+      _bookmarksManager = [BookmarksRequestManager new];
+   }
+   return _bookmarksManager;
+}
+
+#pragma mark - Fetching saves
+- (RACSignal*) syncSaves {
+   @weakify(self);
+   return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+      @strongify(self);
+      [[self.bookmarksManager syncBookmarks] subscribeNext:^(NSArray* posts) {
+         for (Post* post in posts) {
+            MUOSavedPost* postToSave = [post postToSave:YES];
+            [self.saves addObject:postToSave];
+         }
+         [subscriber sendNext:posts];
+         [subscriber sendCompleted];
+      }];
+      return nil;
+   }];
 }
 
 - (void) loadSavesFromCache {

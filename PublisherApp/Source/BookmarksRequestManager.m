@@ -7,15 +7,14 @@
 //
 
 #import "BookmarksRequestManager.h"
-//#import "MUOUserSettings.h"
 #import "PostsSessionManager.h"
+#import "CoreContext.h"
+#import "Post.h"
+@import DCKeyValueObjectMapping;
 @import ReactiveCocoa;
 
 @interface BookmarksRequestManager()
-
-//@property (nonatomic, strong) MUOUserSettings* userSettings;
 @property (nonatomic, strong) PostsSessionManager* sessionManager;
-
 @end
 
 @implementation BookmarksRequestManager
@@ -26,86 +25,45 @@
    return _sessionManager;
 }
 
-#pragma mark - Bookmarks
-- (RACSignal *)bookmarkPostsWithIDs:(NSArray *)postsID {
+#pragma mark - Syncing
+- (RACSignal *)syncBookmarks {
+   [self.sessionManager.requestSerializer setValue:[CoreContext sharedContext].accessToken forHTTPHeaderField:@"X-Auth-Token"];
    @weakify(self);
-   RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+   return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
       @strongify(self);
-      
-      NSDictionary* parameters = @{@"post_ids" : postsID};
-      [self.sessionManager POST:@"bookmarked_posts" parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress){
-         
-      } success:^(NSURLSessionDataTask *task, id responseObject) {
-         [subscriber sendNext:responseObject];
-         [subscriber sendCompleted];
-      } failure:^(NSURLSessionDataTask *task, NSError *error) {
-         [subscriber sendError:error];
-      }];
-      return nil;
-   }];
-   return signal;
-}
-
--(RACSignal *)deleteBookmarkedPostsWithIDs:(NSArray *)postsID {
-   @weakify(self);
-   RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-      @strongify(self);
-      
-      NSDictionary* parameters = @{@"post_ids" : postsID};
-      [self.sessionManager DELETE:@"bookmarked_posts" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-         [subscriber sendNext:responseObject];
-         [subscriber sendCompleted];
-      } failure:^(NSURLSessionDataTask *task, NSError *error) {
-         [subscriber sendError:error];
-      }];
-      
-      return nil;
-   }];
-   return signal;
-}
-
--(RACSignal *)fetchBookmarks:(NSArray *) bookmarkIDs {
-   /*@weakify(self);
-   self.userSettings = [MUOUserSettings new];
-   RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-      @strongify(self);
-      NSMutableDictionary* parameters = [[NSMutableDictionary alloc] initWithDictionary:@{@"with_body" : @"true", @"without_css" : @"true"}];
-      if (bookmarkIDs) {
-         [parameters setObject:bookmarkIDs forKey:@"post_ids"];
-      }
-      
-      NSNumber* timeStamp = [self.userSettings bookmarksSyncTimestamp];
-      if (!timeStamp) {
-         timeStamp = [NSNumber numberWithUnsignedInteger:1446113672];
-      }
-      
-      [parameters setObject:timeStamp forKey:@"timestamp"];
-      
-      [self.sessionManager POST:@"bookmarked_posts/sync" parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-         
-      } success:^(NSURLSessionDataTask *task, id responseObject) {
+      [self.sessionManager GET:@"bookmarks" parameters:nil progress:nil success:^(NSURLSessionDataTask* task, id responseObject) {
          DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:
-                                            [MUOPost class] andConfiguration:[MUOPost parserConfiguration]];
-         NSArray* posts = [parser parseArray:[responseObject valueForKey:@"posts"]];
-         NSArray* deletedPostsIDs = [responseObject valueForKey:@"deleted_posts"];
-         NSNumber* timeStamp = [responseObject valueForKey:@"timestamp"];
-         
-         RACTuple* tuple = RACTuplePack(posts, deletedPostsIDs);
-         
-         [self.userSettings setBookmarksSyncTimestamp:timeStamp];
-         [subscriber sendNext:tuple];
+                                            [Post class] andConfiguration:[Post parserConfiguration]] ;
+         NSArray* posts = [parser parseArray:responseObject];
+         [subscriber sendNext:posts];
          [subscriber sendCompleted];
-      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          [subscriber sendError:error];
       }];
-      
-      
       return nil;
    }];
-   return signal;*/
-   return nil;
 }
 
+
+#pragma mark - Bookmarks
+- (void)addBookmark:(NSString *)postID {
+   [self.sessionManager.requestSerializer setValue:[CoreContext sharedContext].accessToken forHTTPHeaderField:@"X-Auth-Token"];
+   NSString* url = [NSString stringWithFormat:@"bookmarks/%@", postID];
+   
+   [self.sessionManager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * task, id  responseObject) {
+      
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+   }];
+}
+
+- (void) deleteBookmark:(NSString*) postID {
+   [self.sessionManager.requestSerializer setValue:[CoreContext sharedContext].accessToken forHTTPHeaderField:@"X-Auth-Token"];
+   NSString* url = [NSString stringWithFormat:@"bookmarks/%@", postID];
+   [self.sessionManager DELETE:url parameters:nil success:^(NSURLSessionDataTask * task, id  responseObject) {
+      
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+   }];
+}
 
 
 @end

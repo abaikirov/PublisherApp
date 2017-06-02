@@ -9,6 +9,7 @@
 @import SDWebImage;
 @import UIColor_HexString;
 @import ReactiveCocoa;
+@import SafariServices;
 #import "MUOSavesViewController.h"
 #import "SavesViewModel.h"
 #import "MUOSavedPost.h"
@@ -17,11 +18,8 @@
 #import "NSString+MUO.h"
 
 @interface MUOSavesViewController ()
-
 @property(nonatomic) SavesViewModel *viewModel;
-
 @property(nonatomic) NSInteger selectedPostId;
-
 @end
 
 
@@ -45,6 +43,7 @@
    self.navigationItem.title = [CoreContext sharedContext].savesTitle;
    self.title = [[CoreContext sharedContext].savesTitle muoLocalized];
    self.viewModel = [SavesViewModel new];
+   
    self.savesTableView.dataSource = self;
    self.savesTableView.delegate = self;
    self.savesTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -60,7 +59,10 @@
 -(void)viewWillAppear:(BOOL)animated {
    [super viewWillAppear:animated];
    [self.viewModel loadSavesFromCache];
-   
+   if (![self isSynced]) {
+      [self showSyncButton];
+      [self syncBookmarks];
+   }
 }
 
 #pragma mark - Table view
@@ -85,6 +87,39 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
    return [PostTableViewCell cellHeight];
+}
+
+
+#pragma mark - Syncing
+- (BOOL) isSynced {
+   return [[NSUserDefaults standardUserDefaults] boolForKey:@"bookmarks_synced"];
+}
+
+- (void) setBookmarksSyncedFlag {
+   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"bookmarks_synced"];
+}
+
+- (void) syncBookmarks {
+   @weakify(self);
+   [[self.viewModel syncSaves] subscribeNext:^(NSArray* posts) {
+      @strongify(self);
+      [self.savesTableView reloadData];
+      if (posts.count != 0) {
+         [self setBookmarksSyncedFlag];
+         self.navigationItem.rightBarButtonItem = nil;
+      }
+   }];
+}
+
+- (void) showSyncButton {
+   UIBarButtonItem* syncItem = [[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStylePlain target:self action:@selector(handleSync)];
+   self.navigationItem.rightBarButtonItem = syncItem;
+}
+
+- (void) handleSync {
+   NSString* userURL = [NSString stringWithFormat:@"https://api.makeuseof.com/v1/bookmarks/login?user_id=%@", [CoreContext sharedContext].userID];
+   SFSafariViewController* safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:userURL]];
+   [self presentViewController:safari animated:YES completion:nil];
 }
 
 @end

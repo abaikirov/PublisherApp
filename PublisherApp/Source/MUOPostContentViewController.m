@@ -218,7 +218,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
    [self.scrollListener scrollViewDidScroll:scrollView];
-   if (scrollView.contentOffset.y > 1500) {
+   if (scrollView.contentOffset.y >= screen_height * 2) {
       [self showComments];
    }
 }

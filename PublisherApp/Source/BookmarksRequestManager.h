@@ -11,8 +11,10 @@
 
 @interface BookmarksRequestManager : NSObject
 
-- (RACSignal *) bookmarkPostsWithIDs:(NSArray *) postsID;
-- (RACSignal *) deleteBookmarkedPostsWithIDs:(NSArray *)postsID;
-- (RACSignal *) fetchBookmarks:(NSArray *) bookmarkIDs;
+- (RACSignal*) syncBookmarks;
+
+- (void) addBookmark:(NSString*) postID;
+- (void) deleteBookmark:(NSString*) postID;
+
 
 @end

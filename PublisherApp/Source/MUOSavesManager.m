@@ -157,7 +157,7 @@
    RLMResults *savedPosts = [MUOSavedPost objectsWhere:@"ID=%@",post.ID];
    if(savedPosts.count == 0) {
       [self saveToRealm:post isBookmarked:YES isOfflineSaved:NO];
-      [self bookmarkPostsWithIDs:@[post.ID]];
+      [self.bookmarksManager addBookmark:[post.ID stringValue]];
       [self.finishSignal sendNext:@(YES)];
       
       //Downloading images
@@ -178,7 +178,7 @@
       MUOSavedPost* postToSave = [savedPosts lastObject];
       if ([postToSave isBookmarked] == NO) { //If post is saved but not bookmarked, we just bookmark it
          [self saveToRealm:post isBookmarked:YES isOfflineSaved:YES];
-         [self bookmarkPostsWithIDs:@[@(postToSave.ID)]];
+         [self.bookmarksManager addBookmark:[NSString stringWithFormat:@"%d", postToSave.ID]];
          [self.finishSignal sendNext:@(YES)];
          [self.finishSignal sendCompleted];
       } else {
@@ -219,31 +219,11 @@
          [[MUOFileCache sharedCache] clearCacheDirectoryForPostID:postID.integerValue];
       }
       if (shouldSync) {
-         [self deleteBookmarksWithIDs:@[postID]];
+         [self.bookmarksManager deleteBookmark:[postID stringValue]];
       }
    }
 }
 
-#pragma mark - Server interaction
-- (void) bookmarkPostsWithIDs:(NSArray *) postsIDs {
-   /*if ([MUOUserSession sharedSession].authToken) {    //If user is authorized, send a bookmark ID to the server
-      [[self.bookmarksManager bookmarkPostsWithIDs:postsIDs] subscribeNext:^(id x) {
-         DLog(@"Bookmark added succsefully");
-      } error:^(NSError *error) {
-         DLog(@"Error while bookmarking");
-      }];
-   }*/
-}
-
-- (void) deleteBookmarksWithIDs:(NSArray *) postsIDs {
-   /*if ([MUOUserSession sharedSession].authToken) {
-      [[self.bookmarksManager deleteBookmarkedPostsWithIDs:postsIDs] subscribeNext:^(id x) {
-         DLog(@"Bookmark deleted");
-      } error:^(NSError *error) {
-         DLog(@"Error deleting bookmark");
-      }];
-   }*/
-}
 
 
 #pragma mark - Offline

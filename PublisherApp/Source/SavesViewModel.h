@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+@import ReactiveCocoa;
 
 @interface SavesViewModel : NSObject
 
 @property (strong, nonatomic) NSMutableArray *saves;
 
 - (void) loadSavesFromCache;
+
+- (RACSignal*) syncSaves;
 
 @end

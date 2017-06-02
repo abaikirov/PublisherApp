@@ -30,6 +30,10 @@
 @property (nonatomic, strong) NSString* siteURL;
 @property (nonatomic, strong) NSString* cdnPath;
 @property (nonatomic, strong) NSString* savesTitle;
+
+//Grouvi login fields
+@property (nonatomic, strong) NSString* userID;
+@property (nonatomic, strong) NSString* accessToken;
    
 @property (nonatomic) BOOL bottomBarEnabled;
 @property (nonatomic) BOOL bookmarksEnabled;

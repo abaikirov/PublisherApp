@@ -26,6 +26,13 @@
    return _bookmarksManager;
 }
 
+- (NSMutableArray *)saves {
+   if (_saves == nil) {
+      _saves = [NSMutableArray new];
+   }
+   return _saves;
+}
+
 #pragma mark - Fetching saves
 - (RACSignal*) syncSaves {
    @weakify(self);

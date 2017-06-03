@@ -41,7 +41,7 @@
       [[self.bookmarksManager syncBookmarks] subscribeNext:^(NSArray* posts) {
          for (Post* post in posts) {
             MUOSavedPost* postToSave = [post postToSave:YES];
-            [self.saves addObject:postToSave];
+            if (![self.saves containsObject:postToSave]) [self.saves addObject:postToSave];
          }
          [subscriber sendNext:posts];
          [subscriber sendCompleted];

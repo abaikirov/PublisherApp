@@ -33,6 +33,7 @@
  Delete bookmark if it exists
  **/
 - (RACSignal*) handleBookmark:(Post*) post postID:(NSNumber *) postID;
+- (RACSignal*) addBookmark:(Post*) post;
 
 - (BOOL) bookmarkExists:(NSNumber*) postID;
 - (NSInteger) bookmarksCount;

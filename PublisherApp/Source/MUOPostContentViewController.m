@@ -294,7 +294,7 @@
 - (void) displayPost {
    [self fillFeaturedImage];
    if (self.isOffline) {
-      [_webView loadHTMLString:self.post.html baseURL:[NSURL URLWithString:nil]];
+      [_webView loadHTMLString:self.post.html baseURL:nil];
    } else {
       [_webView loadHTMLString:self.post.html baseURL:[NSURL URLWithString:[CoreContext sharedContext].siteURL]];
    }

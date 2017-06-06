@@ -135,6 +135,11 @@
    return resultSignal;
 }
 
+- (RACSignal *)addBookmark:(Post *)post {
+   return [self savePost:post];
+}
+
+
 - (BOOL)bookmarkExists:(NSNumber *)postID {
    RLMResults *savedPosts = [MUOSavedPost objectsWhere:@"ID=%@", postID];
    BOOL result = NO;
@@ -173,8 +178,7 @@
          @strongify(self);
          [self.finishSignal sendError:error];
       }];
-   }
-   else {                    //If post is already saved
+   } else {                    //If post is already saved
       MUOSavedPost* postToSave = [savedPosts lastObject];
       if ([postToSave isBookmarked] == NO) { //If post is saved but not bookmarked, we just bookmark it
          [self saveToRealm:post isBookmarked:YES isOfflineSaved:YES];

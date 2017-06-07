@@ -93,15 +93,19 @@
 
 +(CGRect)labelHeightForPost:(Post *)post left:(BOOL)left imageSize:(CGSize)imageSize {
    CGFloat leftOffset = 0;
+   CGFloat width = ceil(imageSize.width);
+   CGSize maxSize = CGSizeMake(width, CGFLOAT_MAX);
    if (left) {
       leftOffset = 16;
    } else {
       leftOffset = 10;
    }
+   if (post.postTitle == nil) {
+      return CGRectMake(leftOffset, imageSize.height + 16, maxSize.width, 72);
+   }
+   
    UIFont* textFont = [UIFont systemFontOfSize:15.0 weight:UIFontWeightMedium];
    NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:post.postTitle attributes:@{NSFontAttributeName : textFont}];
-   CGFloat width = ceil(imageSize.width);
-   CGSize maxSize = CGSizeMake(width, CGFLOAT_MAX);
    CGRect size = [attributedString boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
    CGFloat height = ceil(MIN(size.size.height, 72));
    CGRect frame = CGRectMake(leftOffset, imageSize.height + 16, maxSize.width, height);

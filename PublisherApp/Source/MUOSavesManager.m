@@ -19,7 +19,7 @@
 
 @interface MUOSavesManager()
 
-@property (nonatomic, strong) BookmarksRequestManager* bookmarksManager;
+@property (nonatomic, strong) BookmarksRequestManager* requestsManager;
 
 @property (nonatomic, strong) RACSignal* fetchSignal;
 @property (nonatomic, strong) RACReplaySubject* finishSignal;
@@ -35,7 +35,7 @@
 {
    self = [super init];
    if (self) {
-      self.bookmarksManager = [BookmarksRequestManager new];
+      self.requestsManager = [BookmarksRequestManager new];
       self.downloadPool = [MUODownloadPool new];
    }
    return self;
@@ -136,7 +136,11 @@
 }
 
 - (RACSignal *)addBookmark:(Post *)post {
-   return [self savePost:post];
+   RLMResults *savedPosts = [MUOSavedPost objectsWhere:@"ID=%@",post.ID];
+   if (savedPosts.count == 0) {
+      return [self savePost:post];
+   }
+   return [RACSignal empty];
 }
 
 
@@ -162,7 +166,7 @@
    RLMResults *savedPosts = [MUOSavedPost objectsWhere:@"ID=%@",post.ID];
    if(savedPosts.count == 0) {
       [self saveToRealm:post isBookmarked:YES isOfflineSaved:NO];
-      [self.bookmarksManager addBookmark:[post.ID stringValue]];
+      [self.requestsManager addBookmark:[post.ID stringValue]];
       [self.finishSignal sendNext:@(YES)];
       
       //Downloading images
@@ -182,7 +186,7 @@
       MUOSavedPost* postToSave = [savedPosts lastObject];
       if ([postToSave isBookmarked] == NO) { //If post is saved but not bookmarked, we just bookmark it
          [self saveToRealm:post isBookmarked:YES isOfflineSaved:YES];
-         [self.bookmarksManager addBookmark:[NSString stringWithFormat:@"%d", postToSave.ID]];
+         [self.requestsManager addBookmark:[NSString stringWithFormat:@"%d", postToSave.ID]];
          [self.finishSignal sendNext:@(YES)];
          [self.finishSignal sendCompleted];
       } else {
@@ -223,7 +227,7 @@
          [[MUOFileCache sharedCache] clearCacheDirectoryForPostID:postID.integerValue];
       }
       if (shouldSync) {
-         [self.bookmarksManager deleteBookmark:[postID stringValue]];
+         [self.requestsManager deleteBookmark:[postID stringValue]];
       }
    }
 }

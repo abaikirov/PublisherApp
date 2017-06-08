@@ -32,7 +32,6 @@
       context.bottomBarEnabled = YES;
       context.bookmarksEnabled = YES;
       context.useBlocks = NO;
-      context.commentsEnabled = NO;
    });
    return context;
 }

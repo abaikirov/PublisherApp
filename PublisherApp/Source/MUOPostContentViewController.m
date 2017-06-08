@@ -8,6 +8,8 @@
 
 @import UIColor_HexString;
 @import AFNetworking;
+@import SafariServices;
+@import SDWebImage;
 #import "MUOPostContentViewController.h"
 #import "MUOPostContentViewModel.h"
 #import "FontSelectorView.h"
@@ -17,7 +19,6 @@
 #import "CoreContext.h"
 #import "Post.h"
 #import "ArticleBlockCell.h"
-@import SafariServices;
 #import "NSString+MUO.h"
 #import "UIView+Toast.h"
 #import "UIFont+Additions.h"
@@ -73,28 +74,18 @@
    int buttonsCount = 5;
    float width = (screen_width) / buttonsCount;
    float leftOffset = 0;
-   NSArray* images = @[@"post_like", @"facebook", @"messenger", @"whats-app", @"twitter"];
+   NSArray* images = @[@"messenger", @"facebook", @"post_like", @"whats-app", @"twitter"];
    NSBundle* imagesBundle = [NSBundle bundleForClass:[self class]];
    for (int i = 0; i < buttonsCount; i++) {
       UIImage* btnImage = [UIImage imageNamed:images[i] inBundle:imagesBundle compatibleWithTraitCollection:nil];
-      BottomButton* btn = [self buttonWithImage:btnImage frame:CGRectMake(leftOffset + width * i, 0, width, 50)];
+      BottomButton* btn = [self buttonWithImage:btnImage frame:CGRectMake(leftOffset + width * i, 0, width, 48)];
       btn.tag = i;
       [btn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
       if (i == 0) {
          self.likeBtn = btn;
       }
-      
       [self addSubview:btn];
-      if (i < buttonsCount - 1) {
-         UIView* border = [[UIView alloc] initWithFrame:CGRectMake(width * (i + 1), 0, 1, 50)];
-         border.backgroundColor = [[UIColor colorWithHexString:@"919191"] colorWithAlphaComponent:0.45];
-         [self addSubview:border];
-      }
    }
-   
-   UIView* topBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screen_width, 1)];
-   topBorder.backgroundColor = [[UIColor colorWithHexString:@"D0D0D0"] colorWithAlphaComponent:0.5];
-   [self addSubview:topBorder];
 }
 
 - (BottomButton *) buttonWithImage:(UIImage *) image frame:(CGRect) frame {
@@ -135,8 +126,11 @@
 
 @property (nonatomic) int currentFontSize;
 @property (nonatomic) BOOL finishedLoading;
+
 @property (nonatomic) BOOL commentsPresented;
 @end
+
+static const int commentBtnTag = 113;
 
 @implementation MUOPostContentViewController
 //PagingControllerRepresentable
@@ -208,7 +202,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
    [super viewWillDisappear:animated];
-    [self.scrollListener stopFollowingScrollView];
+   [self.scrollListener stopFollowingScrollView];
 }
 
 #pragma mark - Scrolling
@@ -218,9 +212,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
    [self.scrollListener scrollViewDidScroll:scrollView];
-   /*if (scrollView.contentOffset.y >= screen_height * 2) {
-      [self showComments];
-   }*/
 }
 
 - (void)scrolledTop {
@@ -304,9 +295,9 @@
 #pragma mark - Bottom view 
 - (void)didPressedButtonAtIndex:(int)index {
    switch (index) {
-      case 0: [self likePost]; break;
+      case 0: [[CoreContext sharedContext].shareHelper sharePostToFBMessenger:self.post fromVC:self]; break;
       case 1: [[CoreContext sharedContext].shareHelper sharePostToFacebook:self.post fromVC:self]; break;
-      case 2: [[CoreContext sharedContext].shareHelper sharePostToFBMessenger:self.post fromVC:self]; break;
+      case 2: [self likePost]; break;
       case 3: [[CoreContext sharedContext].shareHelper sharePostToWhatsapp:self.post]; break;
       case 4: [[CoreContext sharedContext].shareHelper sharePostToTwitter:self.post fromVC:self]; break;
       default:
@@ -378,20 +369,7 @@
 
 
 #pragma mark - Comments
-- (void) showComments {
-   if (!self.commentsPresented){
-      CGFloat scrollHeight = [[self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.scrollHeight"] floatValue];
-      UIButton* commentsBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, scrollHeight - 60, screen_width, 50)];
-      [commentsBtn setTitle:@"LEAVE COMMENT" forState:UIControlStateNormal];
-      [commentsBtn.titleLabel setFont:[UIFont sourceSansBold:17]];
-      [commentsBtn setTitleColor:[UIColor colorWithHexString:@"e22524"] forState:UIControlStateNormal];
-      [commentsBtn addTarget:self action:@selector(commentButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-      [self.webView.scrollView addSubview:commentsBtn];
-      self.commentsPresented = YES;
-   };
-}
-
-- (void) commentButtonPressed {
+- (void)commentButtonPressed {
    if ([[CoreContext sharedContext].groupOpener respondsToSelector:@selector(openGroupForPost:)]) {
       [[CoreContext sharedContext].groupOpener openGroupForPost:self.post.ID];
    }

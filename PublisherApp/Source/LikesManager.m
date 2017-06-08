@@ -39,13 +39,12 @@
       self.postsManager = [PostsRequestsManager new];
    }
    [[self.postsManager likePost:post.ID] subscribeNext:^(id x) {
-      
+      [self.likedPosts addObject:post.ID];
+      post.likesCount = @(post.likesCount.integerValue + 1);
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         [self saveLikes];
+      });
    }];
-   [self.likedPosts addObject:post.ID];
-   post.likesCount = @(post.likesCount.integerValue + 1);
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      [self saveLikes];
-   });
    return YES;
 }
 

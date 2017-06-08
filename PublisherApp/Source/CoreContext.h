@@ -37,8 +37,8 @@
    
 @property (nonatomic) BOOL bottomBarEnabled;
 @property (nonatomic) BOOL bookmarksEnabled;
-
 @property (nonatomic) BOOL useBlocks;
+@property (nonatomic) BOOL commentsEnabled;
 
 - (void) shouldOpenLinksInApp:(BOOL) inApp;
 - (void) appDidFinishLaunching;

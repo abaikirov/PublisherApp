@@ -11,6 +11,7 @@
 #import "Post.h"
 @import DCKeyValueObjectMapping;
 #import "PostsSessionManager.h"
+#import "CoreContext.h"
 
 @implementation PostsRequestsManager
 
@@ -49,6 +50,7 @@
 }
 
 - (RACSignal *) fetchPostsWithParameters:(NSDictionary *) parameters {
+   [self.sessionManager.requestSerializer setValue:[CoreContext sharedContext].accessToken forHTTPHeaderField:@"X-Auth-Token"];
    @weakify(self);
    RACSignal* signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
       @strongify(self);
@@ -73,6 +75,7 @@
 
 -(RACSignal *)fetchPostByID:(NSString *)ID{
    NSLog(@"fetchPostById %ld", (long)ID);
+   [self.sessionManager.requestSerializer setValue:[CoreContext sharedContext].accessToken forHTTPHeaderField:@"X-Auth-Token"];
    @weakify(self);
    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
       @strongify(self);
@@ -112,6 +115,7 @@
 
 - (RACSignal *)likePost:(NSNumber *)postID {
    @weakify(self);
+   [self.sessionManager.requestSerializer setValue:[CoreContext sharedContext].accessToken forHTTPHeaderField:@"X-Auth-Token"];
    RACSignal* signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
       @strongify(self);
       

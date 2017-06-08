@@ -11,6 +11,7 @@
 #import "ReaderSettings.h"
 #import "CoreContext.h"
 #import "BlocksContentController.h"
+#import "CoreContext.h"
 
 @interface MUOPagingPostsController ()<UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) id<UIGestureRecognizerDelegate> popGestureDelegate;
@@ -80,6 +81,7 @@
    
    self.popGestureDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;
    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+   //self.bottomViewHeight.constant = [CoreContext sharedContext].commentsEnabled ? 80 : 40;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -179,6 +181,9 @@
 - (IBAction)bookmarkButtonPressed:(id)sender {
    [self.topBarDelegate bookmarkButtonPressed:sender];
 }
+- (IBAction)commentButtonPressed:(id)sender {
+   [self.topBarDelegate commentButtonPressed];
+}
 
 #pragma mark - Bottom view
 - (void)hideBottomView:(BOOL)hide {
@@ -187,7 +192,7 @@
    }
    [UIView animateWithDuration:0.2 animations:^{
       self.bottomViewHidden = hide;
-      self.bottomViewHeight.constant = hide ? 0 : 50;
+      self.bottomViewHeight.constant = hide ? 0 : 48;
       [self.view layoutIfNeeded];
    }];
 }

@@ -16,6 +16,9 @@
 - (void) shareButtonPressed:(UIButton*) sender;
 - (void) bookmarkButtonPressed:(UIButton*) sender;
 
+@optional
+- (void) commentButtonPressed;
+
 @end
 
 

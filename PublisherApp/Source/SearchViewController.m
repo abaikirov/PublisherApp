@@ -96,6 +96,7 @@
    CategoryPostsViewController* vc = [[UIStoryboard storyboardWithName:@"PublisherApp" bundle:[NSBundle bundleForClass:[self class]]] instantiateViewControllerWithIdentifier:@"CategoryPostsVC"];
    vc.filteredCategory = selectedCategory;
    [self.navigationController pushViewController:vc animated:YES];
+   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

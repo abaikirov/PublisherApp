@@ -40,10 +40,7 @@
 
 - (void)viewDidLoad {
    [super viewDidLoad];
-   
    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-   
-   
    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[@"Cancel" muoLocalized]
                                                                              style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)];
    self.requestsManager = [CategoriesRequestsManager new];

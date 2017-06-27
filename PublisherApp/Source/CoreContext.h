@@ -14,7 +14,7 @@
 #import "NavigationRouter.h"
 
 @protocol GroupsOpenerDelegate <NSObject>
-- (void) openGroupForPost:(NSNumber*) postID;
+- (void) openGroupForPost:(NSNumber*) postID channelID:(NSNumber*) channelID title:(NSString*) title avatar:(NSURL*) avatarURL;
 @end
 
 @interface CoreContext : NSObject

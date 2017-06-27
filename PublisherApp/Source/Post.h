@@ -27,6 +27,7 @@
 @interface Post : NSObject
 
 @property (nonatomic) NSNumber *ID;
+@property (nonatomic) NSNumber* channelId;
 @property (nonatomic) NSString *postTitle;
 @property (nonatomic) NSString *html;
 @property (nonatomic) NSString* url;

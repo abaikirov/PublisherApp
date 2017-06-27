@@ -67,7 +67,6 @@
    if (![CoreContext sharedContext].bookmarksEnabled) {
       self.bookmarkButtonWidth.constant = 0;
    }
-   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
@@ -76,12 +75,11 @@
    self.shouldHideStatusBar = YES;
    
    [UIView animateWithDuration:0.3 animations:^{
-      [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+      [self setNeedsStatusBarAppearanceUpdate];
    }];
    
    self.popGestureDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;
    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-   //self.bottomViewHeight.constant = [CoreContext sharedContext].commentsEnabled ? 80 : 40;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -95,8 +93,6 @@
             return;
          }
       }
-      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-      [[UIApplication sharedApplication] setStatusBarHidden:NO];
       [self.navigationController setNavigationBarHidden:NO animated:YES];
    }
    self.shouldHideStatusBar = NO;

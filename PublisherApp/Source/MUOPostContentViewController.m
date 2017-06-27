@@ -371,7 +371,7 @@ static const int commentBtnTag = 113;
 #pragma mark - Comments
 - (void)commentButtonPressed {
    if ([[CoreContext sharedContext].groupOpener respondsToSelector:@selector(openGroupForPost:)]) {
-      [[CoreContext sharedContext].groupOpener openGroupForPost:self.post.ID];
+      [[CoreContext sharedContext].groupOpener openGroupForPost:self.post.ID channelID:self.post.channelId title:self.post.postTitle avatar:self.post.featuredImage.middle];
    }
 }
 
@@ -405,8 +405,7 @@ static const int commentBtnTag = 113;
    NSInteger selfIndex = [self.navigationController.viewControllers indexOfObject:self.pagingController];
    if (selfIndex <= 1) {
       [self.navigationController setNavigationBarHidden:NO animated:YES];
-      [[UIApplication sharedApplication] setStatusBarHidden:NO];
-      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+      [self setNeedsStatusBarAppearanceUpdate];
    }
    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:selfIndex - 1] animated:YES];
 }

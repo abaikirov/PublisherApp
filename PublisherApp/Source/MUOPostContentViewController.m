@@ -370,7 +370,7 @@ static const int commentBtnTag = 113;
 
 #pragma mark - Comments
 - (void)commentButtonPressed {
-   if ([[CoreContext sharedContext].groupOpener respondsToSelector:@selector(openGroupForPost:)]) {
+   if ([[CoreContext sharedContext].groupOpener respondsToSelector:@selector(openGroupForPost:channelID:title:avatar:)]) {
       [[CoreContext sharedContext].groupOpener openGroupForPost:self.post.ID channelID:self.post.channelId title:self.post.postTitle avatar:self.post.featuredImage.middle];
    }
 }

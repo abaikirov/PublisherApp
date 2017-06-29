@@ -183,6 +183,7 @@ static const int commentBtnTag = 113;
    [self applyFont];
    if (![CoreContext sharedContext].bottomBarEnabled) {
       [(PostContentBottomView*)self.pagingController.bottomView removeFromSuperview];
+      [(UIView*)self.pagingController.leaveCommentView removeFromSuperview];
    }
    
    [self setNeedsStatusBarAppearanceUpdate];

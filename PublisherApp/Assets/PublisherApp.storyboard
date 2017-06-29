@@ -276,6 +276,7 @@
                         <outlet property="bookmarkButtonWidth" destination="zq2-fT-GuW" id="P6q-Px-4hJ"/>
                         <outlet property="bottomView" destination="I7r-42-rfn" id="8Qw-RG-nO5"/>
                         <outlet property="bottomViewHeight" destination="gz4-xh-vQH" id="CQz-6f-AEw"/>
+                        <outlet property="leaveCommentView" destination="EXD-oY-wIW" id="Izs-EH-Nej"/>
                         <outlet property="topViewHeight" destination="XhS-NP-1Fe" id="dcX-XN-1sa"/>
                     </connections>
                 </viewController>

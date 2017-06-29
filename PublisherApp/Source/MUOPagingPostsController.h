@@ -35,6 +35,7 @@
 
 @property (weak, nonatomic) UIPageViewController *pageViewController;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIView *leaveCommentView;
 
 //Used to present single view controller using top and bottom bookmark controls
 @property (nonatomic, strong) UIViewController<PagingControllerPresentable>* viewControllerToDisplay;

@@ -37,7 +37,7 @@ static int pageSize = 20;
    @weakify(self);
    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
       @strongify(self);
-      [[self.postsManager fetchPostsByCategoryID:self.selectedCategory.id lastPostID:self.lastPostID] subscribeNext:^(NSArray* posts) {
+      [[self.postsManager fetchPostsByCategoryID:self.selectedCategory.id lastPostID:self.lastPostID lastPostDate:self.lastPostDate] subscribeNext:^(NSArray* posts) {
          self.totalPosts = self.totalPosts + posts.count;
          self.total = posts.count == pageSize ? self.totalPosts + 1 : self.totalPosts;
          [subscriber sendNext:posts];

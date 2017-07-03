@@ -227,6 +227,7 @@
 - (void) loadMore {
    NSNumber* lastPostID = [(Post*)self.posts.lastObject ID];
    self.viewModel.lastPostID = lastPostID;
+   self.viewModel.lastPostDate = [(Post*)self.posts.lastObject postDate];
    [self.viewModel setNextPage];
    [self fetchPosts];
 }

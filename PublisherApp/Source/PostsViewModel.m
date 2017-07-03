@@ -28,6 +28,7 @@ static int pageSize = 20;
       self.postsManager = [PostsRequestsManager new];
       self.page = 1;
       self.lastPostID = nil;
+      self.lastPostDate = nil;
    }
    return self;
 }
@@ -36,6 +37,7 @@ static int pageSize = 20;
 #pragma mark - Pagination
 -(void)resetPage {
    _lastPostID = nil;
+   _lastPostDate = nil;
    _page = 1;
 }
 
@@ -53,7 +55,7 @@ static int pageSize = 20;
    @weakify(self);
    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
       @strongify(self);
-      [[self.postsManager fetchLatestPosts:_page lastPostID:_lastPostID] subscribeNext:^(NSArray *posts) {
+      [[self.postsManager fetchLatestPosts:_page lastPostID:_lastPostID lastPostDate:_lastPostDate] subscribeNext:^(NSArray *posts) {
          self.totalPosts = self.totalPosts + posts.count;
          self.total = posts.count == pageSize ? self.totalPosts + 1 : self.totalPosts;
          [subscriber sendNext:posts];

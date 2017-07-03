@@ -23,9 +23,9 @@
 + (Class) postClass;
 + (DCParserConfiguration*) parserConfiguration;
 
-- (RACSignal *) fetchLatestPosts:(NSInteger)page lastPostID:(NSNumber *) lastPostID;
+- (RACSignal *) fetchLatestPosts:(NSInteger)page lastPostID:(NSNumber *) lastPostID lastPostDate:(NSDate*) date;
+- (RACSignal *) fetchPostsByCategoryID:(NSNumber*) categoryID lastPostID:(NSNumber*) lastPostID lastPostDate:(NSDate*) date;
 - (RACSignal *) likePost:(NSNumber*) postID;
 - (RACSignal *) fetchPostByID:(NSString *)ID;
-- (RACSignal *) fetchPostsByCategoryID:(NSNumber*) categoryID lastPostID:(NSNumber*) lastPostID;
 
 @end

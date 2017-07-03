@@ -31,6 +31,7 @@
 
 @property (nonatomic, strong) NSArray* savedPosts;
 @property (nonatomic) NSNumber* lastPostID;
+@property (nonatomic) NSDate* lastPostDate;
 
 - (RACSignal *) fetchPosts;
 - (void) fetchSavedPosts;

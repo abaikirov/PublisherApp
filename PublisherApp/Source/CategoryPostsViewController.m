@@ -71,6 +71,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    Post* selectedPost = self.posts[indexPath.row];
    [[CoreContext sharedContext].navigationRouter showPost:selectedPost fromNavigationController:self.navigationController isOffline:NO];
+   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
    if (indexPath.row == self.posts.count - 1 && self.posts.count != 0 && !self.loadingInProgress) {

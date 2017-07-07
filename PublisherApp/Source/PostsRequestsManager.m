@@ -34,11 +34,11 @@
    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:@{@"per_page" : @(10), @"with_body" : @"true"}];
    
    if (lastDate) {
-      /*NSDateFormatter* formatter = [NSDateFormatter new];
+      NSDateFormatter* formatter = [NSDateFormatter new];
       formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
       NSString* date = [formatter stringFromDate:lastDate];
-      [params setObject:date forKey:@"last_item_datetime"];*/
-      [params setObject:lastPostID forKey:@"last_item_id"];
+      [params setObject:date forKey:@"last_item_datetime"];
+      //[params setObject:lastPostID forKey:@"last_item_id"];
    } else {
       [params setObject:@(page) forKey:@"page"];
    }
@@ -48,11 +48,11 @@
 - (RACSignal *)fetchPostsByCategoryID:(NSNumber *)categoryID lastPostID:(NSNumber *)lastPostID lastPostDate:(NSDate *)lastDate {
    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:@{@"cats" : categoryID}];
    if (lastDate) {
-      /*NSDateFormatter* formatter = [NSDateFormatter new];
+      NSDateFormatter* formatter = [NSDateFormatter new];
       formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
       NSString* date = [formatter stringFromDate:lastDate];
-      [params setObject:date forKey:@"last_item_datetime"];*/
-      [params setObject:lastPostID forKey:@"last_item_id"];
+      [params setObject:date forKey:@"last_item_datetime"];
+      //[params setObject:lastPostID forKey:@"last_item_id"];
    }
    return [self fetchPostsWithParameters:params];
 }
